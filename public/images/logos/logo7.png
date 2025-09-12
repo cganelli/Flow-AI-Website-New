@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error><Code>NoSuchBucket</Code><Message>The specified bucket does not exist</Message><BucketName>same-storage</BucketName><RequestId>238ZE7VRQGEE0NYN</RequestId><HostId>Kdse5aCNmylzfOBBNAgmhkmYotYs8hrb9ER7bie2Ufdz3RuwB5MQh5Qk/OS+doo8zWrr3MNfj6FQw14J5yfIkc2eM/IW1Mr20qoC2LJQ51g=</HostId></Error>

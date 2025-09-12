@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://same-7f50udlj5du-latest.netlify.app/sitemap.xml
+
+# Block common bot traps
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /contact
+Allow: /faq
+Allow: /privacy-terms
+
+# Crawl delay (optional)
+Crawl-delay: 1

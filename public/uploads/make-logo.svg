@@ -1,0 +1,7 @@
+<svg width="150" height="50" xmlns="http://www.w3.org/2000/svg">
+  <rect width="150" height="50" fill="#6366F1" rx="8"/>
+  <rect x="8" y="18" width="8" height="14" fill="#FFFFFF"/>
+  <rect x="18" y="18" width="8" height="14" fill="#FFFFFF"/>
+  <rect x="28" y="18" width="8" height="14" fill="#FFFFFF"/>
+  <text x="45" y="30" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Make</text>
+</svg>
