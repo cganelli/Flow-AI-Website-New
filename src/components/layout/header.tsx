@@ -7,10 +7,11 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Determine if we're on FAQ or Contact page and need to link back to home page sections
+  // Determine if we're on FAQ, Contact, or Privacy-Terms page and need to link back to home page sections
   const isOnFAQPage = pathname === '/faq';
   const isOnContactPage = pathname === '/contact';
-  const needsHomeLinks = isOnFAQPage || isOnContactPage;
+  const isOnPrivacyTermsPage = pathname === '/privacy-terms';
+  const needsHomeLinks = isOnFAQPage || isOnContactPage || isOnPrivacyTermsPage;
   const solutionsHref = needsHomeLinks ? '/#ai-capabilities' : '#ai-capabilities';
   const processHref = needsHomeLinks ? '/#process' : '#process';
 
