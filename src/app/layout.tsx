@@ -14,6 +14,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://thisisflowai.com'),
   title: "AI Automation for Small Business | Boost Productivity & Cut Costs | Flow AI",
   description:
     "Flow AI helps small businesses automate repetitive tasks, boost productivity, and scale operations using smart, customized AI workflows. Discover how we deliver results through a simple 3-step process.",
