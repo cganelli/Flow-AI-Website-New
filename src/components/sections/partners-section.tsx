@@ -23,7 +23,7 @@ const PartnersSection = () => {
   const duplicatedLogos = [...partnerLogos, ...partnerLogos];
 
   return (
-    <section className="bg-black text-white py-8 md:py-16">
+    <section className="bg-black text-white pt-8 pb-4 md:pt-16 md:pb-8">
       <div className="container-custom">
         <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8 text-center">Partners</h2>
 

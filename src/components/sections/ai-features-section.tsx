@@ -2,7 +2,7 @@
 
 const AIFeaturesSection = () => {
   return (
-    <section className="py-8 md:py-16 bg-black text-white" aria-labelledby="ai-features-title" id="ai-features">
+    <section className="pt-4 pb-8 md:pt-8 md:pb-16 bg-black text-white" aria-labelledby="ai-features-title" id="ai-features">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-16">
@@ -27,7 +27,7 @@ const AIFeaturesSection = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="mb-6 md:mb-16">
+          <div className="mb-3 md:mb-8">
             <a href="#book-appointment" className="btn-primary bg-primary hover:bg-primary/90">
               Learn More
             </a>

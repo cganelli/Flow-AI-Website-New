@@ -12,8 +12,8 @@ const ContactCaptureSection = () => {
               Get Your Free AI Audit
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Join hundreds of business owners who've transformed their operations with custom AI solutions.
-              Get your personalized AI audit and see real results in 30 days or less.
+              Join companies that have transformed their operations with tailored AI guidance.
+              Get a personalized AI audit to identify impact areas and quick wins.
             </p>
           </div>
 
@@ -27,9 +27,9 @@ const ContactCaptureSection = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Free AI Audit Session</h3>
+                  <h3 className="text-xl font-semibold mb-2">Strategic Assessment</h3>
                   <p className="text-gray-600">
-                    Get a custom roadmap showing exactly how AI can automate your specific business processes
+                    Receive a custom AI roadmap aligned with your organization's scale and goals
                   </p>
                 </div>
               </div>
@@ -41,9 +41,9 @@ const ContactCaptureSection = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">ROI Analysis</h3>
+                  <h3 className="text-xl font-semibold mb-2">ROI Insight</h3>
                   <p className="text-gray-600">
-                    See exactly how much time and money AI automation could save your business each month
+                    Understand estimated gains in time and cost savings across your operations
                   </p>
                 </div>
               </div>
@@ -57,7 +57,7 @@ const ContactCaptureSection = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-2">Implementation Timeline</h3>
                   <p className="text-gray-600">
-                    Get a clear timeline for implementing AI solutions that start delivering results immediately
+                    See how AI can begin delivering results fast
                   </p>
                 </div>
               </div>
@@ -72,8 +72,7 @@ const ContactCaptureSection = () => {
                   <h4 className="text-lg font-semibold">30-Minute Call = 30+ Hours Saved Monthly</h4>
                 </div>
                 <p className="text-gray-600 text-sm">
-                  The average client saves 30+ hours per month after implementing our AI recommendations.
-                  That's worth $3,000+ in productivity gains for most businesses.
+                  Businesses typically reclaim 30+ hours per month post-implementation, translating to significant ROI across business scales.
                 </p>
               </div>
             </div>
@@ -82,8 +81,8 @@ const ContactCaptureSection = () => {
             <div>
               <ContactCaptureForm
                 title="Get Your Free AI Audit"
-                subtitle="Tell us about your business and we'll show you exactly how AI can help you scale."
-                buttonText="Get My Free Audit"
+                subtitle="Describe your business and we'll craft an AI plan tailored to your scale and needs."
+                buttonText="Get My Free Strategy Call"
                 showCalendlyAfterSubmit={true}
               />
             </div>

@@ -15,13 +15,13 @@ const faqData: FAQItem[] = [
   {
     id: "what-is-ai-automation",
     question: "What is AI automation, and why should I care?",
-    answer: "AI automation helps your business run smoother by handling time-consuming tasks automatically—like following up with leads, sending reminders, or organizing paperwork. It's like hiring an extra set of hands that works 24/7 and never makes a mistake.",
+    answer: "AI automation streamlines operations by taking over repetitive, manual tasks—such as lead follow-ups, scheduling, reminders, and data organization. It improves accuracy, reduces overhead, and allows your team to focus on strategic, revenue-driving work.",
     category: "basics"
   },
   {
     id: "save-time-grow-business",
     question: "How can automation save me time and grow my business?",
-    answer: "Automation takes care of the repetitive stuff—so you and your team can focus on real work, like serving clients and closing deals. You'll spend less time on admin and more time doing what makes you money.",
+    answer: "By handling repetitive tasks, AI frees employees to focus on higher-value work. Teams spend less time on admin and more time on serving customers, innovating, and closing business. This accelerates growth without adding headcount.",
     category: "benefits"
   },
   {
@@ -29,72 +29,72 @@ const faqData: FAQItem[] = [
     question: "What are some real-world ways automation can help my business?",
     answer: "",
     examples: [
-      "Realtors: Automatically follow up with leads and schedule showings",
-      "Roofers: Send job reminders, invoices, and customer updates without lifting a finger",
-      "Accountants: Organize and track client documents or send tax deadline alerts",
-      "Lawyers: Manage consultations, client intake forms, and billing",
-      "Handymen: Book jobs, send quotes, and follow up after a job is done"
+      "Sales: Instantly follow up with leads and manage pipelines",
+      "Finance: Streamline invoicing, expense tracking, and compliance",
+      "HR: Automate onboarding, payroll, and employee support",
+      "Operations: Manage scheduling, reminders, and reporting",
+      "Customer Experience: Deliver timely updates, FAQs, and surveys"
     ],
     category: "examples"
   },
   {
     id: "what-agency-does",
     question: "What does an automation agency actually do?",
-    answer: "We learn how your business runs, figure out what can be automated, and then set it up for you. No tech skills needed—we handle the heavy lifting.",
+    answer: "We act as your AI strategic partner. We evaluate your processes, identify high-impact automation opportunities, and design custom AI systems. We manage implementation end-to-end, so you don't need technical expertise.",
     category: "process"
   },
   {
     id: "automation-cost",
-    question: "How much does automation cost?",
-    answer: "It depends on what you need, but we offer plans for every budget—from one-time setups to ongoing support. Most of our clients start saving time (and money) within the first month.",
+    question: "How much does AI consulting cost?",
+    answer: "It depends on scope and complexity. We offer options ranging from one-time projects to ongoing advisory support. Most clients see measurable time and cost savings within the first month.",
     category: "pricing"
   },
   {
     id: "why-flow-ai",
     question: "Why work with Flow AI?",
-    answer: "We specialize in creating custom AI solutions that integrate seamlessly with your existing business processes. Our team handles all the technical complexity while you focus on growing your business. Plus, we provide ongoing support to ensure your automation continues delivering results as your business evolves.",
+    answer: "We design and implement AI solutions tailored to your size, industry, and goals. We handle the complexity while you focus on results. Our enterprise leadership experience at companies such as Subway, Equinox, Edible Arrangements, PriceWaterhouseCoopers, and more ensures solutions that scale, and our support keeps systems performing as your business evolves.",
     category: "company"
   },
   {
     id: "automation-leads-customers",
-    question: "Can automation help me get more leads or customers?",
-    answer: "Absolutely. Automation can follow up with new leads instantly, send reminders to cold prospects, and keep your name top of mind—so you never lose a sale just because you got busy.",
+    question: "Can AI help me get more leads or customers?",
+    answer: "Yes. AI systems engage leads instantly, send reminders, and personalize outreach. This ensures prospects stay engaged and reduces lost opportunities.",
     category: "benefits"
   },
   {
     id: "replace-team-employees",
-    question: "Will this replace my team or employees?",
-    answer: "No—automation supports your team by taking boring, repetitive tasks off their plate. It helps them do more in less time, not replace them.",
+    question: "Will this replace my team?",
+    answer: "No. AI augments your team by handling repetitive tasks. Employees gain time for strategic, creative, and client-facing work. It's about scaling human impact, not replacing people.",
     category: "basics"
   },
   {
     id: "setup-time",
-    question: "How long does it take to get set up?",
-    answer: "Most clients are up and running within 1-2 weeks, depending on the complexity of what you need. We handle everything for you so there's minimal disruption.",
+    question: "How long does setup take?",
+    answer: "Most projects are implemented in 1-2 weeks. Larger initiatives may take longer, but we minimize disruption by managing the entire process.",
     category: "process"
   },
   {
     id: "special-software",
-    question: "Do I need to buy special software?",
-    answer: "Nope. We work with the tools you already use—like Google Workspace, QuickBooks, Calendly, or your CRM. If we work with other tools, we make sure it fits your workflow and budget.",
+    question: "Do I need to buy new software?",
+    answer: "No. We integrate with the tools you already use—Google Workspace, Salesforce, QuickBooks, CRMs, and more. When new tools are required, we recommend options that fit your workflow and budget.",
     category: "technical"
   },
   {
     id: "support-problems",
-    question: "What if something goes wrong—who do I call?",
-    answer: "We offer ongoing support plans, so if anything breaks or you want to update something, we've got your back. Think of us as your \"tech partner\" without the IT guy price tag.",
+    question: "What if something goes wrong?",
+    answer: "We provide ongoing support and monitoring. If you need updates or fixes, our team is your partner in keeping systems running—without adding IT overhead.",
     category: "support"
   },
   {
     id: "customer-service-automation",
-    question: "Can automation help with customer service?",
-    answer: "Yes! You can automatically send appointment confirmations, job updates, FAQs, satisfaction surveys, and follow-ups—keeping clients informed and happy without extra effort.",
+    question: "Can AI improve customer service?",
+    answer: "Yes. AI can automate confirmations, updates, FAQs, surveys, and follow-ups—improving response time, consistency, and client satisfaction.",
     category: "benefits"
   },
   {
     id: "data-security",
-    question: "Is this secure and safe for my client data?",
-    answer: "Absolutely. We use enterprise-grade security measures and only work with trusted, established platforms. Your client data stays protected with the same security standards used by major corporations.",
+    question: "Is AI automation secure?",
+    answer: "Yes. We follow enterprise-grade security practices and use trusted platforms. Your data is protected under the same standards global corporations rely on.",
     category: "security"
   }
 ];
@@ -205,7 +205,7 @@ export default function FAQContent() {
               Frequently Asked Questions
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Got questions about AI automation? We've got answers. Here are the most common questions we get from business owners.
+              Got questions about AI consulting? We've got answers. Here are the most common questions we get from business owners.
             </p>
 
             {/* Search Bar */}

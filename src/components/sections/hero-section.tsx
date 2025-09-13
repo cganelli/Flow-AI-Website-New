@@ -7,32 +7,32 @@ const HeroSection = () => {
   const statisticsData = [
     {
       number: "24",
-      description: "number of business days a year freed up with AI",
+      description: "business days freed up annually with AI",
       ariaLabel: "24 business days per year freed up with AI automation"
     },
     {
       number: "40%",
-      description: "projected boost in employee productivity from AI",
+      description: "boost in employee productivity",
       ariaLabel: "40 percent projected boost in employee productivity from AI"
     },
     {
       number: "27%",
-      description: "increase in conversion rates driven by AI-powered sales tools",
+      description: "conversion increase via AI-driven tools",
       ariaLabel: "27 percent increase in conversion rates driven by AI-powered sales tools"
     },
     {
       number: "40%",
-      description: "faster response time by salespeople using AI tools, driving revenue growth",
+      description: "faster sales response time driving revenue",
       ariaLabel: "40 percent faster response time by salespeople using AI tools"
     },
     {
       number: "68%",
-      description: "reduction in average resolution time for organizations using AI and automation in customer service",
+      description: "reduction in resolution time in customer service",
       ariaLabel: "68 percent reduction in average resolution time for organizations using AI"
     },
     {
       number: "64%",
-      description: "decrease in error rates thanks to AI implementation, reducing costly rework and customer complaints",
+      description: "drop in error rates from AI systems",
       ariaLabel: "64 percent decrease in error rates thanks to AI implementation"
     }
   ];
@@ -49,7 +49,7 @@ const HeroSection = () => {
             AI Solutions That Grow Your Business — Not Your Payroll
           </h1>
           <p className="text-lg md:text-xl text-gray max-w-5xl mx-auto">
-            Custom automation systems that turn missed calls into booked appointments, build a lead-generating engine that runs 24/7, and boost productivity without adding headcount.
+            Custom AI strategies that deliver results—from lead generation to automation, from startups to enterprises.
           </p>
         </header>
 

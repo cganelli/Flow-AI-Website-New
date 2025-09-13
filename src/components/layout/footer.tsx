@@ -50,7 +50,7 @@ const Footer = () => {
             id="footer-heading"
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-center max-w-3xl mb-8"
           >
-            We'll take care of busywork with AI so you can focus on growing your business.
+            We handle complex AI, so your business can focus on growth.
           </h2>
 
           {/* CTA Above Calendly Widget */}

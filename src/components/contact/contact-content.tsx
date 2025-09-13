@@ -99,8 +99,8 @@ const ContactContent = () => {
       <div className="container-custom max-w-4xl">
         <div className="text-center mb-12">
           <h1 className="heading-xl mb-4">Contact Flow AI</h1>
-          <p className="text-xl text-gray mb-8">
-            Have questions about our AI automation services? We're here to help.
+          <p className="text-xl text-black mb-8">
+            Have questions about our AI consulting services? We're here to help.
           </p>
         </div>
 
@@ -157,7 +157,7 @@ const ContactContent = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="name"
                   />
                 </div>
@@ -172,7 +172,7 @@ const ContactContent = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="email"
                     inputMode="email"
                   />
@@ -190,7 +190,7 @@ const ContactContent = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="organization"
                   />
                 </div>
@@ -204,7 +204,7 @@ const ContactContent = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="tel"
                     inputMode="tel"
                   />
@@ -220,7 +220,7 @@ const ContactContent = () => {
                   name="inquiryType"
                   value={formData.inquiryType}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation appearance-none bg-white"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation appearance-none bg-white"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="ai_consultation">AI Consultation</option>
@@ -240,7 +240,7 @@ const ContactContent = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                 />
               </div>
 
@@ -255,7 +255,7 @@ const ContactContent = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
                 />
               </div>
 
@@ -316,7 +316,7 @@ const ContactContent = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="name"
                   />
                 </div>
@@ -331,7 +331,7 @@ const ContactContent = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="email"
                     inputMode="email"
                   />
@@ -349,7 +349,7 @@ const ContactContent = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="organization"
                   />
                 </div>
@@ -363,7 +363,7 @@ const ContactContent = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                    className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="tel"
                     inputMode="tel"
                   />
@@ -379,7 +379,7 @@ const ContactContent = () => {
                   name="inquiryType"
                   value={formData.inquiryType}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation appearance-none bg-white"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation appearance-none bg-white"
                 >
                   <option value="general">General Inquiry</option>
                   <option value="ai_consultation">AI Consultation</option>
@@ -399,7 +399,7 @@ const ContactContent = () => {
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                 />
               </div>
 
@@ -414,7 +414,7 @@ const ContactContent = () => {
                   onChange={handleInputChange}
                   required
                   rows={5}
-                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
+                  className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
                 />
               </div>
 
