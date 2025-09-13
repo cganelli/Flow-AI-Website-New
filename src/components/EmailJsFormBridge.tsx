@@ -67,15 +67,34 @@ export default function EmailJsFormBridge() {
         form.setAttribute('netlify-honeypot', 'bot-field');
       }
 
-      // Success redirect to /thank-you if none present
-      if (!form.querySelector('input[name="redirect"]')) {
-        const redir = document.createElement('input');
-        redir.type = 'hidden';
-        redir.name = 'redirect';
-        redir.value = '/thank-you';
-        form.appendChild(redir);
-      }
+      // No redirect needed - we'll show inline thank you message
     });
+
+    // Function to show inline thank you message
+    function showThankYouMessage(form: HTMLFormElement) {
+      // Hide the form
+      form.style.display = 'none';
+      
+      // Create thank you message element
+      const thankYouDiv = document.createElement('div');
+      thankYouDiv.className = 'bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto text-center';
+      thankYouDiv.innerHTML = `
+        <div class="mb-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-2">Thanks — we got it!</h3>
+          <p class="text-gray-600">
+            We'll be in touch shortly.
+          </p>
+        </div>
+      `;
+      
+      // Insert the thank you message after the form
+      form.parentNode?.insertBefore(thankYouDiv, form.nextSibling);
+    }
 
     // 2) Intercept submit BEFORE React handlers and post in Netlify's expected format
     async function onSubmit(ev: SubmitEvent) {
@@ -106,9 +125,9 @@ export default function EmailJsFormBridge() {
           body,
         });
 
-        const redirect = (form.querySelector('input[name="redirect"]') as HTMLInputElement)?.value || '/thank-you';
         if (res.ok) {
-          window.location.assign(redirect);
+          // Show inline thank you message instead of redirecting
+          showThankYouMessage(form);
         } else {
           console.error('Netlify Forms submission failed:', res.status, await res.text());
           alert('Sorry — sending failed. Please email us at carissa@thisisflowai.com');
