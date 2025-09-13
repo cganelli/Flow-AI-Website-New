@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://same-7f50udlj5du-latest.netlify.app/sitemap.xml
+Sitemap: https://thisisflowai.com/sitemap.xml
 
 # Block common bot traps
 Disallow: /api/

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Analytics } from '@/lib/analytics';
-import { NetlifyFormsService } from '@/lib/netlify-forms-service';
+import { EmailJSService } from '@/lib/emailjs-service';
 
 interface ContactCaptureFormProps {
   title?: string;
@@ -51,15 +51,12 @@ const ContactCaptureForm = ({
     try {
       setSubmitError(null);
 
-      // Send email using Netlify Forms
-      const result = await NetlifyFormsService.sendContactEmail({
+      // Send email using EmailJS
+      const result = await EmailJSService.sendSimpleContact({
         name: formData.name,
         email: formData.email,
         company: formData.company,
-        phone: formData.phone,
-        message: 'New lead from contact capture form - requesting free AI audit consultation',
-        inquiryType: 'AI Consultation',
-        subject: 'New Lead - Contact Capture Form'
+        phone: formData.phone
       });
 
       if (result.success) {
@@ -197,15 +194,11 @@ const ContactCaptureForm = ({
       </div>
 
       <form
-        name="contact-capture-form"
-        method="POST"
-        data-netlify="true"
         onSubmit={handleSubmit}
         className="space-y-4 md:space-y-6"
         noValidate
         aria-label="Contact form to get your free AI audit"
       >
-        <input type="hidden" name="form-name" value="contact-capture-form" />
         <div>
           <label htmlFor="contact-name" className="sr-only">
             Full Name

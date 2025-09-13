@@ -1,5 +1,6 @@
 import HomePage from '@/components/pages/home-page';
 import { HomePageStructuredData } from '@/components/seo/structured-data';
+import EmailJsFormBridge from '@/components/EmailJsFormBridge';
 
 // Hidden forms for Netlify Forms detection
 const NetlifyFormsDetection = () => (
@@ -38,6 +39,7 @@ const NetlifyFormsDetection = () => (
 export default function Home() {
   return (
     <>
+      <EmailJsFormBridge />
       <HomePageStructuredData />
       <NetlifyFormsDetection />
       <HomePage />

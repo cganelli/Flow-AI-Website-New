@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ContactContent from "@/components/contact/contact-content";
+import EmailJsFormBridge from '@/components/EmailJsFormBridge';
 
 export const metadata: Metadata = {
   title: "Contact Flow AI | Schedule Your Free AI Audit",
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background">
+      <EmailJsFormBridge />
       <Header />
 
       <main className="pt-20">
