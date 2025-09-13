@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { Analytics } from '@/lib/analytics';
-import { EmailJSService } from '@/lib/emailjs-service';
 
 interface ContactCaptureFormProps {
   title?: string;
@@ -30,15 +29,12 @@ const ContactCaptureForm = ({
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showCalendly, setShowCalendly] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = (e: React.FormEvent) => {
     if (!formData.email) {
+      e.preventDefault();
       alert('Please enter your email address');
       return;
     }
-
-    setIsSubmitting(true);
 
     // Track form submission
     Analytics.trackEvent('form_submit', {
@@ -48,47 +44,8 @@ const ContactCaptureForm = ({
       has_phone: !!formData.phone
     });
 
-    try {
-      setSubmitError(null);
-
-      // Send email using EmailJS
-      const result = await EmailJSService.sendSimpleContact({
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        phone: formData.phone
-      });
-
-      if (result.success) {
-        setIsSubmitted(true);
-
-        Analytics.trackEvent('lead_generated', {
-          source: 'contact_capture_form',
-          email: formData.email,
-          name: formData.name || 'Anonymous',
-          ticket_number: result.ticketNumber,
-          email_sent: true
-        });
-
-        // Show Calendly after form submission if enabled
-        if (showCalendlyAfterSubmit) {
-          setTimeout(() => {
-            setShowCalendly(true);
-          }, 1500);
-        }
-      } else {
-        throw new Error(result.message);
-      }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      setSubmitError(error instanceof Error ? error.message : 'Failed to send email');
-      Analytics.trackEvent('form_error', {
-        form_type: 'contact_capture',
-        error: 'submission_failed'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Let Netlify Forms handle the submission
+    // The EmailJsFormBridge will add the necessary attributes
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

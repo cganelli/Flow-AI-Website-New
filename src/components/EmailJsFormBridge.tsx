@@ -57,7 +57,7 @@ export default function EmailJsFormBridge() {
         const hp = document.createElement('input');
         hp.type = 'text';
         hp.name = 'bot-field';
-        (hp.style as any).display = 'none';
+        hp.style.display = 'none';
         form.appendChild(hp);
         form.setAttribute('netlify-honeypot', 'bot-field');
       }
