@@ -2,16 +2,13 @@
 
 const AIFeaturesSection = () => {
   return (
-    <section className="pt-4 pb-8 md:pt-8 md:pb-16 bg-black text-white" aria-labelledby="ai-features-title" id="ai-features">
+    <section className="pt-2 pb-8 md:pt-4 md:pb-16 bg-black text-white" aria-labelledby="ai-features-title" id="ai-features">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-16">
           <h2 id="ai-features-title" className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8">
             Let AI Help You
           </h2>
-          <p className="text-lg md:text-xl mb-8 text-white/90 italic">
-            (intro section with benefit statements)
-          </p>
 
           {/* Three Key Points */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-6 md:mb-12">
@@ -27,7 +24,7 @@ const AIFeaturesSection = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="mb-3 md:mb-8">
+          <div className="mb-1 md:mb-4">
             <a href="#book-appointment" className="btn-primary bg-primary hover:bg-primary/90">
               Learn More
             </a>
