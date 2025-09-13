@@ -1,1 +1,4 @@
-/*    /index.html   200
+https://www.thisisflowai.com/*  https://thisisflowai.com/:splat  301!
+http://thisisflowai.com/*        https://thisisflowai.com/:splat  301!
+http://www.thisisflowai.com/*    https://thisisflowai.com/:splat  301!
+/*                               /index.html                       200
