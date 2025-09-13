@@ -20,13 +20,13 @@ const faqData: FAQItem[] = [
   },
   {
     id: "save-time-grow-business",
-    question: "How can automation save me time and grow my business?",
+    question: "How can AI save me time and grow my business?",
     answer: "By handling repetitive tasks, AI frees employees to focus on higher-value work. Teams spend less time on admin and more time on serving customers, innovating, and closing business. This accelerates growth without adding headcount.",
     category: "benefits"
   },
   {
     id: "real-world-examples",
-    question: "What are some real-world ways automation can help my business?",
+    question: "What are some real-world ways AI can help?",
     answer: "",
     examples: [
       "Sales: Instantly follow up with leads and manage pipelines",
@@ -39,7 +39,7 @@ const faqData: FAQItem[] = [
   },
   {
     id: "what-agency-does",
-    question: "What does an automation agency actually do?",
+    question: "What does Flow AI actually do?",
     answer: "We act as your AI strategic partner. We evaluate your processes, identify high-impact automation opportunities, and design custom AI systems. We manage implementation end-to-end, so you don't need technical expertise.",
     category: "process"
   },

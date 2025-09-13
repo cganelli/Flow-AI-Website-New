@@ -105,7 +105,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "Flow AI",
     alternateName: "FlowAI",
-    description: "AI automation solutions for small businesses to boost productivity and cut costs",
+    description: "AI consultancy, implementation, and support services to help businesses of all sizes streamline operations and achieve lasting impact",
     url: "https://flowai.com",
     logo: {
       "@type": "ImageObject",
@@ -136,7 +136,7 @@ export default function RootLayout({
         {
           "@type": "Offer",
           name: "AI Business Automation",
-          description: "Custom AI systems that automate business processes and increase efficiency",
+          description: "Custom AI systems and strategies that streamline business processes and achieve lasting impact",
           category: "Business Automation",
           priceSpecification: {
             "@type": "PriceSpecification",

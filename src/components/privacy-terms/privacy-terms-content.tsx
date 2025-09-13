@@ -51,7 +51,7 @@ export default function PrivacyTermsContent() {
                 <p className="mb-4">We may collect the following types of personal information:</p>
                 <ul className="list-disc pl-6 mb-6 space-y-2">
                   <li><strong>Contact Information:</strong> Name, email address, phone number, company name</li>
-                  <li><strong>Business Information:</strong> Your role, industry, and automation needs</li>
+                  <li><strong>Business Information:</strong> Your role, industry, and AI strategy needs</li>
                   <li><strong>Usage Data:</strong> How you interact with our website or services (e.g., IP address, browser type, pages visited)</li>
                   <li><strong>Client Data:</strong> If you become a customer, we may process business workflow data that you provide to implement automation solutions</li>
                 </ul>
@@ -61,7 +61,7 @@ export default function PrivacyTermsContent() {
                 <ul className="list-disc pl-6 mb-6 space-y-2">
                   <li>Provide and improve our services</li>
                   <li>Communicate with you about offers or updates</li>
-                  <li>Customize and set up automation systems</li>
+                  <li>Customize and set up AI-driven systems and strategies</li>
                   <li>Analyze usage to improve user experience</li>
                   <li>Comply with legal obligations</li>
                 </ul>
