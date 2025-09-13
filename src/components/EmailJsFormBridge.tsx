@@ -3,24 +3,22 @@
 
 import { useEffect } from 'react';
 
-// This component does TWO things:
-// 1) Emits hidden forms so Netlify registers them at deploy time.
-// 2) At runtime, adds the required Netlify attributes + hidden inputs
-//    to your visible forms so submissions are routed correctly.
-
+// 1) Hidden forms so Netlify registers at deploy time
 function NetlifyRegistrationMarkup() {
   return (
     <>
-      {/* Hidden "contact" form (richer form that includes a message) */}
+      {/* Contact page – has message/subject/inquiryType */}
       <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
         <input type="text" name="company" />
         <input type="tel" name="phone" />
+        <input type="text" name="subject" />
+        <input type="text" name="inquiryType" />
         <textarea name="message" />
       </form>
 
-      {/* Hidden "audit" form (simple home-page form) */}
+      {/* Home page audit / capture form – no message */}
       <form name="audit" data-netlify="true" netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
@@ -36,23 +34,30 @@ export default function EmailJsFormBridge() {
     const forms = Array.from(document.querySelectorAll('form')) as HTMLFormElement[];
 
     forms.forEach((form) => {
+      // Decide which registered form this visible form should use
       const isContact =
         !!form.querySelector('textarea[name="message"]') ||
         !!form.querySelector('[name="subject"]') ||
         !!form.querySelector('[name="inquiryType"]');
-      const formName = isContact ? 'contact' : 'audit';
+      const targetName = isContact ? 'contact' : 'audit';
 
+      // Ensure required Netlify attributes
       if (!form.getAttribute('method')) form.setAttribute('method', 'POST');
       if (!form.hasAttribute('data-netlify')) form.setAttribute('data-netlify', 'true');
 
-      if (!form.querySelector('input[name="form-name"]')) {
-        const hidden = document.createElement('input');
-        hidden.type = 'hidden';
-        hidden.name = 'form-name';
-        hidden.value = formName;
-        form.appendChild(hidden);
+      // Ensure exactly ONE form-name with our target value
+      const existingNames = form.querySelectorAll('input[name="form-name"]');
+      existingNames.forEach((n, i) => i > 0 && n.remove()); // keep at most one
+      let nameInput = existingNames[0] as HTMLInputElement | undefined;
+      if (!nameInput) {
+        nameInput = document.createElement('input');
+        nameInput.type = 'hidden';
+        nameInput.name = 'form-name';
+        form.appendChild(nameInput);
       }
+      nameInput.value = targetName;
 
+      // Honeypot
       if (!form.querySelector('input[name="bot-field"]')) {
         const hp = document.createElement('input');
         hp.type = 'text';
@@ -62,7 +67,7 @@ export default function EmailJsFormBridge() {
         form.setAttribute('netlify-honeypot', 'bot-field');
       }
 
-      // Success redirect to /thank-you (only if not already set)
+      // Success redirect to /thank-you if none present
       if (!form.querySelector('input[name="redirect"]')) {
         const redir = document.createElement('input');
         redir.type = 'hidden';
@@ -71,8 +76,53 @@ export default function EmailJsFormBridge() {
         form.appendChild(redir);
       }
     });
+
+    // 2) Intercept submit BEFORE React handlers and post in Netlify's expected format
+    async function onSubmit(ev: SubmitEvent) {
+      const form = ev.target as HTMLFormElement | null;
+      if (!form || form.tagName !== 'FORM') return;
+
+      // Only handle forms we marked for Netlify
+      if (!form.hasAttribute('data-netlify')) return;
+
+      // Stop other JS handlers (like legacy JSON submits)
+      ev.stopPropagation();
+      ev.stopImmediatePropagation();
+
+      // Native validation first
+      if (!form.checkValidity()) return;
+
+      ev.preventDefault();
+
+      // Build x-www-form-urlencoded body (what Netlify expects)
+      const fd = new FormData(form);
+      const body = new URLSearchParams(Array.from(fd.entries()) as [string, string][]).toString();
+
+      const action = form.getAttribute('action') || window.location.pathname || '/';
+      try {
+        const res = await fetch(action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body,
+        });
+
+        const redirect = (form.querySelector('input[name="redirect"]') as HTMLInputElement)?.value || '/thank-you';
+        if (res.ok) {
+          window.location.assign(redirect);
+        } else {
+          console.error('Netlify Forms submission failed:', res.status, await res.text());
+          alert('Sorry — sending failed. Please email us at carissa@thisisflowai.com');
+        }
+      } catch (err) {
+        console.error('Netlify Forms submission error:', err);
+        alert('Sorry — sending failed. Please email us at carissa@thisisflowai.com');
+      }
+    }
+
+    // Use capture phase to pre-empt React onSubmit
+    document.addEventListener('submit', onSubmit as unknown as EventListener, true);
+    return () => document.removeEventListener('submit', onSubmit as unknown as EventListener, true);
   }, []);
 
-  // Hidden registration markup is rendered into the HTML at build time
   return <NetlifyRegistrationMarkup />;
 }
