@@ -1,44 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Homepage - Highest Priority -->
-  <url>
-    <loc>https://same-7f50udlj5du-latest.netlify.app/</loc>
-    <lastmod>2025-01-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://same-7f50udlj5du-latest.netlify.app/" />
-  </url>
-
-  <!-- Contact Page - High Priority for Conversions -->
-  <url>
-    <loc>https://same-7f50udlj5du-latest.netlify.app/contact</loc>
-    <lastmod>2025-01-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://same-7f50udlj5du-latest.netlify.app/contact" />
-  </url>
-
-  <!-- FAQ Page - Important for SEO and User Support -->
-  <url>
-    <loc>https://same-7f50udlj5du-latest.netlify.app/faq</loc>
-    <lastmod>2025-01-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://same-7f50udlj5du-latest.netlify.app/faq" />
-  </url>
-
-  <!-- Privacy & Terms Page - Lower Priority Legal Content -->
-  <url>
-    <loc>https://same-7f50udlj5du-latest.netlify.app/privacy-terms</loc>
-    <lastmod>2025-01-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-    <xhtml:link rel="alternate" hreflang="en-us" href="https://same-7f50udlj5du-latest.netlify.app/privacy-terms" />
-  </url>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://thisisflowai.com/</loc></url>
+  <url><loc>https://thisisflowai.com/faq</loc></url>
+  <url><loc>https://thisisflowai.com/contact</loc></url>
+  <url><loc>https://thisisflowai.com/book-call</loc></url>
+  <url><loc>https://thisisflowai.com/privacy-terms</loc></url>
 </urlset>
