@@ -15,7 +15,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thisisflowai.com'),
-  title: "AI Automation for Small Business | Boost Productivity & Cut Costs | Flow AI",
+  title: "AI consulting services that design and implement AI strategy, agents, and workflows to drive measurable results.",
   description:
     "Flow AI helps small businesses automate repetitive tasks, boost productivity, and scale operations using smart, customized AI workflows. Discover how we deliver results through a simple 3-step process.",
   keywords: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "AI Automation for Small Business | Boost Productivity & Cut Costs | Flow AI",
+    title: "AI consulting services that design and implement AI strategy, agents, and workflows to drive measurable results.",
     description:
       "Flow AI helps small businesses automate repetitive tasks, boost productivity, and scale operations using smart, customized AI workflows. Discover how we deliver results through a simple 3-step process.",
     url: "https://flowai.com",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Flow AI - AI Automation for Small Business to Boost Productivity & Cut Costs",
+        alt: "Flow AI - AI consulting services that design and implement AI strategy, agents, and workflows to drive measurable results.",
       },
     ],
     locale: "en_US",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Automation for Small Business | Boost Productivity & Cut Costs | Flow AI",
+    title: "AI consulting services that design and implement AI strategy, agents, and workflows to drive measurable results.",
     description:
       "Flow AI helps small businesses automate repetitive tasks, boost productivity, and scale operations using smart, customized AI workflows.",
     images: ["/images/twitter-image.jpg"],
