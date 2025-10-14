@@ -28,7 +28,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#e22f1b", // maps to --color-primary-bg for buttons
+          DEFAULT: "#de3527", // maps to --color-primary-bg for buttons
           700: "#b11f0f",     // maps to --color-primary-link for text on white
           foreground: "hsl(var(--primary-foreground))",
         },

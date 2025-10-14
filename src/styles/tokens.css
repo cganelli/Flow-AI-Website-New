@@ -4,7 +4,7 @@
 */
 :root {
   /* Buttons (white text on this passes ≥ 4.5:1) */
-  --color-primary-bg: #e22f1b;
+  --color-primary-bg: #de3527; /* orange-ish, AA with white text */
 
   /* Links on white (passes ≥ 4.5:1) */
   --color-primary-link: #b11f0f;
