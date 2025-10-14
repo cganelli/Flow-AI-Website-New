@@ -8,7 +8,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
     css: true,
-    include: ['src/**/*.spec.ts?(x)', 'src/**/*.a11y.spec.ts?(x)']
+    include: ['src/**/*.spec.ts?(x)', 'src/**/*.a11y.spec.ts?(x)'],
+    // Note: fetchPriority warnings are harmless and expected in jsdom environment
   },
   resolve: {
     alias: {
