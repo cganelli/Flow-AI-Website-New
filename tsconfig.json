@@ -24,19 +24,25 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "types": ["vitest/globals", "node"]
+    "types": [
+      "node"
+    ],
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": [
+    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "build/types/**/*.ts",
-    "next-env.d.ts",
-    "out/types/**/*.ts"
+    "types/**/*.d.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/__tests__/**",
+    "vitest.setup.ts",
+    "vitest.config.mts"
   ]
 }

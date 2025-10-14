@@ -10,7 +10,7 @@
     "lint": "biome lint .",
     "build:static": "next build && next export",
     "test:a11y": "vitest run",
-    "a11y:local": "npm run build:static && npx http-server out -p 4321 & PID=$!; pa11y-ci; code=$?; kill $PID; exit $code"
+    "a11y:local": "npm run build:static && npx http-server out -p 4321 & PID=$!; npx wait-on http://localhost:4321; pa11y-ci; code=$?; kill $PID; exit $code"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -50,6 +50,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "wait-on": "^9.0.1"
   }
 }
