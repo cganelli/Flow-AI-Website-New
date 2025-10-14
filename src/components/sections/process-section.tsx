@@ -1,6 +1,10 @@
 "use client";
 
-const ProcessSection = () => {
+interface ProcessSectionProps {
+  sectionId?: string;
+}
+
+const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
   const processSteps = [
     {
       number: "1",
@@ -42,13 +46,13 @@ const ProcessSection = () => {
   return (
     <section
       className="py-16 bg-background"
-      id="process"
-      aria-labelledby="process-heading"
+      id={sectionId}
+      aria-labelledby={`${sectionId}-heading`}
     >
       <div className="container-custom">
         {/* Section Header */}
         <header className="text-center mb-16">
-          <h2 id="process-heading" className="heading-xl mb-8">Our Process</h2>
+          <h2 id={`${sectionId}-heading`} className="heading-xl mb-8">Our Process</h2>
         </header>
 
         {/* Process Steps Grid */}
@@ -62,7 +66,7 @@ const ProcessSection = () => {
               key={step.number}
               className="text-center"
               role="listitem"
-              aria-labelledby={`step-${step.number}-heading`}
+              aria-labelledby={`${sectionId}-step-${step.number}-heading`}
             >
               {/* Step Number */}
               <div
@@ -74,7 +78,7 @@ const ProcessSection = () => {
 
               {/* Step Title */}
               <h3
-                id={`step-${step.number}-heading`}
+                id={`${sectionId}-step-${step.number}-heading`}
                 className="text-xl md:text-2xl font-bold mb-8 leading-tight"
               >
                 {formatTitle(step.title, step.keyWord)}

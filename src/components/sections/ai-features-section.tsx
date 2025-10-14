@@ -1,12 +1,16 @@
 "use client";
 
-const AIFeaturesSection = () => {
+interface AIFeaturesSectionProps {
+  sectionId?: string;
+}
+
+const AIFeaturesSection = ({ sectionId = "ai-features" }: AIFeaturesSectionProps) => {
   return (
-    <section className="pt-2 pb-8 md:pt-4 md:pb-16 bg-black text-white" aria-labelledby="ai-features-title" id="ai-features">
+    <section className="pt-2 pb-8 md:pt-4 md:pb-16 bg-black text-white" aria-labelledby={`${sectionId}-title`} id={sectionId}>
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-16">
-          <h2 id="ai-features-title" className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8">
+          <h2 id={`${sectionId}-title`} className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-8">
             Let AI Help You
           </h2>
 

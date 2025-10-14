@@ -9,6 +9,7 @@ interface ContactCaptureFormProps {
   buttonText?: string;
   showCalendlyAfterSubmit?: boolean;
   className?: string;
+  formId?: string; // Add unique form ID to prevent duplicate IDs
 }
 
 const ContactCaptureForm = ({
@@ -16,7 +17,8 @@ const ContactCaptureForm = ({
   subtitle = "Get your free AI audit consultation and see how we can automate your workflows.",
   buttonText = "Get My Free AI Audit",
   showCalendlyAfterSubmit = true,
-  className = ""
+  className = "",
+  formId = "contact"
 }: ContactCaptureFormProps) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -157,11 +159,11 @@ const ContactCaptureForm = ({
         aria-label="Contact form to get your free AI audit"
       >
         <div>
-          <label htmlFor="contact-name" className="sr-only">
+          <label htmlFor={`${formId}-name`} className="sr-only">
             Full Name
           </label>
           <input
-            id="contact-name"
+            id={`${formId}-name`}
             type="text"
             name="name"
             placeholder="Full Name"
@@ -169,19 +171,19 @@ const ContactCaptureForm = ({
             onChange={handleInputChange}
             className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all touch-manipulation"
             autoComplete="name"
-            aria-describedby="name-description"
+            aria-describedby={`${formId}-name-description`}
           />
-          <span id="name-description" className="sr-only">
+          <span id={`${formId}-name-description`} className="sr-only">
             Enter your full name for the contact request
           </span>
         </div>
 
         <div>
-          <label htmlFor="contact-email" className="sr-only">
+          <label htmlFor={`${formId}-email`} className="sr-only">
             Email Address (Required)
           </label>
           <input
-            id="contact-email"
+            id={`${formId}-email`}
             type="email"
             name="email"
             placeholder="Email Address *"
@@ -192,20 +194,20 @@ const ContactCaptureForm = ({
             className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all touch-manipulation"
             autoComplete="email"
             inputMode="email"
-            aria-describedby="email-description email-error"
+            aria-describedby={`${formId}-email-description ${formId}-email-error`}
             aria-invalid={submitError ? "true" : "false"}
           />
-          <span id="email-description" className="sr-only">
+          <span id={`${formId}-email-description`} className="sr-only">
             Enter your email address. This field is required.
           </span>
         </div>
 
         <div>
-          <label htmlFor="contact-company" className="sr-only">
+          <label htmlFor={`${formId}-company`} className="sr-only">
             Company Name
           </label>
           <input
-            id="contact-company"
+            id={`${formId}-company`}
             type="text"
             name="company"
             placeholder="Company Name"
@@ -213,19 +215,19 @@ const ContactCaptureForm = ({
             onChange={handleInputChange}
             className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all touch-manipulation"
             autoComplete="organization"
-            aria-describedby="company-description"
+            aria-describedby={`${formId}-company-description`}
           />
-          <span id="company-description" className="sr-only">
+          <span id={`${formId}-company-description`} className="sr-only">
             Enter your company name (optional)
           </span>
         </div>
 
         <div>
-          <label htmlFor="contact-phone" className="sr-only">
+          <label htmlFor={`${formId}-phone`} className="sr-only">
             Phone Number
           </label>
           <input
-            id="contact-phone"
+            id={`${formId}-phone`}
             type="tel"
             name="phone"
             placeholder="Phone Number"
@@ -234,9 +236,9 @@ const ContactCaptureForm = ({
             className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all touch-manipulation"
             autoComplete="tel"
             inputMode="tel"
-            aria-describedby="phone-description"
+            aria-describedby={`${formId}-phone-description`}
           />
-          <span id="phone-description" className="sr-only">
+          <span id={`${formId}-phone-description`} className="sr-only">
             Enter your phone number (optional)
           </span>
         </div>
@@ -245,7 +247,7 @@ const ContactCaptureForm = ({
           type="submit"
           disabled={isSubmitting}
           className="w-full btn-primary bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed py-4 md:py-3 text-base md:text-sm font-medium touch-manipulation focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
-          aria-describedby="submit-description"
+          aria-describedby={`${formId}-submit-description`}
         >
           {isSubmitting ? (
             <span className="flex items-center justify-center">
@@ -263,7 +265,7 @@ const ContactCaptureForm = ({
             </span>
           ) : buttonText}
         </button>
-        <span id="submit-description" className="sr-only">
+        <span id={`${formId}-submit-description`} className="sr-only">
           Submit the form to get your free AI audit
         </span>
 
@@ -277,7 +279,7 @@ const ContactCaptureForm = ({
             className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 mt-4"
             role="alert"
             aria-live="polite"
-            id="email-error"
+            id={`${formId}-email-error`}
           >
             <div className="flex items-center">
               <svg

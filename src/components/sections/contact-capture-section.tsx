@@ -84,6 +84,7 @@ const ContactCaptureSection = () => {
                 subtitle="Describe your business and we'll craft an AI plan tailored to your scale and needs."
                 buttonText="Get My Free Strategy Call"
                 showCalendlyAfterSubmit={true}
+                formId="hero"
               />
             </div>
           </div>

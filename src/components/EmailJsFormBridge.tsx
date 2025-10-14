@@ -62,8 +62,21 @@ export default function EmailJsFormBridge() {
         const hp = document.createElement('input');
         hp.type = 'text';
         hp.name = 'bot-field';
-        hp.style.display = 'none';
+        hp.id = 'bot-field';
+        hp.tabIndex = -1;
+        hp.setAttribute('autoComplete', 'off');
+        hp.setAttribute('aria-hidden', 'true');
+        hp.style.position = 'absolute';
+        hp.style.left = '-9999px';
         form.appendChild(hp);
+        
+        // Add label for honeypot
+        const label = document.createElement('label');
+        label.htmlFor = 'bot-field';
+        label.className = 'sr-only';
+        label.textContent = 'Leave this field blank';
+        form.insertBefore(label, hp);
+        
         form.setAttribute('netlify-honeypot', 'bot-field');
       }
 

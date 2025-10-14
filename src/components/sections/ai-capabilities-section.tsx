@@ -2,7 +2,11 @@
 
 import Link from "next/link";
 
-const AICapabilitiesSection = () => {
+interface AICapabilitiesSectionProps {
+  sectionId?: string;
+}
+
+const AICapabilitiesSection = ({ sectionId = "ai-capabilities" }: AICapabilitiesSectionProps) => {
   const capabilities = [
     "Client Invoicing",
     "Lead Generation",
@@ -20,13 +24,13 @@ const AICapabilitiesSection = () => {
 
   return (
     <section
-      id="ai-capabilities"
+      id={sectionId}
       className="py-16 bg-black text-white"
-      aria-labelledby="ai-capabilities-heading"
+      aria-labelledby={`${sectionId}-heading`}
     >
       <div className="container-custom">
         <header className="max-w-4xl mx-auto text-center mb-12">
-          <h2 id="ai-capabilities-heading" className="heading-lg mb-2">
+          <h2 id={`${sectionId}-heading`} className="heading-lg mb-2">
             If AI can do all of THIS
           </h2>
           <p className="text-xl italic">

@@ -23,10 +23,10 @@ export default function HomePage() {
         {/* Desktop layout - original order */}
         <div className="hidden md:block">
           <PartnersSection />
-          <AIFeaturesSection />
+          <AIFeaturesSection sectionId="ai-features" />
           <AIBenefitsSection />
-          <AICapabilitiesSection />
-          <ProcessSection />
+          <AICapabilitiesSection sectionId="ai-capabilities" />
+          <ProcessSection sectionId="process" />
           <ContactCaptureSection />
         </div>
 
@@ -34,10 +34,10 @@ export default function HomePage() {
         <div className="block md:hidden">
           <ContactCaptureSection />
           <AIBenefitsSection />
-          <AICapabilitiesSection />
-          <ProcessSection />
+          <AICapabilitiesSection sectionId="ai-capabilities-mobile" />
+          <ProcessSection sectionId="process-mobile" />
           <PartnersSection />
-          <AIFeaturesSection />
+          <AIFeaturesSection sectionId="ai-features-mobile" />
         </div>
 
         {/* <TrustedBySection /> - Hidden: Client logos */}
