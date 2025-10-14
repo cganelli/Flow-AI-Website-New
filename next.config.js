@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  output: 'export',           // replaces `next export`
+  images: { unoptimized: true }, // ensures next/image works in static export
+  trailingSlash: true,        // optional: makes Netlify-style static hosting happier
   webpack: (config) => {
     // If anything still tries to import bippy's JSX runtime,
     // send it to the normal React JSX runtime instead.

@@ -5,10 +5,9 @@
   "scripts": {
     "dev": "next dev -H 0.0.0.0",
     "build": "next build",
-    "export": "next export",
     "start": "next start -H 0.0.0.0",
     "lint": "biome lint .",
-    "build:static": "next build && next export",
+    "build:static": "next build",
     "test:a11y": "vitest run",
     "a11y:local": "npm run build:static && npx http-server out -p 4321 & PID=$!; npx wait-on http://localhost:4321; pa11y-ci; code=$?; kill $PID; exit $code"
   },

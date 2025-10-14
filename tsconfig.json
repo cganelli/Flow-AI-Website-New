@@ -12,7 +12,7 @@
     "strict": true,
     "allowJs": false,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "baseUrl": ".",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -31,13 +31,17 @@
     "types": [
       "node"
     ],
-    "typeRoots": ["./types", "./node_modules/@types"]
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ]
   },
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "types/**/*.d.ts"
+    "next-env.d.ts",
+    "types/**/*.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
