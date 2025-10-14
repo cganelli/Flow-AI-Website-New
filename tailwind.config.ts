@@ -28,7 +28,8 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#e22f1b", // matches --color-primary-bg for buttons
+          700: "#b11f0f",     // use this for link text on white
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
