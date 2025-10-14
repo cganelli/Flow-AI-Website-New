@@ -13,8 +13,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
 
-    --primary: 6 78% 50%;  /* Updated to #dc2f1c for better contrast */
+    --primary: 6 78% 50%;  /* Button background: #de2b17 for white text contrast */
     --primary-foreground: 0 0% 98%;
+    --primary-link: 6 85% 35%;  /* Link text: #b11f0f for text on white contrast */
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 8%;
@@ -76,6 +77,15 @@
 
   .btn-primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-full font-medium;
+  }
+
+  /* Separate primary link color for better contrast on white backgrounds */
+  .text-primary {
+    color: hsl(var(--primary-link));
+  }
+
+  .text-primary:hover {
+    text-decoration: underline;
   }
 
   .btn-secondary {

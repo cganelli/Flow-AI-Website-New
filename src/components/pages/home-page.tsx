@@ -27,12 +27,12 @@ export default function HomePage() {
           <AIBenefitsSection />
           <AICapabilitiesSection sectionId="ai-capabilities" />
           <ProcessSection sectionId="process" />
-          <ContactCaptureSection />
+          <ContactCaptureSection formId="hero" />
         </div>
 
         {/* Mobile layout - reordered sections */}
         <div className="block md:hidden">
-          <ContactCaptureSection />
+          <ContactCaptureSection formId="hero-mobile" />
           <AIBenefitsSection />
           <AICapabilitiesSection sectionId="ai-capabilities-mobile" />
           <ProcessSection sectionId="process-mobile" />

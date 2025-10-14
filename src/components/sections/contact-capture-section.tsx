@@ -2,7 +2,11 @@
 
 import ContactCaptureForm from '../contact-capture-form';
 
-const ContactCaptureSection = () => {
+interface ContactCaptureSectionProps {
+  formId?: string;
+}
+
+const ContactCaptureSection = ({ formId = "hero" }: ContactCaptureSectionProps) => {
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10">
       <div className="container-custom">
@@ -84,7 +88,7 @@ const ContactCaptureSection = () => {
                 subtitle="Describe your business and we'll craft an AI plan tailored to your scale and needs."
                 buttonText="Get My Free Strategy Call"
                 showCalendlyAfterSubmit={true}
-                formId="hero"
+                formId={formId}
               />
             </div>
           </div>
