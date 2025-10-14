@@ -7,7 +7,10 @@
     "build": "next build",
     "export": "next export",
     "start": "next start -H 0.0.0.0",
-    "lint": "biome lint ."
+    "lint": "biome lint .",
+    "build:static": "next build && next export",
+    "test:a11y": "vitest run",
+    "a11y:local": "npm run build:static && npx http-server out -p 4321 & PID=$!; pa11y-ci; code=$?; kill $PID; exit $code"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

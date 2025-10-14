@@ -1,3 +1,4 @@
+import React from 'react';
 import HomePage from '@/components/pages/home-page';
 import { HomePageStructuredData } from '@/components/seo/structured-data';
 import EmailJsFormBridge from '@/components/EmailJsFormBridge';
