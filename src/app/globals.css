@@ -1,3 +1,5 @@
+@import '../styles/tokens.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,12 +15,6 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
 
-    /* BUTTON background — white text on this must be ≥ 4.5:1 */
-    --color-primary-bg: #e22f1b;     /* darker than before */
-    
-    /* LINK text on white — use a darker shade than button bg */
-    --color-primary-link: #b11f0f;
-    
     /* Legacy HSL values for compatibility */
     --primary: 6 78% 50%;  /* Button background: #e22f1b for white text contrast */
     --primary-foreground: 0 0% 98%;
@@ -82,18 +78,12 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-black to-black/70;
   }
 
-  /* Buttons that use the custom class */
+  /* Button styling (background from tokens.css) */
   .btn-primary {
-    background-color: var(--color-primary-bg) !important;
-    color: #fff !important;
     @apply hover:bg-primary/90 px-6 py-3 rounded-full font-medium;
   }
 
-  /* Primary text links */
-  .text-primary {
-    color: var(--color-primary-link) !important;
-  }
-
+  /* Primary text links (color from tokens.css) */
   .text-primary:hover {
     text-decoration: underline;
   }

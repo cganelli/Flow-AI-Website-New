@@ -1,0 +1,19 @@
+/* Design tokens (single source of truth)
+   WCAG AA-safe choices for brand + text
+   Update here first, then re-run `npm run a11y:local`
+*/
+:root {
+  /* Buttons (white text on this passes ≥ 4.5:1) */
+  --color-primary-bg: #e22f1b;
+
+  /* Links on white (passes ≥ 4.5:1) */
+  --color-primary-link: #b11f0f;
+
+  /* Body copy (small text on white) */
+  --color-body: #6b7280; /* Tailwind gray-500 */
+}
+
+/* Convenience classes that map to tokens */
+:root .btn-primary { background-color: var(--color-primary-bg); color:#fff; }
+:root .text-primary { color: var(--color-primary-link); }
+:root body { color: var(--color-body); }
