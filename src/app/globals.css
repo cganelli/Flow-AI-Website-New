@@ -16,7 +16,7 @@
     --popover-foreground: 0 0% 8%;
 
     /* Legacy HSL values for compatibility */
-    --primary: 6 78% 50%;  /* Button background: #e22f1b for white text contrast */
+    --primary: 6 78% 50%;  /* Button background: #de3629 for white text contrast */
     --primary-foreground: 0 0% 98%;
     --primary-link: 6 85% 35%;  /* Link text: #b11f0f for text on white contrast */
 
@@ -147,7 +147,7 @@
     outline: 0;
     box-shadow:
       0 0 0 2px #fff,
-      0 0 0 4px var(--color-primary-bg, #e22f1b);
+      0 0 0 4px var(--color-primary-bg, #de3629);
     border-radius: .5rem;
   }
 
@@ -183,4 +183,14 @@
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+/* Specificity safeguard for design tokens */
+.btn-primary {
+  background-color: var(--color-primary-bg) !important;
+  color: #fff !important;
+}
+
+.text-primary {
+  color: var(--color-primary-link) !important;
 }
