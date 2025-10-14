@@ -12,8 +12,8 @@
     "strict": true,
     "allowJs": false,
     "noEmit": true,
-    "jsx": "preserve",
-    "jsxImportSource": "react",
+    "jsx": "react-jsx",
+    "baseUrl": ".",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": true,
@@ -24,10 +24,9 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    }
+      "@/*": ["./src/*"]
+    },
+    "types": ["vitest/globals", "node"]
   },
   "include": [
     "**/*.ts",
