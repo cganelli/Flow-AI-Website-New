@@ -17,7 +17,7 @@ import BusinessOwnersSection from "@/components/sections/business-owners-section
 export default function HomePage() {
   return (
     <Layout>
-      <main id="main-content" role="main" aria-label="Main content">
+      <main id="main" role="main" aria-label="Main content">
         <HeroSection />
 
         {/* Desktop layout - original order */}

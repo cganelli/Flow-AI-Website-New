@@ -2,7 +2,8 @@
   "standard": "WCAG2AA",
   "defaults": {
     "timeout": 60000,
-    "screenCapture": "./.pa11y/${date}-${url}.png"
+    "screenCapture": "./.pa11y/${date}-${url}.png",
+    "hideElements": "form[hidden]"
   },
   "urls": [
     "http://localhost:4321/",

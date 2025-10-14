@@ -7,13 +7,10 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  // Determine if we're on FAQ, Contact, or Privacy-Terms page and need to link back to home page sections
-  const isOnFAQPage = pathname === '/faq';
-  const isOnContactPage = pathname === '/contact';
-  const isOnPrivacyTermsPage = pathname === '/privacy-terms';
-  const needsHomeLinks = isOnFAQPage || isOnContactPage || isOnPrivacyTermsPage;
-  const solutionsHref = needsHomeLinks ? '/#ai-capabilities' : '#ai-capabilities';
-  const processHref = needsHomeLinks ? '/#process' : '#process';
+  // Always use root-anchored links for home page sections to ensure they work from any page
+  const solutionsHref = '/#ai-capabilities';
+  const processHref = '/#process';
+  const bookAppointmentHref = '/#book-appointment';
 
   return (
     <header
@@ -22,7 +19,7 @@ const Header = () => {
     >
       {/* Skip to main content link */}
       <a
-        href="#main-content"
+        href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] bg-primary text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
       >
         Skip to main content
@@ -57,6 +54,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav
+            id="navigation"
             className="hidden md:flex items-center space-x-8"
             role="navigation"
             aria-label="Main navigation"
@@ -86,7 +84,7 @@ const Header = () => {
               Contact
             </Link>
             <a
-              href="#book-appointment"
+              href={bookAppointmentHref}
               className="btn-primary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
               aria-label="Claim Your FREE AI Audit - Book appointment"
             >
@@ -159,7 +157,7 @@ const Header = () => {
                 Contact
               </Link>
               <a
-                href="#book-appointment"
+                href={bookAppointmentHref}
                 className="btn-primary inline-block text-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
                 onClick={() => setIsOpen(false)}
                 aria-label="Claim Your FREE AI Audit - Book appointment"

@@ -20,7 +20,7 @@ export default function PrivacyTermsPage() {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <main className="pt-20">
+      <main id="main" role="main" className="pt-20">
         <PrivacyTermsContent />
       </main>
 

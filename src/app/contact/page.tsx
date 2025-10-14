@@ -31,7 +31,7 @@ export default function ContactPage() {
       <EmailJsFormBridge />
       <Header />
 
-      <main className="pt-20">
+      <main id="main" role="main" className="pt-20">
         <ContactContent />
       </main>
 
