@@ -9,6 +9,7 @@
     "http://localhost:4321/",
     "http://localhost:4321/faq",
     "http://localhost:4321/contact",
-    "http://localhost:4321/privacy-terms"
+    "http://localhost:4321/privacy-terms",
+    "http://localhost:4321/accessibility"
   ]
 }

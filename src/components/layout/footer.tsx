@@ -145,6 +145,13 @@ const Footer = () => {
             </Link>
             <span className="text-white/40" aria-hidden="true">|</span>
             <Link
+              href="/accessibility"
+              className="text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1"
+            >
+              Accessibility
+            </Link>
+            <span className="text-white/40" aria-hidden="true">|</span>
+            <Link
               href="/"
               className="text-white/80 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded px-2 py-1"
             >
