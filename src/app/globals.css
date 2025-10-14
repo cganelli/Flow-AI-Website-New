@@ -148,7 +148,20 @@
     white-space: normal;
   }
 
-  /* High contrast focus indicators */
+  /* WCAG 2.4.7 Focus Visible - Standardized focus styles for all interactive elements */
+  :where(a, button, input, select, textarea, [role="button"], [tabindex]) {
+    outline: none;
+  }
+  
+  :where(a, button, input, select, textarea, [role="button"], [tabindex]):focus-visible {
+    outline: 0;
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px var(--color-primary-bg, #e22f1b);
+    border-radius: .5rem;
+  }
+
+  /* Legacy focus styles for backward compatibility */
   .focus-visible {
     outline: 2px solid transparent;
     outline-offset: 2px;
