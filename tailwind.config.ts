@@ -28,7 +28,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#de3629",  // buttons, bg-primary
+          DEFAULT: "#EA3D2A",  // buttons, bg-primary (original brand color)
           700: "#c23a1e"       // link text on white
         },
         secondary: {
@@ -60,7 +60,7 @@ const config = {
         'light-green': "hsl(var(--light-green))",
         'beige': "hsl(var(--beige))",
         'gray': "hsl(var(--gray))",
-        'flow-orange': '#de3629',  // Unified with primary brand color to prevent drift
+        'flow-orange': '#EA3D2A',  // Original brand color
       },
       borderRadius: {
         lg: "var(--radius)",

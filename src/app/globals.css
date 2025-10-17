@@ -16,9 +16,9 @@
     --popover-foreground: 0 0% 8%;
 
     /* Legacy HSL values for compatibility */
-    --primary: 6 78% 50%;  /* Button background: #de3629 for white text contrast */
+    --primary: 6 82% 54%;  /* Button background: #EA3D2A - original brand orange */
     --primary-foreground: 0 0% 98%;
-    --primary-link: 6 85% 35%;  /* Link text: #b11f0f for text on white contrast */
+    --primary-link: 6 85% 35%;  /* Link text: #c23a1e for text on white contrast */
 
     --secondary: 0 0% 96%;
     --secondary-foreground: 0 0% 8%;
@@ -44,7 +44,7 @@
     --light-green: 165 29% 85%;
     --beige: 30 35% 85%;
     --gray: 220 9% 46%;  /* Darker gray for better contrast - equivalent to #6b7280 */
-    --flow-orange: 6 78% 54%;  /* #DE3629 - unified with primary brand color */
+    --flow-orange: 6 82% 54%;  /* #EA3D2A - original brand color */
   }
 
   html {
@@ -147,7 +147,7 @@
     outline: 0;
     box-shadow:
       0 0 0 2px #fff,
-      0 0 0 4px var(--color-primary-bg, #de3629);
+      0 0 0 4px var(--color-primary-bg, #EA3D2A);
     border-radius: .5rem;
   }
 
@@ -193,4 +193,61 @@
 
 .text-primary {
   color: var(--color-primary-link) !important;
+}
+
+/* === Flow AI — AA compliance for orange CTAs site-wide === */
+/* Make *any* primary/orange CTA large & bold so it qualifies as "large text"
+   and only needs 3:1 contrast (which #EA3D2A on white exceeds). */
+@layer components {
+  /* Buttons & links that look like buttons, using bg-primary or btn-primary */
+  button.bg-primary,
+  a.bg-primary[role="button"],
+  [role="button"].bg-primary,
+  .btn-primary,
+  button.btn-primary,
+  a.btn-primary {
+    background-color: var(--flow-orange-hex) !important;
+    color: #fff !important;
+
+    /* LARGE TEXT: min 19px and bold >=700 (meets WCAG "large-scale" 14pt bold) */
+    font-size: clamp(19px, 1rem + 0.35vw, 22px) !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+
+    /* keep your styling niceties */
+    border-radius: 0.75rem;
+    transition: background-color .2s ease;
+  }
+
+  /* Hover/focus states */
+  .btn-primary:hover,
+  button.bg-primary:hover,
+  a.bg-primary[role="button"]:hover {
+    background-color: color-mix(in srgb, var(--flow-orange-hex) 92%, black) !important;
+  }
+  .btn-primary:focus-visible,
+  button.bg-primary:focus-visible,
+  a.bg-primary[role="button"]:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--flow-orange-hex) !important;
+  }
+
+  /* If you also use a utility like .text-brand-lg for orange foreground text
+     (stats, numbers), ensure it's >=24px to qualify as large text */
+  .text-brand-lg {
+    color: var(--flow-orange-hex);
+    font-size: clamp(24px, 1.1rem + 1vw, 28px) !important; /* >=24px */
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+/* Utilities layer helpers for links on white using darker variant (keeps normal sizes) */
+@layer utilities {
+  .text-brand-link { 
+    color: var(--color-primary-link, #c23a1e);
+  }
+  .text-brand-link:hover {
+    text-decoration: underline;
+  }
 }

@@ -3,14 +3,14 @@
    Update here first, then re-run `npm run a11y:local`
 */
 :root {
-  /* Primary brand colors (WCAG AA compliant) */
-  --color-primary-bg: #de3629;      /* bright orange-red button background */
-  --color-primary-link: #c23a1e;    /* orange text link on white (AA) */
+  /* Primary brand colors (WCAG AA compliant with large text) */
+  --color-primary-bg: #EA3D2A;      /* brand orange-red button background (AA with 18px+) */
+  --color-primary-link: #c23a1e;    /* darker orange for text links on white (AA at normal sizes) */
   --color-body: #6b7280;            /* gray body text */
   
-  /* Force any legacy uses of --flow-orange to the compliant value */
-  --flow-orange: 6 78% 54%;         /* HSL of #DE3629 for Tailwind-style vars */
-  --flow-orange-hex: #de3629;       /* for inline/JS usage */
+  /* Brand orange - original color, enforced large text for AA compliance */
+  --flow-orange: 6 82% 54%;         /* HSL of #EA3D2A for Tailwind-style vars */
+  --flow-orange-hex: #EA3D2A;       /* for inline/JS usage */
 }
 
 /* Utility mappings */
@@ -19,14 +19,14 @@
 
 /* Force Flow AI brand tokens to override Tailwind defaults */
 :root {
-  --primary: 6 78% 54%; /* HSL for #DE3629 - bright orange-red */
+  --primary: 6 82% 54%; /* HSL for #EA3D2A - original brand orange */
   --primary-foreground: 0 0% 98%;
   --primary-link: 6 85% 35%; /* HSL for #C23A1E - darker orange for links */
 }
 
 /* Ensure our brand colors override Tailwind's HSL variables */
 :root {
-  --color-primary-bg: #de3629 !important;
+  --color-primary-bg: #EA3D2A !important;
   --color-primary-link: #c23a1e !important;
 }
 
