@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../styles/tokens.css';  /* must come last */
+@import '../styles/tokens.css';  /* must come last so brand tokens win the cascade */
 
 @layer base {
   :root {
@@ -44,7 +44,7 @@
     --light-green: 165 29% 85%;
     --beige: 30 35% 85%;
     --gray: 220 9% 46%;  /* Darker gray for better contrast - equivalent to #6b7280 */
-    --flow-orange: 6 82% 54%;  /* #EA3D2A */
+    --flow-orange: 6 78% 54%;  /* #DE3629 - unified with primary brand color */
   }
 
   html {

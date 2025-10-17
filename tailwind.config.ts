@@ -60,7 +60,7 @@ const config = {
         'light-green': "hsl(var(--light-green))",
         'beige': "hsl(var(--beige))",
         'gray': "hsl(var(--gray))",
-        'flow-orange': "hsl(var(--flow-orange))",
+        'flow-orange': '#de3629',  // Unified with primary brand color to prevent drift
       },
       borderRadius: {
         lg: "var(--radius)",

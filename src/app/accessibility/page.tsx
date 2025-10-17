@@ -26,8 +26,7 @@ export default function AccessibilityPage() {
             If you experience accessibility barriers on this site, please contact us at{' '}
             <a className="text-primary hover:underline" href="mailto:accessibility@thisisflowai.com">
               accessibility@thisisflowai.com
-            </a>{' '}
-            or call <a className="text-primary hover:underline" href="tel:+15082059941">(508) 205-9941</a>. We aim to respond within 2 business days.
+            </a>. We aim to respond within 2 business days.
           </p>
           <h2 className="heading-lg mb-2">Measures we take</h2>
           <ul className="list-disc pl-6 space-y-2">

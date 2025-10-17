@@ -56,7 +56,7 @@ export function MetaTags({
       {/* Additional Meta Tags */}
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#EA3D2A" />
+      <meta name="theme-color" content="#DE3629" />
     </Head>
   );
 }

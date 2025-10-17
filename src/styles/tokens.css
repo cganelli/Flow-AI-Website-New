@@ -7,6 +7,10 @@
   --color-primary-bg: #de3629;      /* bright orange-red button background */
   --color-primary-link: #c23a1e;    /* orange text link on white (AA) */
   --color-body: #6b7280;            /* gray body text */
+  
+  /* Force any legacy uses of --flow-orange to the compliant value */
+  --flow-orange: 6 78% 54%;         /* HSL of #DE3629 for Tailwind-style vars */
+  --flow-orange-hex: #de3629;       /* for inline/JS usage */
 }
 
 /* Utility mappings */
