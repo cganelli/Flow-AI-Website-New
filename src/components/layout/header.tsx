@@ -37,11 +37,11 @@ const Header = () => {
               <img
                 src="/images/Flow_AI_Horizontal_Logo.png"
                 alt="Flow AI company logo"
-                width={400}
-                height={100}
+                width={340}
+                height={85}
                 className="w-auto object-cover"
                 style={{
-                  height: '416px',
+                  height: '354px',
                   objectPosition: 'center',
                   clipPath: 'inset(25% 0 25% 0)',
                   transform: 'translateY(5%)'
