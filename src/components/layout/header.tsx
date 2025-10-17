@@ -26,21 +26,22 @@ const Header = () => {
       </a>
 
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link
             href="/"
             className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
             aria-label="Flow AI - Go to homepage"
           >
-            <div className="flex items-center overflow-hidden h-16">
+            <div className="flex items-center overflow-hidden h-24">
               <img
                 src="/images/Flow_AI_Horizontal_Logo.png"
                 alt="Flow AI company logo"
-                width={200}
-                height={50}
-                className="h-52 w-auto object-cover"
+                width={400}
+                height={100}
+                className="w-auto object-cover"
                 style={{
+                  height: '416px',
                   objectPosition: 'center',
                   clipPath: 'inset(25% 0 25% 0)',
                   transform: 'translateY(5%)'
@@ -61,25 +62,29 @@ const Header = () => {
           >
             <Link
               href={solutionsHref}
-              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               Solutions
             </Link>
             <Link
               href={processHref}
-              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               Process
             </Link>
             <Link
               href="/faq"
-              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               FAQ
             </Link>
             <Link
               href="/contact"
-              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               Contact
             </Link>
@@ -130,28 +135,32 @@ const Header = () => {
             >
               <a
                 href={solutionsHref}
-                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 Solutions
               </a>
               <a
                 href={processHref}
-                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 Process
               </a>
               <Link
                 href="/faq"
-                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
               </Link>
               <Link
                 href="/contact"
-                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 Contact
