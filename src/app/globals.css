@@ -236,9 +236,9 @@
      (stats, numbers), ensure it's >=24px to qualify as large text */
   .text-brand-lg {
     color: var(--flow-orange-hex);
-    font-size: clamp(24px, 1.1rem + 1vw, 28px) !important; /* >=24px */
-    font-weight: 700;
-    line-height: 1.2;
+    font-size: clamp(32px, 2rem + 1vw, 40px) !important; /* >=32px for clear WCAG AA compliance */
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
   }
 }
 

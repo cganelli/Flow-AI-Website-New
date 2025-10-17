@@ -70,7 +70,8 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
             >
               {/* Step Number */}
               <div
-                className="text-6xl font-bold text-brand-lg mb-6"
+                className="text-brand-lg mb-6"
+                style={{ fontSize: 'clamp(48px, 3rem + 2vw, 72px)', fontWeight: 700 }}
                 aria-label={`Step ${step.number}`}
               >
                 {step.number}
