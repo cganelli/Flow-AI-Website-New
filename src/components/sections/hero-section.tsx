@@ -78,7 +78,7 @@ const HeroSection = () => {
                 aria-label={stat.ariaLabel}
               >
                 <div
-                  className="text-4xl font-bold mb-4 text-primary"
+                  className="text-4xl font-bold mb-4 text-brand-lg"
                   aria-hidden="true"
                 >
                   {stat.number}
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 aria-label={stat.ariaLabel}
               >
                 <div
-                  className="text-4xl font-bold mb-4 text-primary"
+                  className="text-4xl font-bold mb-4 text-brand-lg"
                   aria-hidden="true"
                 >
                   {stat.number}

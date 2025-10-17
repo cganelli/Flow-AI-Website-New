@@ -35,7 +35,7 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
       return (
         <>
           {parts[0]}
-          <span className="text-primary">{keyWord}</span>
+          <span className="text-brand-lg">{keyWord}</span>
           {parts[1]}
         </>
       );
@@ -70,7 +70,7 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
             >
               {/* Step Number */}
               <div
-                className="text-6xl font-bold text-primary mb-6"
+                className="text-6xl font-bold text-brand-lg mb-6"
                 aria-label={`Step ${step.number}`}
               >
                 {step.number}
@@ -108,7 +108,7 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
         {/* Bottom Tagline */}
         <div className="text-center">
           <h3 className="text-2xl md:text-3xl font-bold">
-            We help your business <span className="text-primary">FLOW</span>
+            We help your business <span className="text-brand-lg">FLOW</span>
           </h3>
         </div>
       </div>

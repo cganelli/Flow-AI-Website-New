@@ -55,7 +55,7 @@ const Footer = () => {
 
           {/* CTA Above Calendly Widget */}
           <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-brand-lg mb-4">
               Book Your FREE AI Audit
             </h3>
           </div>
