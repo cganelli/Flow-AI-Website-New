@@ -1,0 +1,198 @@
+export type ResourceCategory = 'lessons' | 'agents-gpts' | 'packs-templates'
+
+export type ResourceFormat = 'Video' | 'Link'
+
+export type ResourceTypeLabel = 'Lesson' | 'Agent' | 'Pack' | 'Resource'
+
+export type Resource = {
+  id: string
+  title: string
+  description: string
+  typeLabel: ResourceTypeLabel
+  category: ResourceCategory
+  format: ResourceFormat
+  url: string
+  isFun?: boolean        // true only for the 3 "Just for fun" GPTs
+  logoSrc?: string       // logo for those GPTs
+}
+
+export const resources: Resource[] = [
+  {
+    id: 'lesson-1-setup-week-accounts-access',
+    title: 'Lesson 1: Setup Week-Accounts & Access',
+    description: "What you'll learn:: Which AI tools are approved at your company...eaking IT policies, How to organize AI tools (work vs personal)",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/7UbGSxDi4o8',
+  },
+  {
+    id: 'lesson-2-your-first-ai-win-one-task-real-results',
+    title: 'Lesson 2: Your First AI Win-One Task, Real Results',
+    description: "What you'll learn: What an AI win is (tiny, useful, specific), How to pick your first AI win, How to give AI enough details to get a useful answer, One workflow: long email → 5 bullets + owners + one next step",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/e9q4YWLGOXY',
+  },
+  {
+    id: 'lesson-3-safety-reality-check',
+    title: 'Lesson 3: Safety & Reality Check',
+    description: "What you'll learn: How to spot when AI is wrong (hallucinations), How to add guardrails so AI stops making things up, How to set up a simple 3-step rule for verification",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/mWBSuiNBAdQ',
+  },
+  {
+    id: 'lesson-4-humanize-your-ai-output',
+    title: 'Lesson 4: Humanize Your AI Output',
+    description: "What you'll learn: How to make AI sound like you, or your brand, How to prompt for tone, voice, and plain language, How to edit AI output so people don't notice it's AI",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://www.youtube.com/watch?v=ydu6zlqAXxw',
+  },
+  {
+    id: 'lesson-5-prompt-patterns-that-always-work',
+    title: 'Lesson 5: Prompt Patterns That Always Work',
+    description: "What you'll learn: The ROICF Framework (Role, Outcome, Inputs, Constraints, Format), Prompt patterns for research, writing, and planning, How to build \"prompt recipes\" for work tasks that get specific results, 3 prompts you'll use every week",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://www.youtube.com/watch?v=FjYyi-YJiSQ',
+  },
+  {
+    id: 'lesson6-docs-decks-accelerator',
+    title: 'Lesson6: Docs & Decks Accelerator',
+    description: "What you'll learn: How to turn notes into a 1-page summary, How to turn a summary into a draft deck, How to go from messy notes → summary → outline → first drafts",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://www.youtube.com/watch?v=-eXb3DXcQTc',
+  },
+  {
+    id: 'flow-ai-consultancy-blueprint',
+    title: 'Flow AI Consultancy Blueprint',
+    description: 'Purpose - Design your AI consultancy offers, pricing, and delivery model so you can start selling and delivering AI projects. Built for aspiring consultants and solo operators.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68cc7ea8963c819193e94c7c16b05dbc-flow-ai-consultancy-blueprint',
+  },
+  {
+    id: 'flow-ai-executive-summary-writer',
+    title: 'Flow AI Executive Summary Writer',
+    description: 'Purpose: Turn long reports, decks, and transcripts into tight 1-page executive summaries with clear takeaways, risks, and decisions.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68ccbbb60fd08191b5bcfeec05cd476e-flow-ai-executive-summary-writer',
+  },
+  {
+    id: 'flow-ai-automation-opportunity-finder',
+    title: 'Flow AI Automation Opportunity Finder',
+    description: 'Purpose: Find repetitive tasks and workflows in your team that are good candidates for automation, then draft practical ideas in plain English.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68d0aeee8dfc8191b66d658add3a5fca-flow-ai-automation-finder',
+  },
+  {
+    id: 'flow-ai-role-evolutionizer',
+    title: 'Flow AI Role Evolutionizer',
+    description: 'Purpose: Turn a traditional job description into an "AI era" version that keeps humans in the loop and shifts time toward higher-value work.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-6917aa0d4edc8191a2e1ad9a2a8d36bf-flow-ai-role-evolutionizer',
+  },
+  {
+    id: 'sweetpick',
+    title: 'SweetPick',
+    description: 'Purpose - Point. Shoot. Pick. Upload photos of fruit like watermelon, cantaloupe, or honeydew and SweetPick identifies the sweetest one.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68cdfd7fb7188191929a151606977abb-sweetpick',
+    isFun: true,
+    logoSrc: '/images/SweetPick logo playful FINAL.png',
+  },
+  {
+    id: 'toonify-me',
+    title: 'Toonify Me',
+    description: 'Purpose: Upload your photo to turn it into a 3D caricature, LEGO-style head, Funko Pop, 2D cartoon, Simpsons, and South Park versions',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68d209d82f708191a7a54698b442b7f7-toonify-me',
+    isFun: true,
+    logoSrc: '/images/Toonify Me logo.png',
+  },
+  {
+    id: 'make-me-into-art',
+    title: 'Make Me Into Art',
+    description: 'Purpose: Upload a photo, pick an artist style, and see a transformed version in the style of artists like Van Gogh, Picasso, Monet, Seurat, Toulouse-Lautrec, Hopper, O\'Keeffe, Basquiat, Haring.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-68f9ac8f5f24819188fee7c2c0547547-make-me-into-art',
+    isFun: true,
+    logoSrc: '/images/Make Me Into Art logo.png',
+  },
+  {
+    id: 'flow-ai-master-prompt-cheat-sheet',
+    title: 'Flow AI Master Prompt Cheat Sheet',
+    description: 'Foundation prompts to ask better questions, give better context, and structure your asks.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/1G8K0Rn8OBt5qAprD-YoxLP4C3zb9PwmY_wS7vwcRgn0M/edit?usp=sharing',
+  },
+  {
+    id: 'flow-ai-guardrails-verification-pack',
+    title: 'Flow AI Guardrails & Verification Pack',
+    description: 'Prompts and guardrails to reduce hallucinations and keep AI inside safe boundaries for your team.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/1EiKXxDcy1oWTbJMsh-ptutDav5CtQkW7/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
+  },
+  {
+    id: 'flow-ai-writing-pack',
+    title: 'Flow AI Writing Pack',
+    description: 'Custom writing prompts for emails, updates, announcements, and "boring but important" business writing.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/1CaB94T5VvIPU4HBWyYfVdTrt0kTgDWPX/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
+  },
+  {
+    id: 'flow-ai-automation-planning-pack',
+    title: 'Flow AI Automation Planning Pack',
+    description: 'Worksheets and prompts to capture processes, spot automation candidates, and plan experiments.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/11NgweghZxRVwFvS-gzB_kn40cfAx9bDh1taDKUoaXgU/edit?usp=sharing',
+  },
+  {
+    id: 'flow-ai-manager-essentials-prompt-pack',
+    title: 'Flow AI Manager Essentials Prompt Pack',
+    description: '50 Ready-to-Use Prompts for Managers',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/1z0BontsPlA9ygbp81hkIde2qw3zmEvM2aUHDVhabREM/edit?usp=sharing',
+  },
+  {
+    id: 'flow-ai-docs-and-decks-pack',
+    title: 'Flow AI Docs and Decks Pack',
+    description: 'Prompts and templates to summarize long documents into a 1-page summary and a 10-page slide outline',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Link',
+    url: 'https://docs.google.com/document/d/1wEo6yQtXqCsJGeXIIZ0chMeAvD5yOaC5hMJNhq4FX-w/edit?usp=sharing',
+  },
+]
+

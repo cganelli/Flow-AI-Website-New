@@ -82,6 +82,13 @@ const Header = () => {
               FAQ
             </Link>
             <Link
+              href="/resources"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+            >
+              Resources
+            </Link>
+            <Link
               href="/contact"
               className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
               style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
@@ -156,6 +163,14 @@ const Header = () => {
                 onClick={() => setIsOpen(false)}
               >
                 FAQ
+              </Link>
+              <Link
+                href="/resources"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+                onClick={() => setIsOpen(false)}
+              >
+                Resources
               </Link>
               <Link
                 href="/contact"

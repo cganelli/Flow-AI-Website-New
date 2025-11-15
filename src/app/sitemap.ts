@@ -43,6 +43,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${baseUrl}/resources`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly', // Resources may be updated frequently
+      priority: 0.8, // Important for content discovery
+      alternates: {
+        languages: {
+          'en-US': `${baseUrl}/resources`,
+        },
+      },
+    },
+    {
       url: `${baseUrl}/privacy-terms`,
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently
