@@ -37,11 +37,11 @@ const Header = () => {
               <img
                 src="/images/Flow_AI_Horizontal_Logo.png"
                 alt="Flow AI company logo"
-                width={340}
-                height={85}
+                width={255}
+                height={64}
                 className="w-auto object-cover"
                 style={{
-                  height: '354px',
+                  height: '266px',
                   objectPosition: 'center',
                   clipPath: 'inset(25% 0 25% 0)',
                   transform: 'translateY(5%)'
@@ -97,7 +97,7 @@ const Header = () => {
             </Link>
             <a
               href={bookAppointmentHref}
-              className="btn-primary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+              className="btn-primary whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
               aria-label="Claim Your FREE AI Audit - Book appointment"
             >
               Claim Your FREE Audit
