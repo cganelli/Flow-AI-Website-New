@@ -1,0 +1,12 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#EA3D2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Envelope -->
+    <rect x="10" y="22" width="30" height="22" rx="3" />
+    <polyline points="10,24 25,34 40,24" />
+    <path d="M10 44l9-8" />
+    <path d="M40 44l-9-8" />
+    <!-- Follow-up arrow -->
+    <path d="M48 16a8 8 0 1 1-5 14" />
+    <polyline points="44,34 41,30 46,30" />
+  </g>
+</svg>

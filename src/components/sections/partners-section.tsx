@@ -25,9 +25,9 @@ const PartnersSection = () => {
   return (
     <section className="bg-black text-white pt-8 pb-2 md:pt-16 md:pb-4">
       <div className="container-custom">
-        <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8 text-center">Partners</h2>
+        {/* Title and carousel hidden per user request */}
+        {/* <h2 className="text-xl md:text-3xl font-bold mb-4 md:mb-8 text-center">Partners</h2>
 
-        {/* Partners logos carousel */}
         <div className="bg-white rounded-xl py-6 md:py-10 px-4 md:px-12 mb-2 md:mb-6 overflow-hidden">
           <div className="relative">
             <div className="flex animate-scroll">
@@ -44,7 +44,7 @@ const PartnersSection = () => {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
 
 
       </div>

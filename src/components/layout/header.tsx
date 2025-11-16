@@ -75,18 +75,18 @@ const Header = () => {
               Process
             </Link>
             <Link
-              href="/faq"
-              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
-              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
-            >
-              FAQ
-            </Link>
-            <Link
               href="/resources"
               className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
               style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               Resources
+            </Link>
+            <Link
+              href="/training"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+            >
+              Training
             </Link>
             <Link
               href="/contact"
@@ -157,20 +157,20 @@ const Header = () => {
                 Process
               </a>
               <Link
-                href="/faq"
-                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
-                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
-                onClick={() => setIsOpen(false)}
-              >
-                FAQ
-              </Link>
-              <Link
                 href="/resources"
                 className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
                 style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 Resources
+              </Link>
+              <Link
+                href="/training"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+                onClick={() => setIsOpen(false)}
+              >
+                Training
               </Link>
               <Link
                 href="/contact"

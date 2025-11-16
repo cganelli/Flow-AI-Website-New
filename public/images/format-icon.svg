@@ -1,0 +1,11 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#EA3D2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Screen -->
+    <rect x="10" y="14" width="44" height="30" rx="3" />
+    <!-- Play button -->
+    <polygon points="28,22 40,29 28,36" />
+    <!-- Laptop base -->
+    <path d="M8 48h48" />
+    <path d="M18 52h28" />
+  </g>
+</svg>

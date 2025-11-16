@@ -54,6 +54,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${baseUrl}/training`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8, // Important for lead generation
+      alternates: {
+        languages: {
+          'en-US': `${baseUrl}/training`,
+        },
+      },
+    },
+    {
       url: `${baseUrl}/privacy-terms`,
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently

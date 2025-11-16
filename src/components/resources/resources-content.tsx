@@ -190,6 +190,7 @@ export default function ResourcesContent() {
                         href={resource.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`Access ${resource.title} - ${resource.typeLabel}`}
                         className="block h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
                       >
                         <div className="p-6 h-full flex flex-col">
@@ -224,6 +225,7 @@ export default function ResourcesContent() {
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
+                                aria-hidden="true"
                               >
                                 <path
                                   strokeLinecap="round"
@@ -258,6 +260,7 @@ export default function ResourcesContent() {
                           href={resource.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          aria-label={`Access ${resource.title} - ${resource.typeLabel}`}
                           className="block h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
                         >
                           <div className="p-6 h-full flex flex-col">
@@ -310,6 +313,7 @@ export default function ResourcesContent() {
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
+                                  aria-hidden="true"
                                 >
                                   <path
                                     strokeLinecap="round"
@@ -343,8 +347,9 @@ export default function ResourcesContent() {
               Book a free consultation and we'll help you identify the best AI automation opportunities for your business.
             </p>
             <a
-              href="#book-appointment"
-              className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4"
+              href="/book-call"
+              className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Get your free AI audit - Book a consultation"
             >
               Get Your Free AI Audit
             </a>

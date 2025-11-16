@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { Analytics } from '@/lib/analytics';
 import { NetlifyFormsService } from '@/lib/netlify-forms-service';
 
@@ -15,6 +16,7 @@ interface ContactFormData {
 }
 
 const ContactContent = () => {
+  const searchParams = useSearchParams();
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
@@ -26,6 +28,17 @@ const ContactContent = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Handle URL parameter for topic (e.g., /contact?topic=training)
+  useEffect(() => {
+    const topic = searchParams.get('topic');
+    if (topic === 'training') {
+      setFormData(prev => ({
+        ...prev,
+        inquiryType: 'training'
+      }));
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -224,6 +237,7 @@ const ContactContent = () => {
                 >
                   <option value="general">General Inquiry</option>
                   <option value="ai_consultation">AI Consultation</option>
+                  <option value="training">Training</option>
                   <option value="partnership">Partnership</option>
                   <option value="support">Technical Support</option>
                   <option value="legal">Legal/Privacy</option>

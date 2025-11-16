@@ -1,0 +1,12 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#EA3D2A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Folder -->
+    <path d="M8 22v24c0 2.2 1.8 4 4 4h40c2.2 0 4-1.8 4-4V20c0-2.2-1.8-4-4-4H30l-4-4H12c-2.2 0-4 1.8-4 4v6z" />
+    <!-- Checklist card -->
+    <rect x="20" y="24" width="20" height="22" rx="2" />
+    <polyline points="23,29 25.5,31.5 29,27.5" />
+    <line x1="30.5" y1="29" x2="37" y2="29" />
+    <polyline points="23,36 25.5,38.5 29,34.5" />
+    <line x1="30.5" y1="36" x2="37" y2="36" />
+  </g>
+</svg>

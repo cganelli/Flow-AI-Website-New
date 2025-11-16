@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -32,7 +32,9 @@ export default function ContactPage() {
       <Header />
 
       <main id="main" role="main" className="pt-20">
-        <ContactContent />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ContactContent />
+        </Suspense>
       </main>
 
       <Footer />
