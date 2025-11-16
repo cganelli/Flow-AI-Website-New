@@ -35,13 +35,20 @@ export function TrainingFinalCta(props: TrainingFinalCtaProps) {
               <p key={index}>{line}</p>
             ))}
           </div>
-          <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-4">
             <a 
               href={primaryCtaHref} 
               className="btn-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
               aria-label={primaryCtaLabel}
             >
               {primaryCtaLabel}
+            </a>
+            <a 
+              href="/faq#training-faqs"
+              className="btn-primary-outline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="View Training FAQs"
+            >
+              View Training FAQs
             </a>
           </div>
         </div>

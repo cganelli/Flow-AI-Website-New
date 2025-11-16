@@ -96,6 +96,94 @@ const faqData: FAQItem[] = [
     question: "Is AI automation secure?",
     answer: "Yes. We follow enterprise-grade security practices and use trusted platforms. Your data is protected under the same standards global corporations rely on.",
     category: "security"
+  },
+  {
+    id: "training-ai-experience-level",
+    question: "What level of AI experience do teams need?",
+    answer: "None. Sessions start from plain language explanations of AI and large language models. From there, examples and exercises use your tools and workflows, so beginners and early adopters both stay engaged.",
+    category: "training"
+  },
+  {
+    id: "training-session-length",
+    question: "How long is each training session?",
+    answer: "Core tracks run 90–120 minutes. That includes a short intro, live demos, guided exercises, and Q&A on your real work. Advanced workshops run 2–3 hours, with more time for mapping automation ideas and building a simple plan.",
+    category: "training"
+  },
+  {
+    id: "training-customization",
+    question: "Do you customize the training for our company?",
+    answer: "Yes. Before each session, your team completes a short intake form on roles, tools, and workflows. You send sample emails, documents, or processes. The session then uses those examples, not generic screenshots.",
+    category: "training"
+  },
+  {
+    id: "training-virtual-onsite",
+    question: "Do you offer virtual and on-site training?",
+    answer: "Yes. Sessions run live on Zoom or your preferred platform, or on-site at your office when travel logistics work. The format section on this page shows typical options.",
+    category: "training"
+  },
+  {
+    id: "training-group-sizes",
+    question: "What group sizes work best?",
+    answer: "Core tracks work well for 5–40 people per session. Larger groups split into several sessions or tracks, for example by role or department. Small groups of 5–12 suit leadership and strategy sessions.",
+    category: "training"
+  },
+  {
+    id: "training-audience",
+    question: "Who is the training for: small businesses or corporate teams?",
+    answer: "Both. Small business tracks focus on day-to-day workflows for owners and lean teams. Corporate tracks focus on departments with 10–100 staff, leaders under pressure to show AI progress, and teams that need clear guardrails.",
+    category: "training"
+  },
+  {
+    id: "training-preparation",
+    question: "What should participants do to prepare?",
+    answer: "Before the session, participants:",
+    examples: [
+      "Complete a short intake form",
+      "Gather 2–3 examples of recent work, such as emails, reports, or recurring tasks",
+      "Bring access to the AI tool their company approves, such as ChatGPT, Gemini, or Copilot"
+    ],
+    category: "training"
+  },
+  {
+    id: "training-follow-up",
+    question: "What follow-up do we receive after training?",
+    answer: "After each session, your team receives:",
+    examples: [
+      "A summary email with links and key examples",
+      "Prompt templates or worksheets for reuse",
+      "A short list of \"next three AI wins\" tailored to your team"
+    ],
+    category: "training"
+  },
+  {
+    id: "training-data-privacy",
+    question: "How do you handle data privacy and security?",
+    answer: "Training uses safe, de-identified examples where needed. Guidance aligns with your company's AI and data policies. During planning, you share which tools are approved, what data must stay out of prompts, and any legal or compliance requirements.",
+    category: "training"
+  },
+  {
+    id: "training-recordings",
+    question: "Are sessions recorded?",
+    answer: "If your internal policy allows recording, sessions record to your company account so you keep full control of the file. The recording supports new hires, refresher viewing, and internal sharing.",
+    category: "training"
+  },
+  {
+    id: "training-30-day-outcomes",
+    question: "What outcomes should we expect in the first 30 days?",
+    answer: "Typical outcomes include:",
+    examples: [
+      "One simple AI workflow per attendee that saves time each week",
+      "A shared baseline of AI knowledge across the team",
+      "Clear guardrails for safe, responsible use of AI at work",
+      "A short list of workflows to automate next"
+    ],
+    category: "training"
+  },
+  {
+    id: "training-scheduling",
+    question: "How far in advance do we need to schedule?",
+    answer: "For virtual sessions, two to four weeks' notice keeps planning smooth. On-site sessions need more time for travel planning and logistics. If you have a fixed event date, share it in the first message so dates stay aligned.",
+    category: "training"
   }
 ];
 
@@ -252,56 +340,132 @@ export default function FAQContent() {
               </div>
             ) : (
               <div className="space-y-4">
-                {filteredFAQs.map((faq) => (
-                  <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
-                    <button
-                      onClick={() => toggleExpanded(faq.id)}
-                      className="w-full p-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
-                    >
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-xl font-bold text-gray-900 pr-4">
-                          {faq.question}
-                        </h3>
-                        <div className="flex-shrink-0">
-                          <svg
-                            className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${
-                              expandedItems.has(faq.id) ? 'transform rotate-180' : ''
-                            }`}
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                          </svg>
+                {/* Render non-training FAQs first */}
+                {filteredFAQs
+                  .filter(faq => faq.category !== 'training')
+                  .map((faq) => (
+                    <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
+                      <button
+                        onClick={() => toggleExpanded(faq.id)}
+                        className="w-full p-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                      >
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-xl font-bold text-gray-900 pr-4">
+                            {faq.question}
+                          </h3>
+                          <div className="flex-shrink-0">
+                            <svg
+                              className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${
+                                expandedItems.has(faq.id) ? 'transform rotate-180' : ''
+                              }`}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-hidden="true"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </div>
                         </div>
-                      </div>
-                    </button>
+                      </button>
 
-                    {expandedItems.has(faq.id) && (
-                      <div className="px-6 pb-6 border-t border-gray-100">
-                        <div className="pt-4">
-                          {faq.answer && (
-                            <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                              {faq.answer}
-                            </p>
-                          )}
-                          {faq.examples && (
-                            <ul className="space-y-3">
-                              {faq.examples.map((example, exampleIndex) => (
-                                <li key={exampleIndex} className="flex items-start space-x-3">
-                                  <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0" />
-                                  <span className="text-gray-700 text-lg leading-relaxed">
-                                    {example}
-                                  </span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                      {expandedItems.has(faq.id) && (
+                        <div className="px-6 pb-6 border-t border-gray-100">
+                          <div className="pt-4">
+                            {faq.answer && (
+                              <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                                {faq.answer}
+                              </p>
+                            )}
+                            {faq.examples && (
+                              <ul className="space-y-3">
+                                {faq.examples.map((example, exampleIndex) => (
+                                  <li key={exampleIndex} className="flex items-start space-x-3">
+                                    <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0" />
+                                    <span className="text-gray-700 text-lg leading-relaxed">
+                                      {example}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                {/* Divider and Training FAQs section */}
+                {filteredFAQs.some(faq => faq.category === 'training') && (
+                  <>
+                    <div id="training-faqs" className="my-12 border-t border-gray-300 scroll-mt-20">
+                      <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                          <div className="w-full border-t border-gray-300"></div>
+                        </div>
+                        <div className="relative flex justify-center">
+                          <h2 className="bg-background px-6 text-2xl font-bold text-gray-900">
+                            Training FAQs
+                          </h2>
                         </div>
                       </div>
-                    )}
-                  </div>
-                ))}
+                    </div>
+
+                    {filteredFAQs
+                      .filter(faq => faq.category === 'training')
+                      .map((faq) => (
+                        <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
+                          <button
+                            onClick={() => toggleExpanded(faq.id)}
+                            className="w-full p-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
+                          >
+                            <div className="flex items-center justify-between">
+                              <h3 className="text-xl font-bold text-gray-900 pr-4">
+                                {faq.question}
+                              </h3>
+                              <div className="flex-shrink-0">
+                                <svg
+                                  className={`w-6 h-6 text-gray-500 transition-transform duration-200 ${
+                                    expandedItems.has(faq.id) ? 'transform rotate-180' : ''
+                                  }`}
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                  aria-hidden="true"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </div>
+                            </div>
+                          </button>
+
+                          {expandedItems.has(faq.id) && (
+                            <div className="px-6 pb-6 border-t border-gray-100">
+                              <div className="pt-4">
+                                {faq.answer && (
+                                  <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                                    {faq.answer}
+                                  </p>
+                                )}
+                                {faq.examples && (
+                                  <ul className="space-y-3">
+                                    {faq.examples.map((example, exampleIndex) => (
+                                      <li key={exampleIndex} className="flex items-start space-x-3">
+                                        <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0" />
+                                        <span className="text-gray-700 text-lg leading-relaxed">
+                                          {example}
+                                        </span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                )}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                  </>
+                )}
               </div>
             )}
           </div>
@@ -319,8 +483,9 @@ export default function FAQContent() {
               Book a free consultation and we'll answer any questions you have about how AI automation can help your specific business.
             </p>
             <a
-              href="#book-appointment"
-              className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4"
+              href="/book-call"
+              className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+              aria-label="Get your free AI audit - Book a consultation"
               onClick={() => Analytics.trackEvent({
                 action: 'faq_cta_click',
                 category: 'conversion',
