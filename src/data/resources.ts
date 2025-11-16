@@ -64,7 +64,7 @@ export const resources: Resource[] = [
   },
   {
     id: 'lesson6-docs-decks-accelerator',
-    title: 'Lesson6: Docs & Decks Accelerator',
+    title: 'Lesson 6: Docs & Decks Accelerator',
     description: "What you'll learn: How to turn notes into a 1-page summary, How to turn a summary into a draft deck, How to go from messy notes → summary → outline → first drafts",
     typeLabel: 'Lesson',
     category: 'lessons',

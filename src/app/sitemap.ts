@@ -2,76 +2,76 @@ import type { MetadataRoute } from 'next'
 
 export const dynamic = 'force-static'
 
+const BASE_URL = process.env.SITE_URL ?? 'https://thisisflowai.com'
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Use the actual production URL for the deployed site
-  const baseUrl = 'https://same-7f50udlj5du-latest.netlify.app'
   const currentDate = new Date().toISOString()
 
   return [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
       // Include specific last modified dates for better SEO
       alternates: {
         languages: {
-          'en-US': baseUrl,
+          'en-US': BASE_URL,
         },
       },
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${BASE_URL}/contact`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9, // High priority for conversion page
       alternates: {
         languages: {
-          'en-US': `${baseUrl}/contact`,
+          'en-US': `${BASE_URL}/contact`,
         },
       },
     },
     {
-      url: `${baseUrl}/faq`,
+      url: `${BASE_URL}/faq`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for SEO and user support
       alternates: {
         languages: {
-          'en-US': `${baseUrl}/faq`,
+          'en-US': `${BASE_URL}/faq`,
         },
       },
     },
     {
-      url: `${baseUrl}/resources`,
+      url: `${BASE_URL}/resources`,
       lastModified: currentDate,
       changeFrequency: 'weekly', // Resources may be updated frequently
       priority: 0.8, // Important for content discovery
       alternates: {
         languages: {
-          'en-US': `${baseUrl}/resources`,
+          'en-US': `${BASE_URL}/resources`,
         },
       },
     },
     {
-      url: `${baseUrl}/training`,
+      url: `${BASE_URL}/training`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for lead generation
       alternates: {
         languages: {
-          'en-US': `${baseUrl}/training`,
+          'en-US': `${BASE_URL}/training`,
         },
       },
     },
     {
-      url: `${baseUrl}/privacy-terms`,
+      url: `${BASE_URL}/privacy-terms`,
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently
       priority: 0.3, // Lower priority for legal pages
       alternates: {
         languages: {
-          'en-US': `${baseUrl}/privacy-terms`,
+          'en-US': `${BASE_URL}/privacy-terms`,
         },
       },
     },
