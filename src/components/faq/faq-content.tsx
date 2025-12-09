@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Analytics } from '@/lib/analytics';
 
 interface FAQItem {
@@ -21,38 +22,32 @@ const faqData: FAQItem[] = [
   {
     id: "save-time-grow-business",
     question: "How can AI save me time and grow my business?",
-    answer: "By handling repetitive tasks, AI frees employees to focus on higher-value work. Teams spend less time on admin and more time on serving customers, innovating, and closing business. This accelerates growth without adding headcount.",
+    answer: "AI helps when it removes repeatable work from your plate and supports people on more complex work. This means more billable time, fewer delays, and fewer errors—without adding headcount.",
     category: "benefits"
   },
   {
     id: "real-world-examples",
     question: "What are some real-world ways AI can help?",
-    answer: "",
-    examples: [
-      "Sales: Instantly follow up with leads and manage pipelines",
-      "Finance: Streamline invoicing, expense tracking, and compliance",
-      "HR: Automate onboarding, payroll, and employee support",
-      "Operations: Manage scheduling, reminders, and reporting",
-      "Customer Experience: Deliver timely updates, FAQs, and surveys"
-    ],
+    answer: "AI helps when it takes repeatable work off your plate and supports people on more complex work.\n\nExamples:\n\n– Lead follow up sequences and reminders\n– Invoicing and payment nudges to reduce late payments\n– Drafting summaries, emails, and updates from long inputs\n– Support answers for common questions with clear rules for handoff to humans\n– Simple reporting and status snapshots for owners and managers\n\nWe map these to your tools and processes during the audit. See the Solutions page for detailed examples.",
+    examples: [],
     category: "examples"
   },
   {
     id: "what-agency-does",
     question: "What does Flow AI actually do?",
-    answer: "We act as your AI strategic partner. We evaluate your processes, identify high-impact automation opportunities, and design custom AI systems. We manage implementation end-to-end, so you don't need technical expertise.",
+    answer: "Flow AI helps businesses use AI on real work.\n\nWe do this in three ways:\n\n– AI solutions\nDesign and setup of targeted solutions such as lead follow up, client invoicing, onboarding, and support.\n\n– AI projects\nShort \"Scale Sprint\" projects where we Frame, Forge, Field test, and Formalize one high value workflow into a working AI system.\n\n– AI training\nLive workshops for beginners, everyday work, and leaders so staff know how to use AI in a safe, practical way.\n\nWe also provide a free starter kit and resource library so you do not start from a blank page.",
     category: "process"
   },
   {
     id: "automation-cost",
     question: "How much does AI consulting cost?",
-    answer: "It depends on scope and complexity. We offer options ranging from one-time projects to ongoing advisory support. Most clients see measurable time and cost savings within the first month.",
+    answer: "Pricing depends on scope and whether you start with training, a focused project, or both.\n\nIn broad terms:\n\n– Training is priced per session based on length and group size.\n– AI projects such as the Scale Sprint are scoped to one workflow, with a fixed project fee once we define the work.\n– The free audit and free starter kit stay free.\n\nWe discuss budget on the audit call so you know which options fit your stage and resources before you commit.",
     category: "pricing"
   },
   {
     id: "why-flow-ai",
     question: "Why work with Flow AI?",
-    answer: "We design and implement AI solutions tailored to your size, industry, and goals. We handle the complexity while you focus on results. Our enterprise leadership experience at companies such as Subway, Equinox, Edible Arrangements, PriceWaterhouseCoopers, and more ensures solutions that scale, and our support keeps systems performing as your business evolves.",
+    answer: "Businesses work with Flow AI when they want AI that fits real work, not hype.\n\nKey reasons:\n\n– More than 20 years in digital product, marketing, and technology\n– Training and resources built from real workflows, not theory\n– Guardrails baked in so leaders stay in control\n– Focus on tools you already use, not a new platform to manage\n– Clear handoff with training, SOP updates, and simple documentation\n\nThe goal is adoption that sticks, not experiments that fade after a few weeks.",
     category: "company"
   },
   {
@@ -100,7 +95,7 @@ const faqData: FAQItem[] = [
   {
     id: "training-ai-experience-level",
     question: "What level of AI experience do teams need?",
-    answer: "None. Sessions start from plain language explanations of AI and large language models. From there, examples and exercises use your tools and workflows, so beginners and early adopters both stay engaged.",
+    answer: "None. We work with beginners through experienced staff, founders, and managers. Sessions start from plain language explanations of AI and large language models. From there, examples and exercises use your tools and workflows, so beginners and early adopters both stay engaged.",
     category: "training"
   },
   {
@@ -130,7 +125,7 @@ const faqData: FAQItem[] = [
   {
     id: "training-audience",
     question: "Who is the training for: small businesses or corporate teams?",
-    answer: "Both. Small business tracks focus on day-to-day workflows for owners and lean teams. Corporate tracks focus on departments with 10–100 staff, leaders under pressure to show AI progress, and teams that need clear guardrails.",
+    answer: "Both, and solo founders. Small business tracks focus on day-to-day workflows for owners and lean teams. Corporate tracks focus on departments with 10–100 staff, leaders under pressure to show AI progress, and teams that need clear guardrails. Sessions are designed around each company's tools and examples.",
     category: "training"
   },
   {
@@ -164,7 +159,7 @@ const faqData: FAQItem[] = [
   {
     id: "training-recordings",
     question: "Are sessions recorded?",
-    answer: "If your internal policy allows recording, sessions record to your company account so you keep full control of the file. The recording supports new hires, refresher viewing, and internal sharing.",
+    answer: "If your internal policy allows recording, sessions record to your company account so you keep full control of the file. The recording supports new hires, refresher viewing, and internal sharing. Recordings complement the starter kit and follow-up resources we provide.",
     category: "training"
   },
   {
@@ -178,6 +173,37 @@ const faqData: FAQItem[] = [
       "A short list of workflows to automate next"
     ],
     category: "training"
+  },
+  // New FAQs for General section
+  {
+    id: "starter-kit-contents",
+    question: "What is in the free AI starter kit?",
+    answer: "The starter kit gives you a guided path so your business gets real value from AI in the next few weeks.\n\nInside the starter kit you receive:\n\nIntro lessons\n\n– Lesson 1: Ship your first AI win in under 60 minutes\n– Lesson 2: Prompt basics so you get clearer, more useful answers\n– Lesson 3: How to spot wrong answers and handle hallucinations\n\nTemplates and prompts\n\n– Email and message helper prompts for faster replies that still sound like you\n– Meeting notes and recap templates so each meeting ends with clear decisions\n– Executive summary starter prompts so staff turn long documents into clear one pagers\n– Slide outline prompts that turn rough ideas into a first draft deck\n– A simple \"idea to draft\" workflow that walks people from notes to a usable draft\n\nGuardrails for safe use\n\n– Plain rules for what staff should not paste into AI tools\n– Guidance for handling confidential and regulated information\n– A short review checklist before anyone sends AI written work to clients or leadership\n– Tone and brand checks so output still sounds like your company\n– When a human decision is required and AI stays in a support role",
+    category: "general"
+  },
+  {
+    id: "free-audit-process",
+    question: "What happens in the free AI audit?",
+    answer: "The free AI audit is a 20 to 30 minute call focused on your specific workflows and tools.\n\nWe do three things on that call:\n\n1. Workflow and tools review\n\nWe walk through two or three core workflows, such as lead follow up, invoicing, reporting, support, or content.\n\nWe note where time is lost, where work stalls, and which tools you already use.\n\n2. AI opportunity list\n\nWe highlight steps in those workflows that suit AI agents or automation.\n\nWe rank opportunities by effort and impact so you leave with a clear first move.\n\nWe flag quick wins for the next few weeks and larger projects to park for later.\n\n3. 30 day action outline\n\nWe pick one or two moves for the next 30 days that match your capacity.\n\nWe suggest training or starter resources for your staff based on their current level.\n\nWe recommend simple metrics to track so you see if the first AI moves help.\n\nThere is no obligation to start a project after the audit. You leave with a clear view of your options.",
+    category: "general"
+  },
+  {
+    id: "ai-solutions-types",
+    question: "What types of AI solutions do you set up?",
+    answer: "Flow AI focuses on AI solutions that remove manual work and support staff, not replace them.\n\nCommon examples include:\n\n– Lead follow up and sales pipeline support\n– Client invoicing and payment reminders\n– Client onboarding and handoff between teams\n– Reporting and simple executive summaries\n– Support and FAQ automation with clear handoff to humans\n\nOn the Solutions page you see details for each of these. During an audit we match these patterns to your business and tools.",
+    category: "general"
+  },
+  {
+    id: "good-fit-for",
+    question: "Who is Flow AI a good fit for?",
+    answer: "Flow AI works with:\n\n– Founders and solo operators who feel buried in admin work\n– Small and mid sized companies that want to grow without adding headcount\n– Corporate leaders who want their teams to use AI in a safe and structured way\n\nBest fits:\n\n– You already have revenue and clear offers.\n– You have manual work in sales, operations, finance, or client delivery.\n– You want staff to work with AI in a responsible way, not chase hype.",
+    category: "general"
+  },
+  {
+    id: "starter-kit-training-projects-fit",
+    question: "How do the starter kit, training, and AI projects fit together?",
+    answer: "They serve different stages.\n\nThe starter kit is for exploration.\n\nIt gives you lessons, prompts, and guardrails so you and your staff start using AI on daily work with low risk.\n\nTraining is for adoption.\n\nLive sessions show your staff how to use AI on real tasks in your business and give them clear next steps for the first 30 days.\n\nAI projects and the Scale Sprint are for systems.\n\nWe pick one workflow, design and build AI agents and automations inside your tools, test with real data, then formalize with SOPs and training.\n\nMany businesses start with the starter kit, book training, then move into a focused project once they see where the biggest gains sit.",
+    category: "general"
   },
   {
     id: "training-scheduling",
@@ -340,7 +366,16 @@ export default function FAQContent() {
               </div>
             ) : (
               <div className="space-y-4">
-                {/* Render non-training FAQs first */}
+                {/* General FAQs section heading */}
+                {filteredFAQs.some(faq => faq.category !== 'training') && (
+                  <div id="general-faqs" className="mb-8">
+                    <h2 className="text-2xl font-bold text-gray-900">
+                      General FAQs
+                    </h2>
+                  </div>
+                )}
+
+                {/* Render General FAQs first */}
                 {filteredFAQs
                   .filter(faq => faq.category !== 'training')
                   .map((faq) => (
@@ -373,9 +408,9 @@ export default function FAQContent() {
                         <div className="px-6 pb-6 border-t border-gray-100">
                           <div className="pt-4">
                             {faq.answer && (
-                              <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                              <div className="text-gray-700 text-lg leading-relaxed mb-4 whitespace-pre-line">
                                 {faq.answer}
-                              </p>
+                              </div>
                             )}
                             {faq.examples && (
                               <ul className="space-y-3">
@@ -443,9 +478,9 @@ export default function FAQContent() {
                             <div className="px-6 pb-6 border-t border-gray-100">
                               <div className="pt-4">
                                 {faq.answer && (
-                                  <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                                  <div className="text-gray-700 text-lg leading-relaxed mb-4 whitespace-pre-line">
                                     {faq.answer}
-                                  </p>
+                                  </div>
                                 )}
                                 {faq.examples && (
                                   <ul className="space-y-3">
@@ -480,24 +515,44 @@ export default function FAQContent() {
               Still Have Questions?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Book a free consultation and we'll answer any questions you have about how AI automation can help your specific business.
+              If you want to explore at your own pace, start with the free AI starter kit.
+              <br />
+              If you prefer a conversation about your workflows, book a free AI audit.
             </p>
-            <a
-              href="/book-call"
-              className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              aria-label="Get your free AI audit - Book a consultation"
-              onClick={() => Analytics.trackEvent({
-                action: 'faq_cta_click',
-                category: 'conversion',
-                label: 'book_consultation',
-                custom_parameters: {
-                  source_page: 'faq',
-                  timestamp: new Date().toISOString()
-                }
-              })}
-            >
-              Get Your Free AI Audit
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
+              <Link
+                href="/#starter-kit"
+                className="btn-primary bg-primary hover:bg-primary/90 text-lg px-8 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Get your FREE AI starter kit"
+                onClick={() => Analytics.trackEvent({
+                  action: 'faq_cta_click',
+                  category: 'conversion',
+                  label: 'get_starter_kit',
+                  custom_parameters: {
+                    source_page: 'faq',
+                    timestamp: new Date().toISOString()
+                  }
+                })}
+              >
+                Get your FREE AI starter kit
+              </Link>
+              <Link
+                href="/#book-appointment"
+                className="btn-primary-outline text-lg px-8 py-4 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                aria-label="Book your FREE AI audit"
+                onClick={() => Analytics.trackEvent({
+                  action: 'faq_cta_click',
+                  category: 'conversion',
+                  label: 'book_audit',
+                  custom_parameters: {
+                    source_page: 'faq',
+                    timestamp: new Date().toISOString()
+                  }
+                })}
+              >
+                Book your FREE AI audit
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -83,27 +83,51 @@ export default function EmailJsFormBridge() {
       // No redirect needed - we'll show inline thank you message
     });
 
-    // Function to show inline thank you message
+    // Function to show inline thank you message (using safe DOM manipulation instead of innerHTML)
     function showThankYouMessage(form: HTMLFormElement) {
       // Hide the form
       form.style.display = 'none';
       
-      // Create thank you message element
+      // Create thank you message element using safe DOM methods
       const thankYouDiv = document.createElement('div');
       thankYouDiv.className = 'bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto text-center';
-      thankYouDiv.innerHTML = `
-        <div class="mb-6">
-          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">Thanks — we got it!</h3>
-          <p class="text-gray-600">
-            We'll be in touch shortly.
-          </p>
-        </div>
-      `;
+      
+      const container = document.createElement('div');
+      container.className = 'mb-6';
+      
+      // Checkmark icon container
+      const iconContainer = document.createElement('div');
+      iconContainer.className = 'w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4';
+      
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'w-8 h-8 text-green-600');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('aria-hidden', 'true');
+      
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+      path.setAttribute('stroke-width', '2');
+      path.setAttribute('d', 'M5 13l4 4L19 7');
+      svg.appendChild(path);
+      iconContainer.appendChild(svg);
+      
+      // Heading
+      const heading = document.createElement('h3');
+      heading.className = 'text-2xl font-bold text-gray-900 mb-2';
+      heading.textContent = 'Thanks — we got it!';
+      
+      // Paragraph
+      const paragraph = document.createElement('p');
+      paragraph.className = 'text-gray-600';
+      paragraph.textContent = "We'll be in touch shortly.";
+      
+      container.appendChild(iconContainer);
+      container.appendChild(heading);
+      container.appendChild(paragraph);
+      thankYouDiv.appendChild(container);
       
       // Insert the thank you message after the form
       form.parentNode?.insertBefore(thankYouDiv, form.nextSibling);

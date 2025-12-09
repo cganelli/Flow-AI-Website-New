@@ -20,6 +20,7 @@
  */
 
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { resources, type Resource, type ResourceCategory as DataResourceCategory } from '@/data/resources';
 
 // Validate resources data on import
@@ -53,9 +54,20 @@ const categories: { id: ResourceCategory; label: string; description: string }[]
 ];
 
 export default function ResourcesContent() {
-  const [selectedCategory, setSelectedCategory] = useState<ResourceCategory>('all');
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams?.get('category') as ResourceCategory | null;
+  const initialCategory = (categoryParam && categories.find(c => c.id === categoryParam)) ? categoryParam : 'all';
+  
+  const [selectedCategory, setSelectedCategory] = useState<ResourceCategory>(initialCategory);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredResources, setFilteredResources] = useState<Resource[]>(resources);
+
+  // Update category when URL param changes
+  useEffect(() => {
+    if (categoryParam && categories.find(c => c.id === categoryParam)) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   // Filter resources based on category and search term
   useEffect(() => {
@@ -344,7 +356,7 @@ export default function ResourcesContent() {
               Need More Help?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Book a free consultation and we'll help you identify the best AI automation opportunities for your business.
+              Get your FREE audit to help you identify the best AI solutions for your business.
             </p>
             <a
               href="/book-call"

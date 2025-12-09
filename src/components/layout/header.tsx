@@ -8,9 +8,9 @@ const Header = () => {
   const pathname = usePathname();
 
   // Always use root-anchored links for home page sections to ensure they work from any page
-  const solutionsHref = '/#ai-capabilities';
-  const processHref = '/#process';
-  const bookAppointmentHref = '/#book-appointment';
+  const solutionsHref = '/solutions';
+  const processHref = '/#consulting-program-heading';
+  const starterKitHref = '/#starter-kit';
 
   return (
     <header
@@ -56,7 +56,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav
             id="navigation"
-            className="hidden md:flex items-center space-x-8"
+            className="hidden md:flex items-center space-x-4"
             role="navigation"
             aria-label="Main navigation"
           >
@@ -96,11 +96,11 @@ const Header = () => {
               Contact
             </Link>
             <a
-              href={bookAppointmentHref}
+              href={starterKitHref}
               className="btn-primary whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
-              aria-label="Claim Your FREE AI Audit - Book appointment"
+              aria-label="Get your FREE AI starter kit"
             >
-              Claim Your FREE Audit
+              Get your FREE AI starter kit
             </a>
           </nav>
 
@@ -140,14 +140,14 @@ const Header = () => {
               role="navigation"
               aria-label="Mobile navigation"
             >
-              <a
+              <Link
                 href={solutionsHref}
                 className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
                 style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
                 onClick={() => setIsOpen(false)}
               >
                 Solutions
-              </a>
+              </Link>
               <a
                 href={processHref}
                 className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
@@ -181,12 +181,12 @@ const Header = () => {
                 Contact
               </Link>
               <a
-                href={bookAppointmentHref}
+                href={starterKitHref}
                 className="btn-primary inline-block text-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
                 onClick={() => setIsOpen(false)}
-                aria-label="Claim Your FREE AI Audit - Book appointment"
+                aria-label="Get your FREE AI starter kit"
               >
-                Claim Your FREE Audit
+                Get your FREE AI starter kit
               </a>
             </nav>
           </div>

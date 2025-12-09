@@ -29,13 +29,18 @@ const ContactContent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  // Handle URL parameter for topic (e.g., /contact?topic=training)
+  // Handle URL parameter for topic (e.g., /contact?topic=training or /contact?topic=projects)
   useEffect(() => {
     const topic = searchParams.get('topic');
     if (topic === 'training') {
       setFormData(prev => ({
         ...prev,
         inquiryType: 'training'
+      }));
+    } else if (topic === 'projects') {
+      setFormData(prev => ({
+        ...prev,
+        inquiryType: 'ai_consultation'
       }));
     }
   }, [searchParams]);

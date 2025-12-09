@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit, getClientIdentifier } from '@/lib/rate-limit';
 
 interface EmailData {
   to: string;
@@ -154,8 +155,62 @@ async function sendViaSMTP(emailData: EmailData): Promise<{ success: boolean; me
     };
   }
 
+// CSRF protection: Check origin header
+function validateOrigin(request: NextRequest): boolean {
+  const origin = request.headers.get('origin');
+  const referer = request.headers.get('referer');
+  
+  const allowedOrigins = [
+    'https://thisisflowai.com',
+    'https://www.thisisflowai.com',
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+  ];
+  
+  if (origin) {
+    return allowedOrigins.some(allowed => origin.startsWith(allowed));
+  }
+  
+  if (referer) {
+    return allowedOrigins.some(allowed => referer.startsWith(allowed));
+  }
+  
+  return true;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting: 5 requests per 15 minutes per IP
+    const clientId = getClientIdentifier(request);
+    const rateLimit = checkRateLimit(clientId, 5, 15 * 60 * 1000);
+    
+    if (!rateLimit.allowed) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'Too many requests. Please try again later.',
+          retryAfter: Math.ceil((rateLimit.resetAt - Date.now()) / 1000)
+        },
+        { 
+          status: 429,
+          headers: {
+            'Retry-After': Math.ceil((rateLimit.resetAt - Date.now()) / 1000).toString(),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'X-RateLimit-Reset': new Date(rateLimit.resetAt).toISOString(),
+          }
+        }
+      );
+    }
+
+    // CSRF protection
+    if (!validateOrigin(request)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid origin' },
+        { status: 403 }
+      );
+    }
+
     const emailData: EmailData = await request.json();
 
     // Validate required fields
@@ -197,22 +252,22 @@ export async function POST(request: NextRequest) {
 
     // All providers failed
     console.error('All email providers failed:', lastError);
+    // Don't expose internal error details to client
     return NextResponse.json(
       {
         success: false,
-        error: 'All email providers failed',
-        details: lastError
+        error: 'Unable to send email at this time. Please try again later or contact support.'
       },
       { status: 500 }
     );
 
   } catch (error) {
     console.error('Email API error:', error);
+    // Don't expose internal error details to client
     return NextResponse.json(
       {
         success: false,
-        error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        error: 'Internal server error. Please try again later.'
       },
       { status: 500 }
     );

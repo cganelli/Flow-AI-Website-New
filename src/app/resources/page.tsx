@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import ResourcesContent from "@/components/resources/resources-content";
@@ -37,7 +38,9 @@ export default function ResourcesPage() {
       <Header />
 
       <main id="main" role="main" className="pt-20">
-        <ResourcesContent />
+        <Suspense fallback={<div className="container-custom py-16">Loading resources...</div>}>
+          <ResourcesContent />
+        </Suspense>
       </main>
 
       <Footer />
