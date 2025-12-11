@@ -1,6 +1,6 @@
 export type ResourceCategory = 'lessons' | 'agents-gpts' | 'packs-templates'
 
-export type ResourceFormat = 'Video' | 'Link'
+export type ResourceFormat = 'Video' | 'Link' | 'Google Doc'
 
 export type ResourceTypeLabel = 'Lesson' | 'Agent' | 'Pack' | 'Resource'
 
@@ -70,6 +70,24 @@ export const resources: Resource[] = [
     category: 'lessons',
     format: 'Video',
     url: 'https://www.youtube.com/watch?v=-eXb3DXcQTc',
+  },
+  {
+    id: 'lesson-7-data-ops-accelerator',
+    title: 'Lesson 7: Data and Ops Accelerator',
+    description: '"Clean Messy Spreadsheets in 5 Minutes (No Excel Skills Required)" shows you how to use AI as your data assistant so you stop fixing everything by hand.',
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/Et3Fzcx3zfA',
+  },
+  {
+    id: 'lesson-8-100-emails-to-zero',
+    title: 'Lesson 8: 100 Emails To Zero In 5 Minutes',
+    description: 'Turn email and meetings into your reputation engine. You use AI to sort a noisy inbox, pull out real action, and ship clean follow-ups in minutes, not hours.',
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/7f_eg0NOYBE',
   },
   {
     id: 'flow-ai-consultancy-blueprint',
@@ -193,6 +211,15 @@ export const resources: Resource[] = [
     category: 'packs-templates',
     format: 'Link',
     url: 'https://docs.google.com/document/d/1wEo6yQtXqCsJGeXIIZ0chMeAvD5yOaC5hMJNhq4FX-w/edit?usp=sharing',
+  },
+  {
+    id: 'performance-review-writing-pack',
+    title: 'Performance Review Writing Pack',
+    description: 'A plug-and-play prompt pack to write clear, fair performance reviews faster, with examples you can adapt for your team.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Google Doc',
+    url: 'https://docs.google.com/document/d/1tTYbi2HkVw-Jmhj8fCZdlSjI_uupP4BSWlqm2ibF8pM/edit?usp=sharing',
   },
 ]
 
