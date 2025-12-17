@@ -174,25 +174,21 @@ export default function RootLayout({
         />
 
         {/* Google Analytics */}
-        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}', {
-                  page_title: document.title,
-                  page_location: window.location.href,
-                });
-              `}
-            </Script>
-          </>
-        )}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-1B3W2T24NW"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-1B3W2T24NW', {
+              page_title: document.title,
+              page_location: window.location.href,
+            });
+          `}
+        </Script>
 
         {/* Facebook Pixel */}
         {process.env.NEXT_PUBLIC_FB_PIXEL_ID && (
