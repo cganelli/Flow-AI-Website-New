@@ -54,7 +54,8 @@ export class Analytics {
 
   // Google Analytics 4 initialization
   private static initGA4() {
-    const GA_MEASUREMENT_ID = 'G-1B3W2T24NW';
+    const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+    if (!GA_MEASUREMENT_ID) return;
 
     // Load GA4 script
     const script = document.createElement('script');
