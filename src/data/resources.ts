@@ -221,5 +221,23 @@ export const resources: Resource[] = [
     format: 'Google Doc',
     url: 'https://docs.google.com/document/d/1tTYbi2HkVw-Jmhj8fCZdlSjI_uupP4BSWlqm2ibF8pM/edit?usp=sharing',
   },
+  {
+    id: 'summary-followup-prompts-outlook-gmail',
+    title: 'Summary and Follow-up Prompts for Outlook with Copilot and Gmail with Gemini',
+    description: 'Ready-to-use prompts for summarizing emails and creating follow-ups using Outlook Copilot and Gmail with Gemini.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Google Doc',
+    url: 'https://docs.google.com/document/d/1ExzSgaEl-Q7a_6WuE6OSCGbVYaxgt8yWmpru56A1UaQ/edit?usp=sharing',
+  },
+  {
+    id: 'humanize-chatgpt-writing-pack',
+    title: 'Humanize Your ChatGPT Writing',
+    description: 'Prompts and techniques to make AI-generated content sound more natural and human-like.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Google Doc',
+    url: 'https://docs.google.com/document/d/1ZeXBMpdOa2h0i4rt2gXs-QqK1oH3GOWgYGCJuYcOldE/edit?usp=sharing',
+  },
 ]
 

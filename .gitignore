@@ -16,7 +16,6 @@ pnpm-debug.log*
 
 # Host/CI artifacts
 .netlify/
-.vercel/
 .github/
 .husky/
 functions/
