@@ -341,7 +341,7 @@ export default function FAQContent() {
                 />
               </div>
               {searchTerm && (
-                <p className="text-sm text-gray-500 mt-2">
+                <p className="text-sm text-gray-500 mt-2" role="status" aria-live="polite" aria-atomic="true">
                   Found {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''}
                 </p>
               )}
@@ -357,7 +357,7 @@ export default function FAQContent() {
             {filteredFAQs.length === 0 ? (
               <div className="text-center py-12">
                 <div className="text-gray-400 mb-4">
-                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 20a7.962 7.962 0 01-5.291-2.709M15 3.293A7.962 7.962 0 0112 1a7.962 7.962 0 01-5.291 2.709" />
                   </svg>
                 </div>
@@ -382,6 +382,8 @@ export default function FAQContent() {
                     <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
                       <button
                         onClick={() => toggleExpanded(faq.id)}
+                        aria-expanded={expandedItems.has(faq.id)}
+                        aria-controls={`faq-answer-${faq.id}`}
                         className="w-full p-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                       >
                         <div className="flex items-center justify-between">
@@ -405,7 +407,7 @@ export default function FAQContent() {
                       </button>
 
                       {expandedItems.has(faq.id) && (
-                        <div className="px-6 pb-6 border-t border-gray-100">
+                        <div id={`faq-answer-${faq.id}`} className="px-6 pb-6 border-t border-gray-100">
                           <div className="pt-4">
                             {faq.answer && (
                               <div className="text-gray-700 text-lg leading-relaxed mb-4 whitespace-pre-line">
@@ -452,6 +454,8 @@ export default function FAQContent() {
                         <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
                           <button
                             onClick={() => toggleExpanded(faq.id)}
+                            aria-expanded={expandedItems.has(faq.id)}
+                            aria-controls={`faq-answer-${faq.id}`}
                             className="w-full p-6 text-left hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-inset"
                           >
                             <div className="flex items-center justify-between">
@@ -475,7 +479,7 @@ export default function FAQContent() {
                           </button>
 
                           {expandedItems.has(faq.id) && (
-                            <div className="px-6 pb-6 border-t border-gray-100">
+                            <div id={`faq-answer-${faq.id}`} className="px-6 pb-6 border-t border-gray-100">
                               <div className="pt-4">
                                 {faq.answer && (
                                   <div className="text-gray-700 text-lg leading-relaxed mb-4 whitespace-pre-line">

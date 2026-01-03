@@ -90,6 +90,15 @@ export const resources: Resource[] = [
     url: 'https://youtu.be/7f_eg0NOYBE',
   },
   {
+    id: 'lesson-9-ship-5-wins-in-7-days-challenge',
+    title: 'Lesson 9: Ship 5 Wins in 7 Days Challenge',
+    description: 'This lesson flips the switch from "learning about AI" to "shipping real work with AI." Over one week, you complete five small but visible wins that save 60–90 minutes and prove you use AI on the job, not only in theory.',
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/MpxyqZHRcFs',
+  },
+  {
     id: 'flow-ai-consultancy-blueprint',
     title: 'Flow AI Consultancy Blueprint',
     description: 'Purpose - Design your AI consultancy offers, pricing, and delivery model so you can start selling and delivering AI projects. Built for aspiring consultants and solo operators.',
@@ -124,6 +133,17 @@ export const resources: Resource[] = [
     category: 'agents-gpts',
     format: 'Link',
     url: 'https://chatgpt.com/g/g-6917aa0d4edc8191a2e1ad9a2a8d36bf-flow-ai-role-evolutionizer',
+  },
+  {
+    id: 'eight-second-audio-engineer',
+    title: 'Eight Second Audio Engineer',
+    description: 'Splits scripts into 8-second spoken scenes for Veo 3 and other video generators. Returns condensed text first, then offers timing details. Default pacing is 3.3 words/second (TikTok). Can also provide 2.5 WPS (spoken word), 1.5 WPS (cinematic) pacing, or any pacing you choose.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-6955cce54f8481919e1a6bd1858fb9fa-eight-second-audio-engineer',
+    isFun: true,
+    logoSrc: '/images/8_second_audio_engineer_logo.png',
   },
   {
     id: 'sweetpick',

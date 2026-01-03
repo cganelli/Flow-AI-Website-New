@@ -54,6 +54,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${BASE_URL}/use-cases`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly', // Use cases may be updated frequently
+      priority: 0.8, // Important for content discovery
+      alternates: {
+        languages: {
+          'en-US': `${BASE_URL}/use-cases`,
+        },
+      },
+    },
+    {
       url: `${BASE_URL}/training`,
       lastModified: currentDate,
       changeFrequency: 'monthly',

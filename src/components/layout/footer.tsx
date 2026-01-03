@@ -326,7 +326,7 @@ const Footer = () => {
               Home
             </Link>
           </div>
-          <p className="text-white/60 text-center">©2025 Flow AI</p>
+          <p className="text-white/60 text-center">©2026 Flow AI</p>
         </nav>
       </div>
     </footer>

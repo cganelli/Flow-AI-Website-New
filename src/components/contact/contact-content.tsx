@@ -175,6 +175,7 @@ const ContactContent = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                     className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="name"
                   />
@@ -190,6 +191,7 @@ const ContactContent = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                     className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="email"
                     inputMode="email"
@@ -273,6 +275,7 @@ const ContactContent = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   rows={5}
                   className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
                 />
@@ -287,9 +290,9 @@ const ContactContent = () => {
               </button>
 
               {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700" role="status" aria-live="polite" aria-atomic="true">
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
@@ -298,9 +301,9 @@ const ContactContent = () => {
               )}
 
               {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700" role="alert" aria-live="assertive" aria-atomic="true">
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                     </svg>
                     There was a problem sending your message. Please contact us directly at carissa@thisisflowai.com
@@ -350,6 +353,7 @@ const ContactContent = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
+                    aria-required="true"
                     className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 touch-manipulation"
                     autoComplete="email"
                     inputMode="email"
@@ -432,6 +436,7 @@ const ContactContent = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  aria-required="true"
                   rows={5}
                   className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-400 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 resize-vertical touch-manipulation min-h-[120px]"
                 />
@@ -446,9 +451,9 @@ const ContactContent = () => {
               </button>
 
               {submitStatus === 'success' && (
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-green-700" role="status" aria-live="polite" aria-atomic="true">
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
                     Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
@@ -457,9 +462,9 @@ const ContactContent = () => {
               )}
 
               {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700">
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700" role="alert" aria-live="assertive" aria-atomic="true">
                   <div className="flex items-center">
-                    <svg className="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="h-5 w-5 text-red-500 mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                     </svg>
                     There was a problem sending your message. Please contact us directly at carissa@thisisflowai.com

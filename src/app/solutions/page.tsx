@@ -520,16 +520,14 @@ const SolutionsPage = () => {
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="mt-6 rounded-xl bg-[#FFE5DE] px-4 py-3">
-                      <div className="flex items-center justify-center">
-                        <a
-                          href="/contact"
-                          className="btn-primary bg-[#EA3D2A] hover:bg-[#EA3D2A]/90 text-white focus:outline-none focus:ring-2 focus:ring-[#EA3D2A] focus:ring-offset-2"
-                          aria-label={`Learn more about ${solution.title}`}
-                        >
-                          Learn more
-                        </a>
-                      </div>
+                    <div className="mt-6 flex items-center justify-center">
+                      <a
+                        href="/contact"
+                        className="btn-primary bg-[#EA3D2A] hover:bg-[#EA3D2A]/90 text-white focus:outline-none focus:ring-2 focus:ring-[#EA3D2A] focus:ring-offset-2"
+                        aria-label={`Learn more about ${solution.title}`}
+                      >
+                        Learn more
+                      </a>
                     </div>
                   </div>
                 </section>

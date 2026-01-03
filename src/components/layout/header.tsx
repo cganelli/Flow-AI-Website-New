@@ -26,11 +26,11 @@ const Header = () => {
       </a>
 
       <div className="container-custom">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center h-24">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded flex-shrink-0"
             aria-label="Flow AI - Go to homepage"
           >
             <div className="flex items-center overflow-hidden h-24">
@@ -53,10 +53,10 @@ const Header = () => {
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Centered between logo and CTA */}
           <nav
             id="navigation"
-            className="hidden md:flex items-center space-x-4"
+            className="hidden md:flex items-center justify-center space-x-2 flex-1"
             role="navigation"
             aria-label="Main navigation"
           >
@@ -73,6 +73,13 @@ const Header = () => {
               style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
             >
               Process
+            </Link>
+            <Link
+              href="/use-cases"
+              className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+              style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+            >
+              Use Cases
             </Link>
             <Link
               href="/resources"
@@ -95,14 +102,18 @@ const Header = () => {
             >
               Contact
             </Link>
-            <a
-              href={starterKitHref}
-              className="btn-primary whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
-              aria-label="Get your FREE AI starter kit"
-            >
-              Get your FREE AI starter kit
-            </a>
           </nav>
+          
+          {/* CTA Button - Outside nav for proper spacing */}
+          <a
+            href={starterKitHref}
+            className="hidden md:block btn-primary focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary px-4 py-2 text-center leading-tight flex-shrink-0 ml-4"
+            style={{ minWidth: '200px', maxWidth: '220px' }}
+            aria-label="Get your FREE AI starter kit"
+          >
+            <span className="block whitespace-nowrap">Get your FREE</span>
+            <span className="block whitespace-nowrap">AI Starter Kit</span>
+          </a>
 
           {/* Mobile Menu Button */}
           <button
@@ -157,6 +168,14 @@ const Header = () => {
                 Process
               </a>
               <Link
+                href="/use-cases"
+                className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
+                style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
+                onClick={() => setIsOpen(false)}
+              >
+                Use Cases
+              </Link>
+              <Link
                 href="/resources"
                 className="text-gray hover:text-foreground transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded px-2 py-1 font-semibold"
                 style={{ fontSize: 'clamp(19px, 1rem + 0.35vw, 22px)' }}
@@ -182,11 +201,13 @@ const Header = () => {
               </Link>
               <a
                 href={starterKitHref}
-                className="btn-primary inline-block text-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
+                className="btn-primary inline-block text-center focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary px-3 py-2 leading-tight"
+                style={{ maxWidth: '140px' }}
                 onClick={() => setIsOpen(false)}
                 aria-label="Get your FREE AI starter kit"
               >
-                Get your FREE AI starter kit
+                <span className="block">Get your FREE</span>
+                <span className="block">AI Starter Kit</span>
               </a>
             </nav>
           </div>

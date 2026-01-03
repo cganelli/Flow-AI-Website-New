@@ -8,6 +8,8 @@
 
 "use client";
 
+import Link from "next/link";
+
 const CommonSolutionsSection = () => {
   const solutions = [
     {
@@ -85,13 +87,13 @@ const CommonSolutionsSection = () => {
                 <p className="text-lg text-gray-700 mb-6 flex-grow">
                   {solution.oneLine}
                 </p>
-                <a
+                <Link
                   href={solution.ctaHref}
                   className="btn-primary-outline text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                   aria-label={`${solution.cta} - ${solution.title}`}
                 >
                   {solution.cta}
-                </a>
+                </Link>
               </article>
               ))}
           </div>

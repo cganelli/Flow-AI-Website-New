@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Layout from "@/components/layout/layout";
 import HomepageHeroSection from "@/components/sections/homepage-hero-section";
 import BenchmarkStripSection from "@/components/sections/benchmark-strip-section";
@@ -13,6 +15,23 @@ import ResourcesPreviewSection from "@/components/sections/resources-preview-sec
 import FinalCtaSection from "@/components/sections/final-cta-section";
 
 export default function HomePage() {
+  const pathname = usePathname();
+
+  // Handle anchor links when navigating from other pages
+  useEffect(() => {
+    if (typeof window !== "undefined" && pathname === "/") {
+      const hash = window.location.hash;
+      if (hash) {
+        // Small delay to ensure page is rendered
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 100);
+      }
+    }
+  }, [pathname]);
   return (
     <Layout>
       <main id="main" role="main" aria-label="Main content">

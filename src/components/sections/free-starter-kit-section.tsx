@@ -42,7 +42,7 @@ const FreeStarterKitSection = () => {
   return (
     <section
       id="starter-kit"
-      className="py-16 bg-gradient-to-br from-primary/5 to-primary/10"
+      className="py-16 bg-gradient-to-br from-primary/5 to-primary/10 scroll-mt-24"
       aria-labelledby="starter-kit-heading"
     >
       <div className="container-custom">

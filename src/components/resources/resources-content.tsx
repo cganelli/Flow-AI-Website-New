@@ -206,6 +206,21 @@ export default function ResourcesContent() {
                         className="block h-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
                       >
                         <div className="p-6 h-full flex flex-col">
+                          {/* Resource Logo (if available) */}
+                          {resource.logoSrc && (
+                            <div className="mb-4 flex justify-center">
+                              <img
+                                src={resource.logoSrc}
+                                alt={`${resource.title} logo`}
+                                className="h-20 w-20 object-contain"
+                                onError={(e) => {
+                                  // Hide image if it fails to load
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
+                            </div>
+                          )}
+
                           {/* Resource Type Badge */}
                           <div className="mb-3">
                             <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary">
