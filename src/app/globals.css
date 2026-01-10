@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* biome-ignore lint/correctness/noInvalidPositionAtImportRule: tokens must load last to win cascade */
 @import '../styles/tokens.css';  /* must come last so brand tokens win the cascade */
 
 @layer base {

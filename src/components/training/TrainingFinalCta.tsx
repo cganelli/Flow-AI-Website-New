@@ -31,8 +31,8 @@ export function TrainingFinalCta(props: TrainingFinalCtaProps) {
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="heading-lg mb-6">{title}</h2>
           <div className="space-y-2 text-lg text-gray-600 mb-8">
-            {bodyLines.map((line, index) => (
-              <p key={index}>{line}</p>
+            {bodyLines.map((line) => (
+              <p key={line}>{line}</p>
             ))}
           </div>
           <div className="flex flex-wrap justify-center gap-4">

@@ -16,6 +16,7 @@ interface ContactSubmissionResult {
   emailSent?: boolean;
 }
 
+/* biome-ignore lint/complexity/noStaticOnlyClass: centralized contact API utilities */
 export class ContactAPIService {
   // Submit contact form via internal API
   static async submitContactForm(formData: ContactFormData): Promise<ContactSubmissionResult> {
@@ -58,7 +59,7 @@ export class ContactAPIService {
     phone?: string,
     message?: string
   ): Promise<ContactSubmissionResult> {
-    return this.submitContactForm({
+    return ContactAPIService.submitContactForm({
       name,
       email,
       company,
@@ -71,6 +72,6 @@ export class ContactAPIService {
 
   // Submit full contact form (for detailed contact page)
   static async submitFullContact(formData: ContactFormData): Promise<ContactSubmissionResult> {
-    return this.submitContactForm(formData);
+    return ContactAPIService.submitContactForm(formData);
   }
 }

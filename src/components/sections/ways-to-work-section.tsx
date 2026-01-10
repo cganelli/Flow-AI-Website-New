@@ -47,34 +47,36 @@ const WaysToWorkSection = () => {
 
           {/* Three Tiles */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {offers.map((offer, index) => (
-              <article
-                key={index}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray/10 flex flex-col"
-                role="article"
-                aria-labelledby={`offer-${index}-heading`}
-              >
-                <h3
-                  id={`offer-${index}-heading`}
-                  className="text-2xl font-bold mb-4 text-black"
+            {offers.map((offer) => {
+              const headingId = `offer-${offer.title.replace(/\\s+/g, "-").toLowerCase()}-heading`;
+              return (
+                <article
+                  key={offer.title}
+                  className="bg-white p-8 rounded-xl shadow-sm border border-gray/10 flex flex-col"
+                  aria-labelledby={headingId}
                 >
-                  {offer.title}
-                </h3>
-                <p className="text-lg text-black mb-6 flex-grow">
-                  {offer.description}
-                </p>
-                <p className="text-sm text-black mb-6 italic">
-                  {offer.who}
-                </p>
-                <a
-                  href={offer.ctaHref}
-                  className="btn-primary-outline text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                  aria-label={`${offer.cta} - ${offer.title}`}
-                >
-                  {offer.cta}
-                </a>
-              </article>
-            ))}
+                  <h3
+                    id={headingId}
+                    className="text-2xl font-bold mb-4 text-black"
+                  >
+                    {offer.title}
+                  </h3>
+                  <p className="text-lg text-black mb-6 flex-grow">
+                    {offer.description}
+                  </p>
+                  <p className="text-sm text-black mb-6 italic">
+                    {offer.who}
+                  </p>
+                  <a
+                    href={offer.ctaHref}
+                    className="btn-primary-outline text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    aria-label={`${offer.cta} - ${offer.title}`}
+                  >
+                    {offer.cta}
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

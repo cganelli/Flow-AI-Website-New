@@ -37,7 +37,7 @@ export default function ContactPage() {
       <EmailJsFormBridge />
       <Header />
 
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <Suspense fallback={<div>Loading...</div>}>
           <ContactContent />
         </Suspense>

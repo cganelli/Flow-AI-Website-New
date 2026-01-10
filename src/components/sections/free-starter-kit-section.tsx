@@ -59,15 +59,15 @@ const FreeStarterKitSection = () => {
             {/* Left side - Kit Contents */}
             <div className="space-y-8">
               <h3 className="text-2xl font-bold mb-6">What you get inside:</h3>
-              {kitContent.map((section, sectionIndex) => (
-                <div key={sectionIndex} className="space-y-4">
+              {kitContent.map((section) => (
+                <div key={section.title} className="space-y-4">
                   <h4 className="text-xl font-bold text-gray-900">
                     {section.title}
                   </h4>
                   <ul className="space-y-2 ml-4">
-                    {section.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start text-gray-700">
-                        <span className="text-primary mr-2 flex-shrink-0">–</span>
+                    {section.items.map((item) => (
+                      <li key={item} className="flex items-start text-gray-700">
+                        <span className="text-gray-900 mr-2 flex-shrink-0">–</span>
                         {item}
                       </li>
                     ))}

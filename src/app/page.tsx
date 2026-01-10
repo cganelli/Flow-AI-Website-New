@@ -13,10 +13,10 @@ const NetlifyFormsDetection = () => (
       data-netlify-honeypot="bot-field"
       hidden
     >
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="company" />
-      <input type="tel" name="phone" />
+      <input type="text" name="name" autoComplete="name" />
+      <input type="email" name="email" autoComplete="email" />
+      <input type="text" name="company" autoComplete="organization" />
+      <input type="tel" name="phone" autoComplete="tel" />
     </form>
 
     {/* Contact/Inquiry Form */}
@@ -26,13 +26,13 @@ const NetlifyFormsDetection = () => (
       data-netlify-honeypot="bot-field"
       hidden
     >
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="company" />
-      <input type="tel" name="phone" />
-      <input type="text" name="inquiryType" />
-      <input type="text" name="subject" />
-      <textarea name="message" />
+      <input type="text" name="name" autoComplete="name" />
+      <input type="email" name="email" autoComplete="email" />
+      <input type="text" name="company" autoComplete="organization" />
+      <input type="tel" name="phone" autoComplete="tel" />
+      <input type="text" name="inquiryType" autoComplete="off" />
+      <input type="text" name="subject" autoComplete="subject" />
+      <textarea name="message" autoComplete="off" />
     </form>
   </>
 );

@@ -13,7 +13,7 @@ export default function UseCasesPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <UseCasesClientInner />
       </main>
       <Footer />

@@ -46,6 +46,7 @@ const CaseStudiesSection = () => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="ml-1"
+              aria-hidden="true"
             >
               <path
                 d="M8 3L14 8L8 13"

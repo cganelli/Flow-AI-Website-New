@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { TrainingTrack } from "./training-types";
+import type { TrainingTrack } from "./training-types";
 
 interface TrainingCoreTracksProps {
   title: string;
@@ -38,8 +38,8 @@ export function TrainingCoreTracks(props: TrainingCoreTracksProps) {
                 <div className="md:col-span-1">
                   <h4 className="text-sm font-semibold mb-3 text-gray-900">Best for</h4>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    {track.bestFor.map((item, index) => (
-                      <li key={index} className="flex items-start">
+                    {track.bestFor.map((item) => (
+                      <li key={item} className="flex items-start">
                         <span className="text-primary mr-2">•</span>
                         <span>{item}</span>
                       </li>
@@ -47,14 +47,14 @@ export function TrainingCoreTracks(props: TrainingCoreTracksProps) {
                   </ul>
                 </div>
                 <div className="md:col-span-2 space-y-6">
-                  {track.learnSections.map((section, sectionIndex) => (
-                    <div key={sectionIndex}>
+                  {track.learnSections.map((section) => (
+                    <div key={section.title}>
                       <h4 className="text-sm font-semibold mb-3 text-gray-900">
                         {section.title}
                       </h4>
                       <ul className="space-y-2 text-sm text-gray-700">
-                        {section.points.map((point, pointIndex) => (
-                          <li key={pointIndex} className="flex items-start">
+                        {section.points.map((point) => (
+                          <li key={point} className="flex items-start">
                             <span className="text-primary mr-2">•</span>
                             <span>{point}</span>
                           </li>
@@ -65,8 +65,8 @@ export function TrainingCoreTracks(props: TrainingCoreTracksProps) {
                   <div>
                     <h4 className="text-sm font-semibold mb-3 text-gray-900">Format</h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      {track.format.map((item, index) => (
-                        <li key={index} className="flex items-start">
+                      {track.format.map((item) => (
+                        <li key={item} className="flex items-start">
                           <span className="text-primary mr-2">•</span>
                           <span>{item}</span>
                         </li>
@@ -76,8 +76,8 @@ export function TrainingCoreTracks(props: TrainingCoreTracksProps) {
                   <div>
                     <h4 className="text-sm font-semibold mb-3 text-gray-900">Outcomes</h4>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      {track.outcomes.map((item, index) => (
-                        <li key={index} className="flex items-start">
+                      {track.outcomes.map((item) => (
+                        <li key={item} className="flex items-start">
                           <span className="text-primary mr-2">•</span>
                           <span>{item}</span>
                         </li>

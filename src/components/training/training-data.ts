@@ -7,7 +7,7 @@
  * This file should be updated with approved copy from the client.
  */
 
-import {
+import type {
   TrainingTrack,
   WorkshopCard,
   WorkshopDetail,

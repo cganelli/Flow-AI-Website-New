@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { WorkshopCard } from "./training-types";
+import type { WorkshopCard } from "./training-types";
 
 interface TrainingAdvancedWorkshopsProps {
   title: string;

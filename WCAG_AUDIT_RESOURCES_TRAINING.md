@@ -6,7 +6,30 @@
 
 ---
 
-## Latest Audit: Site-Wide Comprehensive Audit
+## Latest Audit: WCAG 2.2 AA Spot Check
+
+**Date:** January 2026  
+**Pages Audited:** `/book-call`, `/accessibility`  
+**Auditor:** AI Assistant  
+**Status:** ✅ **COMPLIANT** (Issue fixed)
+
+### ✅ FIXES IMPLEMENTED
+
+#### 1. Missing Main Landmark for Skip Link Target
+- **Issue:** `/book-call` relied on the shared header skip link (`href="#main"`) but the page lacked a `<main>` landmark with `id="main"`, so keyboard users could not bypass the header or land on the primary content.
+- **Fix:** Wrapped the page content in `<main id="main" role="main" tabIndex={-1} aria-labelledby="book-call-heading">` to provide a programmatic landmark and focus target for skip links, satisfying WCAG 2.2 keyboard navigation expectations.
+- **Location:** `src/components/pages/book-call-page.tsx`
+- **WCAG:** 2.4.1 (Bypass Blocks) - Level A, 2.4.3 (Focus Order) - Level A
+
+#### 2. Accessibility Statement Updated for WCAG 2.2 AA
+- **Issue:** Statement referenced WCAG 2.1 and older language.
+- **Fix:** Replaced accessibility statement content to reflect WCAG 2.2 AA intent, measures, assessment approach, feedback channel (accessibility@thisisflowai.com, 5 business days), and last-updated date (January 2026).
+- **Location:** `src/app/accessibility/page.tsx`
+- **WCAG:** 3.3.2 (Labels or Instructions) - Level A; supports organizational commitment to 2.2 AA.
+
+---
+
+## Previous Audit: Site-Wide Comprehensive Audit
 
 **Date:** January 2026  
 **Pages Audited:** All pages (`/`, `/solutions`, `/use-cases`, `/resources`, `/training`, `/contact`, `/faq`, `/book-call`, `/thank-you`, `/privacy-terms`, `/accessibility`)  

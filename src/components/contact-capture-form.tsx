@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Analytics } from '@/lib/analytics';
 
 interface ContactCaptureFormProps {
@@ -30,13 +30,27 @@ const ContactCaptureForm = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [showCalendly, setShowCalendly] = useState(false);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const nameInputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
-    if (!formData.email) {
-      e.preventDefault();
-      alert('Please enter your email address');
+    e.preventDefault();
+
+    if (!formData.name.trim()) {
+      setSubmitError('Please enter your name.');
+      nameInputRef.current?.focus();
       return;
     }
+
+    if (!formData.email.trim()) {
+      setSubmitError('Please enter your email address.');
+      emailInputRef.current?.focus();
+      return;
+    }
+
+    setSubmitError(null);
+    setSubmitError(null);
+    setIsSubmitting(true);
 
     // Track form submission
     Analytics.trackEvent('form_submit', {
@@ -75,7 +89,6 @@ const ContactCaptureForm = ({
     return (
       <div
         className={`bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto text-center ${className}`}
-        role="status"
         aria-live="polite"
       >
         <div className="mb-6">
@@ -104,6 +117,7 @@ const ContactCaptureForm = ({
           onClick={openCalendly}
           className="btn-primary bg-primary hover:bg-primary/90 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary"
           aria-label="Schedule your free AI audit call"
+          type="button"
         >
           Schedule My Free Call Now
         </button>
@@ -119,7 +133,6 @@ const ContactCaptureForm = ({
     return (
       <div
         className={`bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto text-center ${className}`}
-        role="status"
         aria-live="polite"
       >
         <div
@@ -169,9 +182,12 @@ const ContactCaptureForm = ({
             placeholder="Full Name"
             value={formData.name}
             onChange={handleInputChange}
+          required
+          aria-required="true"
             className="w-full px-3 py-4 md:px-4 md:py-3 text-base md:text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all touch-manipulation"
             autoComplete="name"
             aria-describedby={`${formId}-name-description`}
+          ref={nameInputRef}
           />
           <span id={`${formId}-name-description`} className="sr-only">
             Enter your full name for the contact request
@@ -196,6 +212,7 @@ const ContactCaptureForm = ({
             inputMode="email"
             aria-describedby={`${formId}-email-description ${formId}-email-error`}
             aria-invalid={submitError ? "true" : "false"}
+          ref={emailInputRef}
           />
           <span id={`${formId}-email-description`} className="sr-only">
             Enter your email address. This field is required.
@@ -258,8 +275,8 @@ const ContactCaptureForm = ({
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
               Sending Email...
             </span>

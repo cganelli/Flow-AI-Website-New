@@ -42,6 +42,7 @@ interface CalendlyEventData {
   };
 }
 
+/* biome-ignore lint/complexity/noStaticOnlyClass: keeping automation helpers grouped */
 export class EmailAutomation {
   private static config: EmailAutomationConfig = {
     // ... existing config content remains the same ...

@@ -31,8 +31,8 @@ setInterval(() => {
  */
 export function checkRateLimit(
   identifier: string,
-  maxRequests: number = 5,
-  windowMs: number = 15 * 60 * 1000 // 15 minutes default
+  maxRequests = 5,
+  windowMs = 15 * 60 * 1000 // 15 minutes default
 ): { allowed: boolean; remaining: number; resetAt: number } {
   const now = Date.now();
   const entry = rateLimitStore.get(identifier);

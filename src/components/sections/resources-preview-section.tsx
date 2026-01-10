@@ -41,31 +41,33 @@ const ResourcesPreviewSection = () => {
 
           {/* 3 Cards in a Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {resourceCards.map((card, index) => (
-              <article
-                key={index}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray/10 flex flex-col hover:shadow-md transition-shadow"
-                role="article"
-                aria-labelledby={`resource-${index}-heading`}
-              >
-                <h3
-                  id={`resource-${index}-heading`}
-                  className="text-2xl font-bold mb-4"
+            {resourceCards.map((card) => {
+              const headingId = `resource-${card.title.replace(/\\s+/g, "-").toLowerCase()}-heading`;
+              return (
+                <article
+                  key={card.title}
+                  className="bg-white p-8 rounded-xl shadow-sm border border-gray/10 flex flex-col hover:shadow-md transition-shadow"
+                  aria-labelledby={headingId}
                 >
-                  {card.title}
-                </h3>
-                <p className="text-gray-700 mb-6 flex-grow">
-                  {card.description}
-                </p>
-                <a
-                  href={card.href}
-                  className="btn-primary-outline text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                  aria-label={`Browse ${card.title} resources`}
-                >
-                  Browse {card.title.toLowerCase()}
-                </a>
-              </article>
-            ))}
+                  <h3
+                    id={headingId}
+                    className="text-2xl font-bold mb-4"
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="text-gray-700 mb-6 flex-grow">
+                    {card.description}
+                  </p>
+                  <a
+                    href={card.href}
+                    className="btn-primary-outline text-center focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                    aria-label={`Browse ${card.title} resources`}
+                  >
+                    Browse {card.title.toLowerCase()}
+                  </a>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -14,11 +14,11 @@ export function AuditModal({ open, onClose }: { open: boolean; onClose: () => vo
   if (!open) return null;
 
   return (
-    <div role="dialog" aria-modal="true" aria-labelledby="audit-title" tabIndex={-1}>
+    <dialog open aria-modal="true" aria-labelledby="audit-title" tabIndex={-1}>
       <h2 id="audit-title">Book Your Free AI Audit</h2>
-      <button ref={firstFocusRef} aria-label="Close booking popup" onClick={onClose}>
+      <button type="button" ref={firstFocusRef} aria-label="Close booking popup" onClick={onClose}>
         Close
       </button>
-    </div>
+    </dialog>
   );
 }

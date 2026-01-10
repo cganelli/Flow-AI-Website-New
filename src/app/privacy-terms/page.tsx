@@ -26,7 +26,7 @@ export default function PrivacyTermsPage() {
       </a>
       <Header />
 
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <PrivacyTermsContent />
       </main>
 

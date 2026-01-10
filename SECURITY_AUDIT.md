@@ -2,11 +2,38 @@
 ## FlowAI Website - Comprehensive Security Assessment
 
 **Date:** January 2025  
-**Last Updated:** January 2026 (Use Cases Page Audit)  
+**Last Updated:** January 2026 (Accessibility & API hardening review)  
 **Auditor:** AI Assistant  
-**Scope:** Full codebase security review  
+**Scope:** Full codebase security review (APIs, forms, client surface, headers)  
 **Framework:** Next.js 15.5.7 (Static Export)  
-**Security Score:** 8.5/10 (improved from 6.5/10)
+**Security Score:** 8.8/10 (improved from 8.5/10)
+
+---
+
+## Latest Audit: January 2026 (Post-accessibility update)
+
+**Status:** ✅ No new critical findings. Prior critical items addressed (see “Resolved Since Last Audit”). Remaining focus is hardening headers/CSP and secret handling.  
+**Pages/Endpoints Reviewed:** `/api/contact-submit`, `/api/send-email`, shared components/forms, `Header/Footer`, `security_audit.md` scope.  
+**Automated Checks:** `npm run lint` (pass), `npx vitest run` (pass; jsdom-only `fetchPriority` warnings).  
+
+### ✅ Resolved Since Last Audit
+- Contact form XSS: Inputs now sanitized/escaped via `sanitizeContactForm` + `escapeHtml` before email templating (`src/app/api/contact-submit/route.ts`).
+- API abuse: Rate limiting (5 requests/15m per client) added to contact and send-email routes via `checkRateLimit` (`src/lib/rate-limit.ts`).
+- CSRF/origin: Origin/referer allowlist enforced on contact and send-email routes.
+- Input validation: Centralized sanitization/validation now rejects malformed/oversized inputs before processing.
+
+### ⚠️ Remaining / Recommended
+- **Security headers/CSP (HIGH):** `public/_headers` still lacks CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Add hardened defaults with whitelisted external domains (Calendly, analytics, email APIs).  
+- **Email sending (MEDIUM):** `send-email` route stubs multiple providers; ensure only one vetted provider is enabled in production, with secrets stored in env and responses sanitized. Avoid logging PII in production logs.  
+- **Secrets management (MEDIUM):** Confirm all API keys (SendGrid/Mailgun/Resend) are scoped, rotated, and never committed.  
+- **Error responses (LOW):** Keep client-facing error messages generic; ensure server logs capture stack traces only in secured log sinks.  
+- **Dependency audit (LOW):** Run `npm audit`/`pnpm audit` in CI and track with allowlist where needed.
+
+### Recommended Next Steps
+- Add `_headers` with CSP/HSTS/other headers; test locally and in staging to avoid asset blocking.  
+- Wire a single email provider and disable others in production builds; remove fallback console logging of email payloads in production.  
+- Add CI checks: dependency audit, `biome lint`, and `vitest` with reporting.  
+- Document incident response & key rotation cadence.
 
 ---
 

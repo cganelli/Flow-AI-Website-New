@@ -32,8 +32,8 @@ export function TrainingAudienceSection(props: TrainingAudienceSectionProps) {
               <div key={col.title}>
                 <h3 className="heading-md mb-4 text-white">{col.title}</h3>
                 <ul className="space-y-2 text-white">
-                  {col.bullets.map((item, index) => (
-                    <li key={index} className="flex items-start">
+                  {col.bullets.map((item) => (
+                    <li key={item} className="flex items-start">
                       <span className="text-primary mr-2">•</span>
                       <span>{item}</span>
                     </li>

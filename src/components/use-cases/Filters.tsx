@@ -133,40 +133,39 @@ function MultiSelectDropdown({
       </button>
       {isOpen && (
         <>
-          <div
+          <button
+            type="button"
             className="fixed inset-0 z-10"
             onClick={() => setIsOpen(false)}
-            aria-hidden="true"
+            aria-label="Close filters dropdown"
           />
-          <div
+          <ul
             id={dropdownId}
-            role="listbox"
             className="absolute z-20 mt-1 max-h-64 w-full overflow-auto rounded-lg border border-neutral-200 bg-white shadow-lg"
           >
             {items.map((item) => {
               const itemId = `${dropdownId}-${item.toLowerCase().replace(/\s+/g, "-")}`;
               const isSelected = selected.includes(item);
               return (
-                <label
-                  key={item}
-                  htmlFor={itemId}
-                  className="flex cursor-pointer items-center gap-3 px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 focus-within:bg-neutral-50"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <input
-                    id={itemId}
-                    type="checkbox"
-                    role="option"
-                    aria-selected={isSelected}
-                    className="h-4 w-4 rounded border-black/20 accent-[#EA3D2A] focus:outline-none focus:ring-2 focus:ring-[#EA3D2A] focus:ring-offset-1"
-                    checked={isSelected}
-                    onChange={() => onToggle(item)}
-                  />
-                  <span>{item}</span>
-                </label>
+                <li key={item}>
+                  <label
+                    htmlFor={itemId}
+                    className="flex cursor-pointer items-center gap-3 px-3 py-2 text-sm text-neutral-800 hover:bg-neutral-50 focus-within:bg-neutral-50"
+                  >
+                    <input
+                      id={itemId}
+                      type="checkbox"
+                      aria-selected={isSelected}
+                      className="h-4 w-4 rounded border-black/20 accent-[#EA3D2A] focus:outline-none focus:ring-2 focus:ring-[#EA3D2A] focus:ring-offset-1"
+                      checked={isSelected}
+                      onChange={() => onToggle(item)}
+                    />
+                    <span>{item}</span>
+                  </label>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </>
       )}
     </div>

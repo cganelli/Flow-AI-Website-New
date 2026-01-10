@@ -56,16 +56,14 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
         </header>
 
         {/* Process Steps Grid */}
-        <div
+        <ul
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16"
-          role="list"
           aria-label="Three-step AI implementation process"
         >
-          {processSteps.map((step, index) => (
-            <article
+          {processSteps.map((step) => (
+            <li
               key={step.number}
               className="text-center"
-              role="listitem"
               aria-labelledby={`${sectionId}-step-${step.number}-heading`}
             >
               {/* Step Number */}
@@ -93,7 +91,6 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
                        step.number === "2" ? "Graphic depicting the FORGE phase of AI implementation" :
                        "Image showing the FINE-TUNE process for optimizing AI systems"}
                   className="w-32 h-32 md:w-40 md:h-40"
-                  role="img"
                   loading="lazy"
                 />
               </div>
@@ -102,9 +99,9 @@ const ProcessSection = ({ sectionId = "process" }: ProcessSectionProps) => {
               <p className="text-gray text-sm md:text-base leading-relaxed">
                 {step.description}
               </p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Bottom Tagline */}
         <div className="text-center">

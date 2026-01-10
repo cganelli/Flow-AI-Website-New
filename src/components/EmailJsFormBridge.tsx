@@ -9,21 +9,21 @@ function NetlifyRegistrationMarkup() {
     <>
       {/* Contact page – has message/subject/inquiryType */}
       <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="company" />
-        <input type="tel" name="phone" />
-        <input type="text" name="subject" />
-        <input type="text" name="inquiryType" />
-        <textarea name="message" />
+        <input type="text" name="name" autoComplete="name" />
+        <input type="email" name="email" autoComplete="email" />
+        <input type="text" name="company" autoComplete="organization" />
+        <input type="tel" name="phone" autoComplete="tel" />
+        <input type="text" name="subject" autoComplete="subject" />
+        <input type="text" name="inquiryType" autoComplete="off" />
+        <textarea name="message" autoComplete="off" />
       </form>
 
       {/* Home page audit / capture form – no message */}
       <form name="audit" data-netlify="true" netlify-honeypot="bot-field" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="company" />
-        <input type="tel" name="phone" />
+        <input type="text" name="name" autoComplete="name" />
+        <input type="email" name="email" autoComplete="email" />
+        <input type="text" name="company" autoComplete="organization" />
+        <input type="tel" name="phone" autoComplete="tel" />
       </form>
     </>
   );
@@ -33,7 +33,7 @@ export default function EmailJsFormBridge() {
   useEffect(() => {
     const forms = Array.from(document.querySelectorAll('form')) as HTMLFormElement[];
 
-    forms.forEach((form) => {
+    for (const form of forms) {
       // Decide which registered form this visible form should use
       const isContact =
         !!form.querySelector('textarea[name="message"]') ||
@@ -81,7 +81,7 @@ export default function EmailJsFormBridge() {
       }
 
       // No redirect needed - we'll show inline thank you message
-    });
+    }
 
     // Function to show inline thank you message (using safe DOM manipulation instead of innerHTML)
     function showThankYouMessage(form: HTMLFormElement) {
@@ -133,7 +133,7 @@ export default function EmailJsFormBridge() {
       form.parentNode?.insertBefore(thankYouDiv, form.nextSibling);
     }
 
-    // 2) Intercept submit BEFORE React handlers and post in Netlify's expected format
+    // 2) Intercept submit AFTER React handlers and post in Netlify's expected format
     async function onSubmit(ev: SubmitEvent) {
       const form = ev.target as HTMLFormElement | null;
       if (!form || form.tagName !== 'FORM') return;
@@ -141,14 +141,13 @@ export default function EmailJsFormBridge() {
       // Only handle forms we marked for Netlify
       if (!form.hasAttribute('data-netlify')) return;
 
-      // Stop other JS handlers (like legacy JSON submits)
-      ev.stopPropagation();
-      ev.stopImmediatePropagation();
+      // Always prevent native submit to avoid Netlify redirect and rely on fetch below.
+      ev.preventDefault();
 
       // Native validation first
-      if (!form.checkValidity()) return;
-
-      ev.preventDefault();
+      if (!form.checkValidity()) {
+        return;
+      }
 
       // Build x-www-form-urlencoded body (what Netlify expects)
       const fd = new FormData(form);
@@ -175,9 +174,9 @@ export default function EmailJsFormBridge() {
       }
     }
 
-    // Use capture phase to pre-empt React onSubmit
-    document.addEventListener('submit', onSubmit as unknown as EventListener, true);
-    return () => document.removeEventListener('submit', onSubmit as unknown as EventListener, true);
+    // Use bubble phase so React onSubmit runs first (for client validation messaging)
+    document.addEventListener('submit', onSubmit as unknown as EventListener, false);
+    return () => document.removeEventListener('submit', onSubmit as unknown as EventListener, false);
   }, []);
 
   return <NetlifyRegistrationMarkup />;

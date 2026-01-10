@@ -70,11 +70,10 @@ const HeroSection = () => {
 
           {/* Statistics Cards - Row 1 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
-            {statisticsData.slice(0, 3).map((stat, index) => (
-              <div
-                key={index}
+              {statisticsData.slice(0, 3).map((stat) => (
+                <section
+                key={stat.description}
                 className="bg-white p-6 rounded-xl shadow-sm border border-gray/10 text-center"
-                role="region"
                 aria-label={stat.ariaLabel}
               >
                 <div
@@ -86,17 +85,16 @@ const HeroSection = () => {
                 <p className="text-lg font-medium">
                   {stat.description}
                 </p>
-              </div>
+                </section>
             ))}
           </div>
 
           {/* Statistics Cards - Row 2 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-10">
-            {statisticsData.slice(3, 6).map((stat, index) => (
-              <div
-                key={index + 3}
+              {statisticsData.slice(3, 6).map((stat) => (
+                <section
+                key={stat.description}
                 className="bg-white p-6 rounded-xl shadow-sm border border-gray/10 text-center"
-                role="region"
                 aria-label={stat.ariaLabel}
               >
                 <div
@@ -108,7 +106,7 @@ const HeroSection = () => {
                 <p className="text-lg font-medium">
                   {stat.description}
                 </p>
-              </div>
+                </section>
             ))}
           </div>
         </section>

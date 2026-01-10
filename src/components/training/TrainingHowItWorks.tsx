@@ -36,16 +36,14 @@ export function TrainingHowItWorks(props: TrainingHowItWorksProps) {
         </header>
 
         {/* Steps Grid - 4 columns */}
-        <div
+        <ul
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          role="list"
           aria-label="Four-step Flow AI training process"
         >
           {steps.map((step) => (
-            <article
+            <li
               key={step.number}
               className="text-center"
-              role="listitem"
               aria-labelledby={`how-it-works-step-${step.number}-heading`}
             >
               {/* Step Number */}
@@ -71,7 +69,6 @@ export function TrainingHowItWorks(props: TrainingHowItWorksProps) {
                   src={step.image}
                   alt={`Illustration for ${step.title} step in Flow AI training`}
                   className="w-24 h-24 md:w-28 md:h-28"
-                  role="img"
                   loading="lazy"
                 />
               </div>
@@ -80,9 +77,9 @@ export function TrainingHowItWorks(props: TrainingHowItWorksProps) {
               <p className="text-black text-sm md:text-base leading-relaxed">
                 {step.description}
               </p>
-            </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

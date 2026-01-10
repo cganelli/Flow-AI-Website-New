@@ -35,8 +35,8 @@ export function TrainingHero(props: TrainingHeroProps) {
             {title}
           </h1>
           <div className="space-y-2 text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-            {subtitleLines.map((line, index) => (
-              <p key={index}>{line}</p>
+            {subtitleLines.map((line) => (
+              <p key={line}>{line}</p>
             ))}
           </div>
           <div className="flex flex-wrap gap-4 justify-center">

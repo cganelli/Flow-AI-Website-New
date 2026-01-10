@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { WorkshopDetail } from "./training-types";
+import type { WorkshopDetail } from "./training-types";
 
 interface TrainingWorkshopDetailsProps {
   title: string;
@@ -40,8 +40,8 @@ export function TrainingWorkshopDetails(props: TrainingWorkshopDetailsProps) {
                     Who it is for
                   </h3>
                   <ul className="space-y-2 text-sm text-gray-700">
-                    {workshop.whoFor.map((item, index) => (
-                      <li key={index} className="flex items-start">
+                    {workshop.whoFor.map((item) => (
+                      <li key={item} className="flex items-start">
                         <span className="text-primary mr-2">•</span>
                         <span>{item}</span>
                       </li>
@@ -49,14 +49,14 @@ export function TrainingWorkshopDetails(props: TrainingWorkshopDetailsProps) {
                   </ul>
                 </div>
                 <div className="md:col-span-2 space-y-6">
-                  {workshop.learnPoints.map((section, sectionIndex) => (
-                    <div key={sectionIndex}>
+                  {workshop.learnPoints.map((section) => (
+                    <div key={section.title}>
                       <h3 className="text-sm font-semibold mb-3 text-gray-900">
                         {section.title}
                       </h3>
                       <ul className="space-y-2 text-sm text-gray-700">
-                        {section.points.map((point, pointIndex) => (
-                          <li key={pointIndex} className="flex items-start">
+                        {section.points.map((point) => (
+                          <li key={point} className="flex items-start">
                             <span className="text-primary mr-2">•</span>
                             <span>{point}</span>
                           </li>
@@ -67,8 +67,8 @@ export function TrainingWorkshopDetails(props: TrainingWorkshopDetailsProps) {
                   <div>
                     <h3 className="text-sm font-semibold mb-3 text-gray-900">Format</h3>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      {workshop.format.map((item, index) => (
-                        <li key={index} className="flex items-start">
+                      {workshop.format.map((item) => (
+                        <li key={item} className="flex items-start">
                           <span className="text-primary mr-2">•</span>
                           <span>{item}</span>
                         </li>
@@ -78,8 +78,8 @@ export function TrainingWorkshopDetails(props: TrainingWorkshopDetailsProps) {
                   <div>
                     <h3 className="text-sm font-semibold mb-3 text-gray-900">Outcomes</h3>
                     <ul className="space-y-2 text-sm text-gray-700">
-                      {workshop.outcomes.map((item, index) => (
-                        <li key={index} className="flex items-start">
+                      {workshop.outcomes.map((item) => (
+                        <li key={item} className="flex items-start">
                           <span className="text-primary mr-2">•</span>
                           <span>{item}</span>
                         </li>

@@ -71,15 +71,14 @@ const CommonSolutionsSection = () => {
 
           {/* Solution Cards - 2x2 Grid on Desktop */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {solutions.map((solution, index) => (
+            {solutions.map((solution) => (
               <article
-                key={index}
+                key={solution.title}
                 className="bg-white p-8 rounded-xl shadow-sm border border-gray/10 flex flex-col"
-                role="article"
-                aria-labelledby={`solution-${index}-heading`}
+                aria-labelledby={`solution-${solution.title}-heading`}
               >
                 <h3
-                  id={`solution-${index}-heading`}
+                  id={`solution-${solution.title}-heading`}
                   className="text-2xl font-bold mb-4"
                 >
                   {solution.title}

@@ -52,7 +52,7 @@ export default function TrainingPage() {
       </a>
       <Header />
 
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <TrainingHero {...heroContent} />
         <TrainingAudienceSection {...audienceContent} />
         <TrainingHowItWorks {...howItWorksContent} />

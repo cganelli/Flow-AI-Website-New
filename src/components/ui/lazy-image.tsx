@@ -148,6 +148,7 @@ export function LazyImage({
         >
           <div className="w-8 h-8 text-gray-400">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <title>Placeholder image icon</title>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

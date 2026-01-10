@@ -72,8 +72,8 @@ const FeaturedTrainingSection = () => {
                 </p>
 
                 <ul className="space-y-4 mb-8">
-                  {mainCard.bullets.map((bullet, index) => (
-                    <li key={index} className="flex items-start">
+                  {mainCard.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start">
                       <div className="w-6 h-6 rounded-full bg-primary mr-3 flex-shrink-0 mt-1 flex items-center justify-center">
                         <svg
                           className="w-4 h-4 text-white"
@@ -104,9 +104,9 @@ const FeaturedTrainingSection = () => {
 
             {/* Sub Cards - Stacked on right, takes 1 column */}
             <div className="lg:col-span-1 space-y-6">
-              {subCards.map((card, index) => (
+              {subCards.map((card) => (
                 <div
-                  key={index}
+                  key={card.title}
                   className="bg-white/5 rounded-xl p-6 border border-white/10"
                 >
                   <h4 className="text-2xl font-bold mb-4">
@@ -118,8 +118,8 @@ const FeaturedTrainingSection = () => {
                   </p>
 
                   <ul className="space-y-3 mb-6">
-                    {card.bullets.map((bullet, bulletIndex) => (
-                      <li key={bulletIndex} className="flex items-start">
+                    {card.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start">
                         <div className="w-5 h-5 rounded-full bg-primary mr-2 flex-shrink-0 mt-0.5 flex items-center justify-center">
                           <svg
                             className="w-3 h-3 text-white"
@@ -161,8 +161,8 @@ const FeaturedTrainingSection = () => {
               </p>
 
               <ul className="space-y-4 mb-8">
-                {mainCard.bullets.map((bullet, index) => (
-                  <li key={index} className="flex items-start">
+                {mainCard.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start">
                     <div className="w-6 h-6 rounded-full bg-primary mr-3 flex-shrink-0 mt-1 flex items-center justify-center">
                       <svg
                         className="w-4 h-4 text-white"
@@ -191,9 +191,9 @@ const FeaturedTrainingSection = () => {
             </div>
 
             {/* Sub Cards */}
-            {subCards.map((card, index) => (
+            {subCards.map((card) => (
               <div
-                key={index}
+                key={card.title}
                 className="bg-white/5 rounded-xl p-6 border border-white/10"
               >
                 <h4 className="text-2xl font-bold mb-4">
@@ -205,8 +205,8 @@ const FeaturedTrainingSection = () => {
                 </p>
 
                 <ul className="space-y-3 mb-6">
-                  {card.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex} className="flex items-start">
+                  {card.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start">
                       <div className="w-5 h-5 rounded-full bg-primary mr-2 flex-shrink-0 mt-0.5 flex items-center justify-center">
                         <svg
                           className="w-3 h-3 text-white"

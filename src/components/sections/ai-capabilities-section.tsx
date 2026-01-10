@@ -38,23 +38,20 @@ const AICapabilitiesSection = ({ sectionId = "ai-capabilities" }: AICapabilities
           </p>
         </header>
 
-        <div
+        <ul
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8"
-          role="list"
           aria-label="AI automation capabilities"
         >
-          {capabilities.map((capability, index) => (
-            <div
+          {capabilities.map((capability) => (
+            <li
               key={capability}
               className="border border-white/20 p-4 rounded-lg text-center"
-              role="listitem"
-              tabIndex={0}
               aria-label={`AI capability: ${capability}`}
             >
               {capability}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="text-center">
           <a

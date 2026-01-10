@@ -17,6 +17,7 @@ export interface SimpleContactData {
   phone?: string;
 }
 
+/* biome-ignore lint/complexity/noStaticOnlyClass: shared email service helper */
 export class EmailService {
   private static readonly SERVICE_ID = 'service_flowai';
   private static readonly TEMPLATE_ID_CONTACT = 'template_contact';
@@ -28,7 +29,7 @@ export class EmailService {
    * Initialize EmailJS
    */
   static init() {
-    emailjs.init(this.PUBLIC_KEY);
+    emailjs.init(EmailService.PUBLIC_KEY);
   }
 
   /**
@@ -39,7 +40,7 @@ export class EmailService {
       const ticketNumber = `FA-${Date.now()}`;
 
       const templateParams = {
-        to_email: this.RECIPIENT_EMAIL,
+        to_email: EmailService.RECIPIENT_EMAIL,
         from_name: data.name,
         from_email: data.email,
         company: data.company || 'Not provided',
@@ -51,7 +52,7 @@ export class EmailService {
         submitted_date: new Date().toLocaleString()
       };
 
-      await emailjs.send(this.SERVICE_ID, this.TEMPLATE_ID_CONTACT, templateParams);
+      await emailjs.send(EmailService.SERVICE_ID, EmailService.TEMPLATE_ID_CONTACT, templateParams);
 
       return { success: true, ticketNumber };
     } catch (error) {
@@ -68,7 +69,7 @@ export class EmailService {
       const ticketNumber = `FA-${Date.now()}`;
 
       const templateParams = {
-        to_email: this.RECIPIENT_EMAIL,
+        to_email: EmailService.RECIPIENT_EMAIL,
         from_name: data.name,
         from_email: data.email,
         company: data.company || 'Not provided',
@@ -77,7 +78,7 @@ export class EmailService {
         submitted_date: new Date().toLocaleString()
       };
 
-      await emailjs.send(this.SERVICE_ID, this.TEMPLATE_ID_SIMPLE, templateParams);
+      await emailjs.send(EmailService.SERVICE_ID, EmailService.TEMPLATE_ID_SIMPLE, templateParams);
 
       return { success: true, ticketNumber };
     } catch (error) {
@@ -90,6 +91,6 @@ export class EmailService {
    * Get the contact email for fallback
    */
   static getContactEmail(): string {
-    return this.RECIPIENT_EMAIL;
+    return EmailService.RECIPIENT_EMAIL;
   }
 }

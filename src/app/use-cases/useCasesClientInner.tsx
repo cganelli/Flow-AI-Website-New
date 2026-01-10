@@ -110,7 +110,7 @@ export default function UseCasesClientInner() {
             <div className="max-w-md mx-auto mb-0">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
@@ -184,23 +184,23 @@ export default function UseCasesClientInner() {
             />
           </div>
 
-          <div className="mt-8 text-sm text-neutral-700" role="status" aria-live="polite" aria-atomic="true">
+          <p className="mt-8 text-sm text-neutral-700" aria-live="polite" aria-atomic="true">
             Showing {filteredWithSearch.length} use case{filteredWithSearch.length !== 1 ? "s" : ""}
-          </div>
+          </p>
 
           {filteredWithSearch.length === 0 ? (
-            <div className="mt-8 text-center py-12" role="status">
+            <div className="mt-8 text-center py-12" aria-live="polite" aria-atomic="true">
               <p className="text-lg font-semibold text-neutral-900">No use cases match your filters</p>
               <p className="mt-2 text-sm text-neutral-600">Try adjusting your selections to see more results.</p>
             </div>
           ) : (
-            <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2" role="list">
+            <ul className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
               {filteredWithSearch.map((u) => (
-                <div key={u.slug} role="listitem" className="flex">
+                <li key={u.slug} className="flex">
                   <UseCaseCard useCase={u} />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       </section>

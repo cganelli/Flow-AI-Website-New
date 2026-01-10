@@ -13,7 +13,7 @@ describe('Home page', () => {
     // Check for basic accessibility structure
     expect(container.querySelector('main')).toBeInTheDocument();
     expect(container.querySelector('main')).toHaveAttribute('id', 'main');
-    expect(container.querySelector('main')).toHaveAttribute('role', 'main');
+    expect(container.querySelector('main')).not.toHaveAttribute('role');
     
     // Check for skip link
     expect(container.querySelector('a[href="#main"]')).toBeInTheDocument();

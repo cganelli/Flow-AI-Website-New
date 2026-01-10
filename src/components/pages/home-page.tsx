@@ -34,7 +34,7 @@ export default function HomePage() {
   }, [pathname]);
   return (
     <Layout>
-      <main id="main" role="main" aria-label="Main content">
+      <main id="main" aria-label="Main content">
         <HomepageHeroSection />
         <BenchmarkStripSection />
         <WaysToWorkSection />

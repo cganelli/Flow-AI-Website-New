@@ -42,9 +42,9 @@ const BenchmarkStripSection = () => {
 
           {/* Benchmark Cards - Horizontal Strip */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
-            {benchmarks.map((benchmark, index) => (
+            {benchmarks.map((benchmark) => (
               <article
-                key={index}
+                key={`${benchmark.metric}-${benchmark.description}`}
                 className="bg-white p-6 rounded-xl shadow-sm border border-gray/10 text-center"
                 aria-label={`${benchmark.metric} ${benchmark.description}`}
               >

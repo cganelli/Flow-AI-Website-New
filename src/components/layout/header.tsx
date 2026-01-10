@@ -15,7 +15,6 @@ const Header = () => {
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray/10"
-      role="banner"
     >
       {/* Skip to main content link */}
       <a
@@ -57,7 +56,6 @@ const Header = () => {
           <nav
             id="navigation"
             className="hidden md:flex items-center justify-center space-x-2 flex-1"
-            role="navigation"
             aria-label="Main navigation"
           >
             <Link
@@ -122,6 +120,7 @@ const Header = () => {
             aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isOpen}
             aria-controls="mobile-navigation"
+            type="button"
           >
             <svg
               className="w-6 h-6"
@@ -148,7 +147,6 @@ const Header = () => {
           >
             <nav
               className="flex flex-col space-y-4"
-              role="navigation"
               aria-label="Mobile navigation"
             >
               <Link

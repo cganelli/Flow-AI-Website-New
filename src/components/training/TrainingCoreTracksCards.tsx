@@ -7,7 +7,7 @@
  */
 
 import React from "react";
-import { TrainingTrack } from "./training-types";
+import type { TrainingTrack } from "./training-types";
 
 interface TrainingCoreTracksCardsProps {
   title: string;

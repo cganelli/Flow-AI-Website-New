@@ -8,8 +8,8 @@
 
 import React from "react";
 import { TrainingTrackCard } from "./TrainingTrackCard";
-import { TrainingTrack } from "./training-types";
-import { WorkshopDetail } from "./training-types";
+import type { TrainingTrack } from "./training-types";
+import type { WorkshopDetail } from "./training-types";
 
 interface TrainingTracksGridProps {
   coreTracks: TrainingTrack[];

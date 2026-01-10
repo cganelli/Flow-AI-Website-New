@@ -226,7 +226,7 @@ export default function FAQContent() {
       const filtered = faqData.filter(faq =>
         faq.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
         faq.answer.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        (faq.examples && faq.examples.some(example =>
+        (faq.examples?.some(example =>
           example.toLowerCase().includes(searchTerm.toLowerCase())
         ))
       );
@@ -304,7 +304,7 @@ export default function FAQContent() {
               "name": faq.question,
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": faq.answer + (faq.examples ? ' Examples include: ' + faq.examples.join(', ') : '')
+              "text": faq.answer + (faq.examples ? ` Examples include: ${faq.examples.join(', ')}` : '')
               }
             }))
           })
@@ -327,6 +327,7 @@ export default function FAQContent() {
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <title>Search icon</title>
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </div>
@@ -341,9 +342,9 @@ export default function FAQContent() {
                 />
               </div>
               {searchTerm && (
-                <p className="text-sm text-gray-500 mt-2" role="status" aria-live="polite" aria-atomic="true">
+                <output className="text-sm text-gray-500 mt-2" aria-live="polite" aria-atomic="true">
                   Found {filteredFAQs.length} result{filteredFAQs.length !== 1 ? 's' : ''}
-                </p>
+                </output>
               )}
             </div>
           </div>
@@ -381,6 +382,7 @@ export default function FAQContent() {
                   .map((faq) => (
                     <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
                       <button
+                        type="button"
                         onClick={() => toggleExpanded(faq.id)}
                         aria-expanded={expandedItems.has(faq.id)}
                         aria-controls={`faq-answer-${faq.id}`}
@@ -416,8 +418,8 @@ export default function FAQContent() {
                             )}
                             {faq.examples && (
                               <ul className="space-y-3">
-                                {faq.examples.map((example, exampleIndex) => (
-                                  <li key={exampleIndex} className="flex items-start space-x-3">
+                                {faq.examples.map((example) => (
+                                  <li key={example} className="flex items-start space-x-3">
                                     <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0" />
                                     <span className="text-gray-700 text-lg leading-relaxed">
                                       {example}
@@ -438,7 +440,7 @@ export default function FAQContent() {
                     <div id="training-faqs" className="my-12 border-t border-gray-300 scroll-mt-20">
                       <div className="relative">
                         <div className="absolute inset-0 flex items-center">
-                          <div className="w-full border-t border-gray-300"></div>
+                          <div className="w-full border-t border-gray-300" />
                         </div>
                         <div className="relative flex justify-center">
                           <h2 className="bg-background px-6 text-2xl font-bold text-gray-900">
@@ -453,6 +455,7 @@ export default function FAQContent() {
                       .map((faq) => (
                         <div key={faq.id} className="bg-white rounded-lg shadow-lg border border-gray-100 overflow-hidden">
                           <button
+                            type="button"
                             onClick={() => toggleExpanded(faq.id)}
                             aria-expanded={expandedItems.has(faq.id)}
                             aria-controls={`faq-answer-${faq.id}`}
@@ -488,8 +491,8 @@ export default function FAQContent() {
                                 )}
                                 {faq.examples && (
                                   <ul className="space-y-3">
-                                    {faq.examples.map((example, exampleIndex) => (
-                                      <li key={exampleIndex} className="flex items-start space-x-3">
+                                    {faq.examples.map((example) => (
+                                      <li key={example} className="flex items-start space-x-3">
                                         <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0" />
                                         <span className="text-gray-700 text-lg leading-relaxed">
                                           {example}

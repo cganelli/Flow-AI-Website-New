@@ -30,8 +30,8 @@ const CredibilityStripSection = () => {
           </h2>
 
           <ul className="space-y-6">
-            {credibilityPoints.map((point, index) => (
-              <li key={index} className="flex items-start">
+            {credibilityPoints.map((point) => (
+              <li key={point} className="flex items-start">
                 <div className="w-6 h-6 rounded-full bg-primary mr-4 flex-shrink-0 mt-1 flex items-center justify-center">
                   <svg
                     className="w-4 h-4 text-white"

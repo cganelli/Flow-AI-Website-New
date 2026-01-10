@@ -9,6 +9,7 @@ interface ContactFormData {
   message?: string;
 }
 
+/* biome-ignore lint/complexity/noStaticOnlyClass: grouping email helpers in one utility */
 export class DirectEmailService {
   // Send email using EmailJS (free tier, works immediately)
   static async sendContactEmail(formData: ContactFormData): Promise<{
@@ -54,14 +55,13 @@ export class DirectEmailService {
           message: 'Email sent successfully',
           ticketNumber
         };
-      } else {
-        // Fallback to a simple notification service
-        return await this.sendViaFallbackService(formData, ticketNumber);
       }
+      // Fallback to a simple notification service
+      return await DirectEmailService.sendViaFallbackService(formData, ticketNumber);
     } catch (error) {
       console.error('Direct email sending error:', error);
       // Try fallback service
-      return await this.sendViaFallbackService(formData, ticketNumber);
+      return await DirectEmailService.sendViaFallbackService(formData, ticketNumber);
     }
   }
 
@@ -129,7 +129,7 @@ Reply directly to ${formData.email} to respond to this inquiry.
     phone?: string,
     message?: string
   ): Promise<{ success: boolean; message: string; ticketNumber: string }> {
-    return this.sendContactEmail({
+    return DirectEmailService.sendContactEmail({
       name,
       email,
       company: company || '',

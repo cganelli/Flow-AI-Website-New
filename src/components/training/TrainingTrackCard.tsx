@@ -7,7 +7,7 @@
  * orange accent bar, icon circle, gray pill labels, and outcome highlight strip.
  */
 
-import React from "react";
+import type React from "react";
 
 type TrainingTrackCardProps = {
   id?: string; // Optional ID for anchor linking

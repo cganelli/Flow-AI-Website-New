@@ -11,13 +11,13 @@ expect.extend(toHaveNoViolations);
 
 // Render next/link as <a>
 vi.mock('next/link', () => ({
-  default: (props: any) => React.createElement('a', props)
+  default: (props: React.ComponentProps<'a'>) => React.createElement('a', props)
 }));
 
 // Render next/image as <img>
 vi.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => {
+  default: (props: React.ComponentProps<'img'>) => {
     const { fetchPriority, ...restProps } = props;
     return React.createElement('img', restProps);
   }

@@ -26,8 +26,8 @@ const HomepageFAQSection = () => {
           </header>
 
           <div className="space-y-8">
-            {faqs.map((faq, index) => (
-              <article key={index} className="bg-white rounded-lg p-6 shadow-sm">
+            {faqs.map((faq) => (
+              <article key={faq.question} className="bg-white rounded-lg p-6 shadow-sm">
                 <h3 className="text-xl font-semibold mb-3 text-gray-900">
                   {faq.question}
                 </h3>

@@ -43,7 +43,7 @@ const ConsultingProgramSection = () => {
           <div className="bg-white rounded-xl shadow-sm border border-gray/10 p-6 md:p-10 mb-6">
             {/* 4 Steps in a Row */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {steps.map((step, index) => {
+              {steps.map((step) => {
                 // Map step titles to SVG file names
                 const svgMap: Record<string, string> = {
                   "Frame": "Frame.svg",
@@ -62,7 +62,7 @@ const ConsultingProgramSection = () => {
                     <>
                       {parts.map((part, i) => 
                         part.toLowerCase() === keyword.toLowerCase() ? (
-                          <strong key={i} className="uppercase">{part}</strong>
+                          <strong key={`${step.title}-${part}-${i}`} className="uppercase">{part}</strong>
                         ) : (
                           part
                         )
@@ -73,10 +73,9 @@ const ConsultingProgramSection = () => {
                 
                 return (
                   <div
-                    key={index}
+                    key={step.title}
                     className="text-center"
-                    role="article"
-                    aria-labelledby={`step-${index}-heading`}
+                    aria-labelledby={`step-${step.title}-heading`}
                   >
                     <div className="mb-4 flex justify-center">
                       <img
@@ -87,7 +86,7 @@ const ConsultingProgramSection = () => {
                       />
                     </div>
                     <h4
-                      id={`step-${index}-heading`}
+                      id={`step-${step.title}-heading`}
                       className="sr-only"
                     >
                       {step.title}

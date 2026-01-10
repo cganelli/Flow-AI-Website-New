@@ -12,7 +12,7 @@ export default function ThankYou() {
         Skip to main content
       </a>
       <Header />
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <div className="container-custom py-16">
           <div className="mx-auto max-w-2xl text-center">
             <h1 className="text-3xl font-semibold mb-4">Thanks — we got it!</h1>

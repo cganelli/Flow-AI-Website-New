@@ -278,7 +278,7 @@ const SolutionsPage = () => {
       </a>
       <Header />
 
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         {/* Hero Section */}
         <section className="py-12 md:py-16 bg-background">
           <div className="container-custom">
@@ -305,104 +305,116 @@ const SolutionsPage = () => {
               </p>
 
               {/* Grid of Business Functions */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12" role="list" aria-label="AI solution categories">
-                <a
-                  href="#appointment-setting"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Appointment Setting solution"
-                >
-                  <span className="text-white font-medium">Appointment Setting</span>
-                </a>
-                <a
-                  href="#automated-marketing"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Automated Marketing solution"
-                >
-                  <span className="text-white font-medium">Automated Marketing</span>
-                </a>
-                <a
-                  href="#client-invoicing"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Client Invoicing solution"
-                >
-                  <span className="text-white font-medium">Client Invoicing</span>
-                </a>
-                <a
-                  href="#client-onboarding"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Client Onboarding solution"
-                >
-                  <span className="text-white font-medium">Client Onboarding</span>
-                </a>
-                <a
-                  href="#support-faq"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Customer Support solution"
-                >
-                  <span className="text-white font-medium">Customer Support</span>
-                </a>
-                <a
-                  href="#data-entry-processing"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Data Entry and Processing solution"
-                >
-                  <span className="text-white font-medium">Data Entry and Processing</span>
-                </a>
-                <a
-                  href="#feedback-collection"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Feedback Collection solution"
-                >
-                  <span className="text-white font-medium">Feedback Collection</span>
-                </a>
-                <a
-                  href="#financial-reporting"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Financial Reporting solution"
-                >
-                  <span className="text-white font-medium">Financial Reporting</span>
-                </a>
-                <a
-                  href="#lead-follow-up"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Lead Generation solution"
-                >
-                  <span className="text-white font-medium">Lead Generation</span>
-                </a>
-                <a
-                  href="#performance-tracking"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Performance Tracking solution"
-                >
-                  <span className="text-white font-medium">Performance Tracking</span>
-                </a>
-                <a
-                  href="#project-management"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Project Management solution"
-                >
-                  <span className="text-white font-medium">Project Management</span>
-                </a>
-                <a
-                  href="#social-media-management"
-                  className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black"
-                  role="listitem"
-                  aria-label="Social Media Management solution"
-                >
-                  <span className="text-white font-medium">Social Media Management</span>
-                </a>
-              </div>
+              <ul className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12" aria-label="AI solution categories">
+                <li>
+                  <a
+                    href="#appointment-setting"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Appointment Setting solution"
+                  >
+                    <span className="text-white font-medium">Appointment Setting</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#automated-marketing"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Automated Marketing solution"
+                  >
+                    <span className="text-white font-medium">Automated Marketing</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#client-invoicing"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Client Invoicing solution"
+                  >
+                    <span className="text-white font-medium">Client Invoicing</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#client-onboarding"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Client Onboarding solution"
+                  >
+                    <span className="text-white font-medium">Client Onboarding</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#support-faq"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Customer Support solution"
+                  >
+                    <span className="text-white font-medium">Customer Support</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#data-entry-processing"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Data Entry and Processing solution"
+                  >
+                    <span className="text-white font-medium">Data Entry and Processing</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#feedback-collection"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Feedback Collection solution"
+                  >
+                    <span className="text-white font-medium">Feedback Collection</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#financial-reporting"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Financial Reporting solution"
+                  >
+                    <span className="text-white font-medium">Financial Reporting</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#lead-follow-up"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Lead follow up and sales pipeline solution"
+                  >
+                    <span className="text-white font-medium">Lead Generation</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#performance-tracking"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Performance Tracking solution"
+                  >
+                    <span className="text-white font-medium">Performance Tracking</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#project-management"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Project Management solution"
+                  >
+                    <span className="text-white font-medium">Project Management</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#social-media-management"
+                    className="bg-black border border-white/20 rounded-lg p-6 text-center hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-black block"
+                    aria-label="Social Media Management solution"
+                  >
+                    <span className="text-white font-medium">Social Media Management</span>
+                  </a>
+                </li>
+              </ul>
 
               {/* CTA Button */}
               <div className="text-center">
@@ -478,8 +490,8 @@ const SolutionsPage = () => {
                             Good fit if
                           </h4>
                           <ul className="mt-3 space-y-1 text-sm text-neutral-900" aria-label="Good fit if">
-                            {solution.goodFitIf.map((item, itemIndex) => (
-                              <li key={itemIndex} className="flex gap-2">
+                            {solution.goodFitIf.map((item) => (
+                              <li key={`${solution.title}-fit-${item}`} className="flex gap-2">
                                 <span className="mt-[6px] h-[6px] w-[6px] rounded-full bg-[#EA3D2A]" aria-hidden="true" />
                                 <span>{item}</span>
                               </li>
@@ -491,8 +503,8 @@ const SolutionsPage = () => {
                             What we set up
                           </h4>
                           <ul className="mt-3 space-y-1 text-sm text-neutral-900" aria-label="What we set up">
-                            {solution.whatWeSetUp.map((item, itemIndex) => (
-                              <li key={itemIndex} className="flex gap-2">
+                            {solution.whatWeSetUp.map((item) => (
+                              <li key={`${solution.title}-setup-${item}`} className="flex gap-2">
                                 <span className="mt-[6px] h-[6px] w-[6px] rounded-full bg-[#EA3D2A]" aria-hidden="true" />
                                 <span>{item}</span>
                               </li>
@@ -508,8 +520,8 @@ const SolutionsPage = () => {
                             What this looks like in your business
                           </h4>
                           <ul className="mt-3 space-y-1 text-sm text-neutral-900" aria-label="What this looks like in your business">
-                            {solution.whatThisLooksLike.map((item, itemIndex) => (
-                              <li key={itemIndex} className="flex gap-2">
+                            {solution.whatThisLooksLike.map((item) => (
+                              <li key={`${solution.title}-looks-${item}`} className="flex gap-2">
                                 <span className="mt-[6px] h-[6px] w-[6px] rounded-full bg-[#EA3D2A]" aria-hidden="true" />
                                 <span>{item}</span>
                               </li>

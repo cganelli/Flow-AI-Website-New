@@ -37,7 +37,7 @@ export default function ResourcesPage() {
       </a>
       <Header />
 
-      <main id="main" role="main" className="pt-20">
+      <main id="main" className="pt-20">
         <Suspense fallback={<div className="container-custom py-16">Loading resources...</div>}>
           <ResourcesContent />
         </Suspense>
