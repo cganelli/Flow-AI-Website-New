@@ -99,6 +99,15 @@ export const resources: Resource[] = [
     url: 'https://youtu.be/MpxyqZHRcFs',
   },
   {
+    id: 'lesson-10-manager-strategy-planning',
+    title: 'Lesson 10: Manager Strategy Planning',
+    description: "What you'll learn: Draft quarterly OKRs fast (using the ROICF framework), run a skills gap analysis for your team, and build a headcount business case with ROI math your VP respects.",
+    typeLabel: 'Lesson',
+    category: 'lessons',
+    format: 'Video',
+    url: 'https://youtu.be/_W5LfIvvprM',
+  },
+  {
     id: 'flow-ai-consultancy-blueprint',
     title: 'Flow AI Consultancy Blueprint',
     description: 'Purpose - Design your AI consultancy offers, pricing, and delivery model so you can start selling and delivering AI projects. Built for aspiring consultants and solo operators.',
@@ -258,6 +267,15 @@ export const resources: Resource[] = [
     category: 'packs-templates',
     format: 'Google Doc',
     url: 'https://docs.google.com/document/d/1ZeXBMpdOa2h0i4rt2gXs-QqK1oH3GOWgYGCJuYcOldE/edit?usp=sharing',
+  },
+  {
+    id: 'flow-ai-manager-strategy-planning-pack',
+    title: 'Flow AI Manager Strategy Planning Pack',
+    description: 'The Flow AI Manager Strategy Planning Pack includes 55 prompts to use AI as a strategic partner for everything from writing quarterly OKRs to building an ROI analysis for hiring.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Google Doc',
+    url: 'https://docs.google.com/document/d/1yzgm77oy48PrXKV7zB2jQpb4VsLRYZO1ETjiES5gGsE/edit?usp=sharing',
   },
 ]
 
