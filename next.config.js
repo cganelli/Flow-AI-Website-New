@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',           // replaces `next export`
+  output: "export", // static export for Netlify publish dir `out`
   images: { unoptimized: true }, // ensures next/image works in static export
   trailingSlash: true,        // optional: makes Netlify-style static hosting happier
   webpack: (config) => {

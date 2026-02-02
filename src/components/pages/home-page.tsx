@@ -32,6 +32,7 @@ export default function HomePage() {
       }
     }
   }, [pathname]);
+
   return (
     <Layout>
       <main id="main" aria-label="Main content">

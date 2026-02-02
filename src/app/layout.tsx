@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "AI consulting services that design and implement AI strategy, agents, and workflows to drive measurable results.",
     description:
       "Flow AI helps small businesses automate repetitive tasks, boost productivity, and scale operations using smart, customized AI workflows. Discover how we deliver results through a simple 3-step process.",
-    url: "https://flowai.com",
+    url: "https://thisisflowai.com/",
     siteName: "Flow AI",
     images: [
       {
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     google: "your-google-verification-code",
   },
   alternates: {
-    canonical: "https://flowai.com",
+    canonical: "https://thisisflowai.com/",
   },
   category: "Technology",
   classification: "Business Software",
@@ -106,10 +106,10 @@ export default function RootLayout({
     name: "Flow AI",
     alternateName: "FlowAI",
     description: "AI consultancy, implementation, and support services to help businesses of all sizes streamline operations and achieve lasting impact",
-    url: "https://flowai.com",
+    url: "https://thisisflowai.com/",
     logo: {
       "@type": "ImageObject",
-      url: "https://flowai.com/images/Flow_AI_Horizontal_Logo.png",
+      url: "https://thisisflowai.com/images/Flow_AI_Horizontal_Logo.png",
       width: "200",
       height: "50"
     },

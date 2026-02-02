@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/contact`,
+      url: `${BASE_URL}/contact/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9, // High priority for conversion page
@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/faq`,
+      url: `${BASE_URL}/faq/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for SEO and user support
@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/resources`,
+      url: `${BASE_URL}/resources/`,
       lastModified: currentDate,
       changeFrequency: 'weekly', // Resources may be updated frequently
       priority: 0.8, // Important for content discovery
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/use-cases`,
+      url: `${BASE_URL}/use-cases/`,
       lastModified: currentDate,
       changeFrequency: 'weekly', // Use cases may be updated frequently
       priority: 0.8, // Important for content discovery
@@ -65,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/training`,
+      url: `${BASE_URL}/training/`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for lead generation
@@ -76,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
-      url: `${BASE_URL}/privacy-terms`,
+      url: `${BASE_URL}/privacy-terms/`,
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently
       priority: 0.3, // Lower priority for legal pages

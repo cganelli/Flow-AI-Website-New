@@ -47,7 +47,6 @@ const Header = () => {
                 }}
                 loading="eager"
                 decoding="async"
-                fetchPriority="high"
               />
             </div>
           </Link>
