@@ -42,6 +42,14 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function encodeNetlifyForm(data: Record<string, string>) {
+  const formPayload = new URLSearchParams();
+  for (const [key, value] of Object.entries(data)) {
+    formPayload.append(key, value);
+  }
+  return formPayload.toString();
+}
+
 export function LeadMagnetWizard() {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(INTRO_STEP);
   const [answers, setAnswers] = useState<LeadAnswers>(defaultAnswers);
@@ -151,28 +159,31 @@ export function LeadMagnetWizard() {
   };
 
   const submitLead = async (eventType: LeadEventType, emailOverride?: string) => {
-    const payload = {
+    const leadEmail = emailOverride ?? email;
+    const payload: Record<string, string> = {
+      "form-name": "lead-magnet",
       event_type: eventType,
-      email: emailOverride ?? email,
-      answers: {
-        q1: answers.q1Role,
-        q2: answers.q2Goal,
-        q3: answers.q3Pileup,
-        q4: answers.q4Start,
-        q5: answers.q5Lost,
-      },
+      email: leadEmail,
+      q1: answers.q1Role,
+      q2: answers.q2Goal,
+      q3: answers.q3Pileup,
+      q4: answers.q4Start,
+      q5: answers.q5Lost,
       plan_key: plan.key,
       plan_name: plan.name,
-      createdAt: new Date().toISOString(),
       pagePath: "/lead-magnet",
-      utm,
+      utm_source: utm.source ?? "",
+      utm_medium: utm.medium ?? "",
+      utm_campaign: utm.campaign ?? "",
+      utm_content: utm.content ?? "",
+      utm_term: utm.term ?? "",
+      createdAt: new Date().toISOString(),
     };
     try {
-      await fetch("/api/leads", {
+      await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-        keepalive: true,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encodeNetlifyForm(payload),
       });
     } catch (error) {
       console.error("Lead submit failed:", error);
@@ -509,6 +520,26 @@ export function LeadMagnetWizard() {
 
   return (
     <div className="min-h-screen bg-base-100 px-4 py-10">
+      <form name="lead-magnet" data-netlify="true" netlify-honeypot="bot-field" hidden>
+        <input type="hidden" name="form-name" value="lead-magnet" />
+        <input type="text" name="bot-field" />
+        <input type="text" name="event_type" />
+        <input type="email" name="email" />
+        <input type="text" name="q1" />
+        <input type="text" name="q2" />
+        <input type="text" name="q3" />
+        <input type="text" name="q4" />
+        <input type="text" name="q5" />
+        <input type="text" name="plan_key" />
+        <input type="text" name="plan_name" />
+        <input type="text" name="pagePath" />
+        <input type="text" name="utm_source" />
+        <input type="text" name="utm_medium" />
+        <input type="text" name="utm_campaign" />
+        <input type="text" name="utm_content" />
+        <input type="text" name="utm_term" />
+        <input type="text" name="createdAt" />
+      </form>
       <div className="mx-auto w-full max-w-[680px]">
         <div className="card bg-base-200 shadow-sm">
           <div className="card-body gap-6">
