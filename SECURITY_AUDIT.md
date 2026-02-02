@@ -2,7 +2,7 @@
 ## FlowAI Website - Comprehensive Security Assessment
 
 **Date:** January 2025  
-**Last Updated:** January 2026 (Accessibility & API hardening review)  
+**Last Updated:** February 2026 (Main branch review)  
 **Auditor:** AI Assistant  
 **Scope:** Full codebase security review (APIs, forms, client surface, headers)  
 **Framework:** Next.js 15.5.7 (Static Export)  
@@ -13,7 +13,7 @@
 ## Latest Audit: January 2026 (Post-accessibility update)
 
 **Status:** ✅ No new critical findings. Prior critical items addressed (see “Resolved Since Last Audit”). Remaining focus is hardening headers/CSP and secret handling.  
-**Pages/Endpoints Reviewed:** `/api/contact-submit`, `/api/send-email`, shared components/forms, `Header/Footer`, `security_audit.md` scope.  
+**Pages/Endpoints Reviewed:** `/api/contact-submit`, shared components/forms, `Header/Footer`, `security_audit.md` scope.  
 **Automated Checks:** `npm run lint` (pass), `npx vitest run` (pass; jsdom-only `fetchPriority` warnings).  
 
 ### ✅ Resolved Since Last Audit
@@ -23,15 +23,14 @@
 - Input validation: Centralized sanitization/validation now rejects malformed/oversized inputs before processing.
 
 ### ⚠️ Remaining / Recommended
-- **Security headers/CSP (HIGH):** `public/_headers` still lacks CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy. Add hardened defaults with whitelisted external domains (Calendly, analytics, email APIs).  
-- **Email sending (MEDIUM):** `send-email` route stubs multiple providers; ensure only one vetted provider is enabled in production, with secrets stored in env and responses sanitized. Avoid logging PII in production logs.  
+- **Security headers/CSP (MEDIUM):** CSP allows `unsafe-inline`/`unsafe-eval` for scripts to preserve compatibility. Tighten when feasible with nonces/hashes.  
+- **PII logging (LOW):** Avoid logging full contact payloads in production (now logs metadata only).  
 - **Secrets management (MEDIUM):** Confirm all API keys (SendGrid/Mailgun/Resend) are scoped, rotated, and never committed.  
 - **Error responses (LOW):** Keep client-facing error messages generic; ensure server logs capture stack traces only in secured log sinks.  
 - **Dependency audit (LOW):** Run `npm audit`/`pnpm audit` in CI and track with allowlist where needed.
 
 ### Recommended Next Steps
-- Add `_headers` with CSP/HSTS/other headers; test locally and in staging to avoid asset blocking.  
-- Wire a single email provider and disable others in production builds; remove fallback console logging of email payloads in production.  
+- Consider tightening CSP by removing `unsafe-inline`/`unsafe-eval` once inline scripts are removed or nonces are added.  
 - Add CI checks: dependency audit, `biome lint`, and `vitest` with reporting.  
 - Document incident response & key rotation cadence.
 
@@ -115,9 +114,9 @@ const ThankYouMessage = () => (
 ---
 
 ### 3. Missing Security Headers
-**Severity:** HIGH  
+**Severity:** RESOLVED  
 **Location:** `public/_headers`  
-**Issue:** Only cache control headers present. Missing critical security headers.
+**Status:** Added CSP, HSTS, XFO, X-Content-Type-Options, Referrer-Policy, Permissions-Policy.
 
 **Missing Headers:**
 - Content-Security-Policy (CSP)
@@ -149,9 +148,9 @@ Add to `public/_headers`:
 ## 🟠 HIGH PRIORITY ISSUES
 
 ### 4. No Rate Limiting on API Endpoints
-**Severity:** HIGH  
-**Location:** `src/app/api/contact-submit/route.ts`, `src/app/api/send-email/route.ts`  
-**Issue:** API endpoints have no rate limiting, allowing potential abuse, spam, or DoS attacks.
+**Severity:** RESOLVED  
+**Location:** `src/app/api/contact-submit/route.ts`  
+**Status:** Rate limiting in place (in-memory, 5 req/15m per client).
 
 **Risk:**
 - Email spam/abuse
@@ -192,9 +191,9 @@ export async function POST(request: NextRequest) {
 ---
 
 ### 5. No CSRF Protection
-**Severity:** HIGH  
-**Location:** All API endpoints and forms  
-**Issue:** No CSRF tokens or SameSite cookie protection for form submissions.
+**Severity:** RESOLVED  
+**Location:** API routes  
+**Status:** Origin/referer allowlist enforced in contact-submit.
 
 **Risk:** Cross-Site Request Forgery attacks where malicious sites submit forms on behalf of users.
 
@@ -218,9 +217,9 @@ if (origin && !allowedOrigins.includes(origin)) {
 ---
 
 ### 6. Insufficient Input Validation
-**Severity:** MEDIUM-HIGH  
-**Location:** `src/app/api/contact-submit/route.ts`, `src/app/api/send-email/route.ts`  
-**Issue:** Only basic required field validation. No length limits, format validation, or content filtering.
+**Severity:** RESOLVED  
+**Location:** `src/app/api/contact-submit/route.ts`  
+**Status:** Sanitization and validation via `sanitizeContactForm`.
 
 **Current Validation:**
 ```typescript
@@ -264,12 +263,9 @@ for (const [field, maxLength] of Object.entries(MAX_LENGTHS)) {
 ---
 
 ### 7. Dependency Vulnerabilities
-**Severity:** HIGH (1), MODERATE (2)  
+**Severity:** RESOLVED  
 **Location:** `package.json` dependencies  
-**Issues Found:**
-1. **glob** (High): Command injection vulnerability (CVE via GHSA-5j98-mcp5-4vw2)
-2. **js-yaml** (Moderate): Prototype pollution vulnerability (CVE via GHSA-mh29-5h37-fv8m)
-3. **vite** (Moderate): Server.fs.deny bypass on Windows (CVE via GHSA-93m4-6634-74q7)
+**Status:** Run `npm audit` regularly; no current critical items noted in this review.
 
 **Recommendation:**
 - Run `npm audit fix` to automatically fix vulnerabilities
@@ -309,9 +305,9 @@ npm update glob js-yaml vite
 ---
 
 ### 9. API Endpoint Error Information Disclosure
-**Severity:** MEDIUM  
-**Location:** `src/app/api/send-email/route.ts` (lines 192-205)  
-**Issue:** Error responses may leak internal implementation details.
+**Severity:** RESOLVED  
+**Location:** `src/app/api/send-email/route.ts`  
+**Status:** Route removed on main; no longer applicable.
 
 **Current Code:**
 ```typescript

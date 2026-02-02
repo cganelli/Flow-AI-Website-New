@@ -167,9 +167,13 @@ Reply directly to ${formData.email} to respond to this inquiry.
       `
     };
 
-    // For now, we'll log the email content and return success
-    // In production, you would send this via your preferred email service
-    console.log('Email would be sent:', emailContent);
+    // Avoid logging PII in production logs; record only ticket metadata.
+    console.log('Contact form received', {
+      ticketNumber,
+      inquiryType: formData.inquiryType || 'General Inquiry',
+      subject: formData.subject || 'Contact Form Submission',
+      submittedAt: new Date().toISOString(),
+    });
 
     // Simulate successful email sending
     await new Promise(resolve => setTimeout(resolve, 500));
