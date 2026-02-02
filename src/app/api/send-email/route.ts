@@ -9,6 +9,17 @@ interface EmailData {
   text: string;
 }
 
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function safeString(value: unknown, maxLength: number): string {
+  if (typeof value !== 'string') {
+    return '';
+  }
+  return value.trim().slice(0, maxLength);
+}
+
 // Email service providers
 
 // SendGrid integration
@@ -143,9 +154,7 @@ async function sendViaResend(emailData: EmailData): Promise<{ success: boolean; 
 async function sendViaSMTP(emailData: EmailData): Promise<{ success: boolean; messageId?: string; error?: string }> {
     // This would require nodemailer package for server-side SMTP
     // For now, we'll return a simulated success for development
-    console.log('SMTP fallback - Email would be sent:', {
-      to: emailData.to,
-      subject: emailData.subject,
+    console.log('SMTP fallback - Email would be sent', {
       timestamp: new Date().toISOString()
     });
 
@@ -164,7 +173,9 @@ function validateOrigin(request: NextRequest): boolean {
     'https://thisisflowai.com',
     'https://www.thisisflowai.com',
     'http://localhost:3000',
-    'http://127.0.0.1:3000',
+  'http://127.0.0.1:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3001',
   ];
   
   if (origin) {
@@ -182,7 +193,7 @@ export async function POST(request: NextRequest) {
   try {
     // Rate limiting: 5 requests per 15 minutes per IP
     const clientId = getClientIdentifier(request);
-    const rateLimit = checkRateLimit(clientId, 5, 15 * 60 * 1000);
+    const rateLimit = await checkRateLimit(clientId, 5, 15 * 60 * 1000);
     
     if (!rateLimit.allowed) {
       return NextResponse.json(
@@ -211,7 +222,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const emailData: EmailData = await request.json();
+    const apiKey = process.env.EMAIL_API_KEY;
+    const requireApiKey = process.env.NODE_ENV === 'production';
+    if (requireApiKey && !apiKey) {
+      return NextResponse.json(
+        { success: false, error: 'EMAIL_API_KEY not configured' },
+        { status: 500 }
+      );
+    }
+    if (apiKey) {
+      const headerKey = request.headers.get('x-api-key');
+      const bearer = request.headers.get('authorization')?.replace('Bearer ', '');
+      const providedKey = headerKey || bearer;
+      if (!providedKey || providedKey !== apiKey) {
+        return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+      }
+    }
+
+    const rawData: EmailData = await request.json();
+    const emailData: EmailData = {
+      to: safeString(rawData.to, 254),
+      cc: safeString(rawData.cc, 254) || undefined,
+      subject: safeString(rawData.subject, 200),
+      html: safeString(rawData.html, 20000),
+      text: safeString(rawData.text, 20000),
+    };
 
     // Validate required fields
     if (!emailData.to || !emailData.subject || !emailData.html || !emailData.text) {
@@ -221,13 +256,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Try email providers in order of preference
-    const providers = [
-      { name: 'SendGrid', method: sendViaSendGrid },
-      { name: 'Resend', method: sendViaResend },
-      { name: 'Mailgun', method: sendViaMailgun },
-      { name: 'SMTP', method: sendViaSMTP }
+    if (!isValidEmail(emailData.to)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid recipient email' },
+        { status: 400 }
+      );
+    }
+
+    if (emailData.cc && !isValidEmail(emailData.cc)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid cc email' },
+        { status: 400 }
+      );
+    }
+
+    // Select providers based on env flag; default to SendGrid -> Resend -> Mailgun -> SMTP
+    const providerEnv = process.env.EMAIL_PROVIDER?.toLowerCase();
+    const allProviders = [
+      { name: 'sendgrid', method: sendViaSendGrid },
+      { name: 'resend', method: sendViaResend },
+      { name: 'mailgun', method: sendViaMailgun },
+      { name: 'smtp', method: sendViaSMTP }
     ];
+    const providers =
+      providerEnv && allProviders.some((p) => p.name === providerEnv)
+        ? allProviders.filter((p) => p.name === providerEnv)
+        : allProviders;
 
     let lastError = '';
 

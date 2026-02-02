@@ -23,6 +23,8 @@ function validateOrigin(request: NextRequest): boolean {
     'https://www.thisisflowai.com',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3001',
   ];
   
   // If origin is present, validate it
@@ -43,7 +45,7 @@ export async function POST(request: NextRequest) {
   try {
     // Rate limiting: 5 requests per 15 minutes per IP
     const clientId = getClientIdentifier(request);
-    const rateLimit = checkRateLimit(clientId, 5, 15 * 60 * 1000);
+    const rateLimit = await checkRateLimit(clientId, 5, 15 * 60 * 1000);
     
     if (!rateLimit.allowed) {
       return NextResponse.json(

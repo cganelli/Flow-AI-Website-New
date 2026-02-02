@@ -1,7 +1,10 @@
 /**
- * Simple in-memory rate limiting utility
- * For production, consider using Redis-based rate limiting (e.g., @upstash/ratelimit)
+ * Rate limiting utility with optional Upstash-backed storage.
+ * Falls back to in-memory for local development.
  */
+
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 interface RateLimitEntry {
   count: number;
@@ -9,18 +12,35 @@ interface RateLimitEntry {
 }
 
 // In-memory store (clears on server restart)
-// For production with multiple instances, use Redis
 const rateLimitStore = new Map<string, RateLimitEntry>();
 
-// Clean up expired entries every 5 minutes
-setInterval(() => {
-  const now = Date.now();
-  for (const [key, entry] of rateLimitStore.entries()) {
-    if (entry.resetTime < now) {
-      rateLimitStore.delete(key);
-    }
+let lastCleanup = 0;
+const cleanupIntervalMs = 5 * 60 * 1000;
+
+const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;
+const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+const hasUpstash = Boolean(upstashUrl && upstashToken);
+let upstashLimiter: Ratelimit | null = null;
+
+function getUpstashLimiter(maxRequests: number, windowMs: number): Ratelimit | null {
+  if (!hasUpstash) {
+    return null;
   }
-}, 5 * 60 * 1000);
+  if (!upstashLimiter) {
+    const redis = new Redis({
+      url: upstashUrl as string,
+      token: upstashToken as string,
+    });
+    const windowSeconds = Math.max(1, Math.ceil(windowMs / 1000));
+    upstashLimiter = new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(maxRequests, `${windowSeconds} s`),
+      analytics: true,
+      prefix: "flowai_rl",
+    });
+  }
+  return upstashLimiter;
+}
 
 /**
  * Simple rate limiter
@@ -29,12 +49,30 @@ setInterval(() => {
  * @param windowMs - Time window in milliseconds
  * @returns true if request is allowed, false if rate limit exceeded
  */
-export function checkRateLimit(
+export async function checkRateLimit(
   identifier: string,
   maxRequests = 5,
   windowMs = 15 * 60 * 1000 // 15 minutes default
-): { allowed: boolean; remaining: number; resetAt: number } {
+): Promise<{ allowed: boolean; remaining: number; resetAt: number }> {
+  const upstash = getUpstashLimiter(maxRequests, windowMs);
+  if (upstash) {
+    const result = await upstash.limit(identifier);
+    return {
+      allowed: result.success,
+      remaining: result.remaining,
+      resetAt: result.reset,
+    };
+  }
+
   const now = Date.now();
+  if (now - lastCleanup > cleanupIntervalMs) {
+    for (const [key, entry] of rateLimitStore.entries()) {
+      if (entry.resetTime < now) {
+        rateLimitStore.delete(key);
+      }
+    }
+    lastCleanup = now;
+  }
   const entry = rateLimitStore.get(identifier);
 
   if (!entry || entry.resetTime < now) {
