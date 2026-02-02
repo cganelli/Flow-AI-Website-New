@@ -16,11 +16,17 @@
 **Pages/Endpoints Reviewed:** `/api/contact-submit`, shared components/forms, `Header/Footer`, `security_audit.md` scope.  
 **Automated Checks:** `npm run lint` (pass), `npx vitest run` (pass; jsdom-only `fetchPriority` warnings).  
 
+### February 2026 Main Branch Addendum
+- Removed unused `/api/send-email` endpoint on `main`.
+- Added HSTS to `public/_headers`.
+- Contact form logging now avoids full payloads (logs metadata only).
+
 ### ✅ Resolved Since Last Audit
 - Contact form XSS: Inputs now sanitized/escaped via `sanitizeContactForm` + `escapeHtml` before email templating (`src/app/api/contact-submit/route.ts`).
-- API abuse: Rate limiting (5 requests/15m per client) added to contact and send-email routes via `checkRateLimit` (`src/lib/rate-limit.ts`).
-- CSRF/origin: Origin/referer allowlist enforced on contact and send-email routes.
+- API abuse: Rate limiting (5 requests/15m per client) added to contact-submit route via `checkRateLimit` (`src/lib/rate-limit.ts`).
+- CSRF/origin: Origin/referer allowlist enforced on contact-submit route.
 - Input validation: Centralized sanitization/validation now rejects malformed/oversized inputs before processing.
+- Email endpoint removed: `/api/send-email` removed from `main` (Netlify Forms used for public submissions).
 
 ### ⚠️ Remaining / Recommended
 - **Security headers/CSP (MEDIUM):** CSP allows `unsafe-inline`/`unsafe-eval` for scripts to preserve compatibility. Tighten when feasible with nonces/hashes.  
@@ -37,6 +43,7 @@
 ---
 
 ## 🔴 CRITICAL ISSUES
+**Note:** The sections below include historical findings from prior audits. See the February 2026 addendum and “Resolved Since Last Audit” for current status.
 
 ### 1. XSS Vulnerability in Contact Form Email Generation
 **Severity:** HIGH  
