@@ -12,6 +12,13 @@ npm install
 npm run dev
 ```
 
+## 🌐 Environment Variables (Netlify)
+
+Add these in Netlify: Site settings → Build & deploy → Environment.
+
+- `NEXT_PUBLIC_CALENDLY_URL` (required): Calendly booking link used by `/lead-magnet`.
+- `LEAD_WEBHOOK_URL` (optional): If set, lead data is POSTed to this webhook; otherwise payloads are logged server-side.
+
 ## 🧪 Testing
 
 ```bash
