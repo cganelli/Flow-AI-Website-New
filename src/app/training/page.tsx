@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     "team AI training"
   ],
   alternates: {
-    canonical: "https://flowai.com/training",
+    canonical: "https://thisisflowai.com/training/",
   },
   robots: {
     index: true,

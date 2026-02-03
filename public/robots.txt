@@ -12,9 +12,9 @@ Disallow: /private/
 
 # Allow important pages
 Allow: /
-Allow: /contact
-Allow: /faq
-Allow: /privacy-terms
+Allow: /contact/
+Allow: /faq/
+Allow: /privacy-terms/
 
 # Crawl delay (optional)
 Crawl-delay: 1

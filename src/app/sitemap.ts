@@ -7,82 +7,107 @@ const BASE_URL = process.env.SITE_URL ?? 'https://thisisflowai.com'
 export default function sitemap(): MetadataRoute.Sitemap {
   const currentDate = new Date().toISOString()
 
+  const baseUrl = BASE_URL.endsWith('/') ? BASE_URL.slice(0, -1) : BASE_URL;
+  const withSlash = (path: string) => `${baseUrl}${path}/`;
+
   return [
     {
-      url: BASE_URL,
+      url: `${baseUrl}/`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 1.0,
       // Include specific last modified dates for better SEO
       alternates: {
         languages: {
-          'en-US': BASE_URL,
+          'en-US': `${baseUrl}/`,
         },
       },
     },
     {
-      url: `${BASE_URL}/contact`,
+      url: withSlash('/contact'),
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.9, // High priority for conversion page
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/contact`,
+          'en-US': withSlash('/contact'),
         },
       },
     },
     {
-      url: `${BASE_URL}/faq`,
+      url: withSlash('/faq'),
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for SEO and user support
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/faq`,
+          'en-US': withSlash('/faq'),
         },
       },
     },
     {
-      url: `${BASE_URL}/resources`,
+      url: withSlash('/resources'),
       lastModified: currentDate,
       changeFrequency: 'weekly', // Resources may be updated frequently
       priority: 0.8, // Important for content discovery
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/resources`,
+          'en-US': withSlash('/resources'),
         },
       },
     },
     {
-      url: `${BASE_URL}/use-cases`,
+      url: withSlash('/use-cases'),
       lastModified: currentDate,
       changeFrequency: 'weekly', // Use cases may be updated frequently
       priority: 0.8, // Important for content discovery
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/use-cases`,
+          'en-US': withSlash('/use-cases'),
         },
       },
     },
     {
-      url: `${BASE_URL}/training`,
+      url: withSlash('/training'),
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8, // Important for lead generation
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/training`,
+          'en-US': withSlash('/training'),
         },
       },
     },
     {
-      url: `${BASE_URL}/privacy-terms`,
+      url: withSlash('/solutions'),
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'en-US': withSlash('/solutions'),
+        },
+      },
+    },
+    {
+      url: withSlash('/book-call'),
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          'en-US': withSlash('/book-call'),
+        },
+      },
+    },
+    {
+      url: withSlash('/privacy-terms'),
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently
       priority: 0.3, // Lower priority for legal pages
       alternates: {
         languages: {
-          'en-US': `${BASE_URL}/privacy-terms`,
+          'en-US': withSlash('/privacy-terms'),
         },
       },
     },

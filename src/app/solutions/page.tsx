@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Flow AI solutions"
   ],
   alternates: {
-    canonical: "https://flowai.com/solutions",
+    canonical: "https://thisisflowai.com/solutions/",
   },
   robots: {
     index: true,

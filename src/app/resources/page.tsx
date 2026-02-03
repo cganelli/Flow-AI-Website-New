@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     "AI for Gen X"
   ],
   alternates: {
-    canonical: "https://flowai.com/resources",
+    canonical: "https://thisisflowai.com/resources/",
   },
   robots: {
     index: true,

@@ -5,11 +5,11 @@ export function HomePageStructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Flow AI",
-    url: "https://flowai.com",
+  url: "https://thisisflowai.com/",
     description: "AI automation solutions for small businesses to boost productivity and cut costs",
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://flowai.com/search?q={search_term_string}",
+    target: "https://thisisflowai.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   };
@@ -22,7 +22,7 @@ export function HomePageStructuredData() {
     provider: {
       "@type": "Organization",
       name: "Flow AI",
-      url: "https://flowai.com"
+    url: "https://thisisflowai.com/"
     },
     serviceType: "Business Process Automation",
     areaServed: {
@@ -54,7 +54,7 @@ export function HomePageStructuredData() {
     "@type": "LocalBusiness",
     name: "Flow AI",
     description: "AI automation solutions for small businesses",
-    url: "https://flowai.com",
+  url: "https://thisisflowai.com/",
     telephone: "+1-508-205-9941",
     email: "carissa@thisisflowai.com",
     address: {
