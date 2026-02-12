@@ -24,6 +24,7 @@ function NetlifyRegistrationMarkup() {
         <input type="email" name="email" autoComplete="email" />
         <input type="text" name="company" autoComplete="organization" />
         <input type="tel" name="phone" autoComplete="tel" />
+        <input type="text" name="subject" autoComplete="subject" />
       </form>
     </>
   );
@@ -35,9 +36,10 @@ export default function EmailJsFormBridge() {
 
     for (const form of forms) {
       // Decide which registered form this visible form should use
+      // Contact forms have message textarea or inquiryType field
+      // Subject field can exist in both, so don't use it for detection
       const isContact =
         !!form.querySelector('textarea[name="message"]') ||
-        !!form.querySelector('[name="subject"]') ||
         !!form.querySelector('[name="inquiryType"]');
       const targetName = isContact ? 'contact' : 'audit';
 

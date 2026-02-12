@@ -171,6 +171,8 @@ const ContactCaptureForm = ({
         noValidate
         aria-label="Contact form to get your free AI audit"
       >
+        {/* Hidden subject field for Netlify Forms email subject */}
+        <input type="hidden" name="subject" value="AI Starter Kit" />
         <div>
           <label htmlFor={`${formId}-name`} className="sr-only">
             Full Name
