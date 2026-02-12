@@ -226,6 +226,15 @@ export const resources: Resource[] = [
     url: 'https://docs.google.com/document/d/16DUTzxT39E6sjA7jGy83a5w5LPTqLj1n/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
   },
   {
+    id: 'flow-ai-guardrails-for-work',
+    title: 'Flow AI Guardrails for Work',
+    description: 'A guide on using AI on real work without leaking data, breaking trust, or skipping human judgment.',
+    typeLabel: 'Pack',
+    category: 'packs-templates',
+    format: 'Google Doc',
+    url: 'https://docs.google.com/document/d/1oB7m6p599NeZc8_n6oN2NuQUMwpl8zaqajUumdXRsV8/edit?usp=sharing',
+  },
+  {
     id: 'flow-ai-writing-pack',
     title: 'Flow AI Writing Pack',
     description: 'Custom writing prompts for emails, updates, announcements, and "boring but important" business writing.',
