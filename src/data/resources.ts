@@ -214,7 +214,7 @@ export const resources: Resource[] = [
     typeLabel: 'Pack',
     category: 'packs-templates',
     format: 'Link',
-    url: 'https://docs.google.com/document/d/1G8K0Rn8OBt5qAprD-YoxLP4C3zb9PwmY_wS7vwcRgn0M/edit?usp=sharing',
+    url: 'https://docs.google.com/document/d/1s9ovJnoAt5qAprD-YoxLP4C3zb9PwmY_wS7vwcRgn0M/edit?usp=sharing',
   },
   {
     id: 'flow-ai-guardrails-verification-pack',
@@ -223,7 +223,7 @@ export const resources: Resource[] = [
     typeLabel: 'Pack',
     category: 'packs-templates',
     format: 'Link',
-    url: 'https://docs.google.com/document/d/1EiKXxDcy1oWTbJMsh-ptutDav5CtQkW7/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
+    url: 'https://docs.google.com/document/d/16DUTzxT39E6sjA7jGy83a5w5LPTqLj1n/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
   },
   {
     id: 'flow-ai-writing-pack',
@@ -232,16 +232,7 @@ export const resources: Resource[] = [
     typeLabel: 'Pack',
     category: 'packs-templates',
     format: 'Link',
-    url: 'https://docs.google.com/document/d/1CaB94T5VvIPU4HBWyYfVdTrt0kTgDWPX/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
-  },
-  {
-    id: 'flow-ai-automation-planning-pack',
-    title: 'Flow AI Automation Planning Pack',
-    description: 'Worksheets and prompts to capture processes, spot automation candidates, and plan experiments.',
-    typeLabel: 'Pack',
-    category: 'packs-templates',
-    format: 'Link',
-    url: 'https://docs.google.com/document/d/11NgweghZxRVwFvS-gzB_kn40cfAx9bDh1taDKUoaXgU/edit?usp=sharing',
+    url: 'https://docs.google.com/document/d/1cwqeu2qQy30HqJhoCR-Fxbi7JIgTmfrr/edit?usp=sharing&ouid=107560194841154524783&rtpof=true&sd=true',
   },
   {
     id: 'flow-ai-manager-essentials-prompt-pack',
