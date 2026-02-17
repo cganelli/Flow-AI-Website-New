@@ -10,6 +10,9 @@
     "http://localhost:4321/faq",
     "http://localhost:4321/contact",
     "http://localhost:4321/privacy-terms",
-    "http://localhost:4321/accessibility"
+    "http://localhost:4321/accessibility",
+    "http://localhost:4321/lead-magnet/",
+    "http://localhost:4321/lead-magnet/results/",
+    "http://localhost:4321/book-call/"
   ]
 }

@@ -1,31 +1,31 @@
 import type { LeadQuestionId } from "./questions";
 import { questions } from "./questions";
-import type { Plan, PlanKey } from "./plans";
-import { plans } from "./plans";
+import type { PlanV2, PlanV2Key } from "./types";
+import { plansV2 } from "./plans-v2";
 
 export type LeadAnswers = Record<LeadQuestionId, string>;
 
-const q3PlanMap: Record<string, PlanKey> = {
-  "lead-follow-up": "lead-follow-up-system",
-  "customer-support": "support-triage-system",
-  "scheduling-follow-ups": "meeting-follow-up-system",
-  "status-updates": "weekly-visibility-system",
-  "approvals-handoffs": "handoff-tracker-system",
+const q3PlanMap: Record<string, PlanV2Key> = {
+  "lead-follow-up": "plan1",
+  "customer-support": "plan2",
+  "scheduling-follow-ups": "plan3",
+  "status-updates": "plan4",
+  "approvals-handoffs": "plan5",
 };
 
-export function getPlanKeyFromQ3(answerQ3: string): PlanKey {
-  return q3PlanMap[answerQ3] ?? "lead-follow-up-system";
+export function getPlanKeyFromQ3(answerQ3: string): PlanV2Key {
+  return q3PlanMap[answerQ3] ?? "plan1";
 }
 
-export function getPlan(planKey: PlanKey): Plan {
-  return plans[planKey];
+export function getPlan(planKey: PlanV2Key): PlanV2 {
+  return plansV2[planKey];
 }
 
 export function buildCalendlyUrl(
   baseUrl: string,
   email: string,
   answers: LeadAnswers,
-  plan: Plan,
+  plan: PlanV2,
 ): string {
   if (!baseUrl) {
     return "";

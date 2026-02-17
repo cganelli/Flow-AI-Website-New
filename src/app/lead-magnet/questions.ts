@@ -8,14 +8,6 @@ export type LeadQuestion = {
 
 export const questions: LeadQuestion[] = [
   {
-    id: "q1Role",
-    prompt: "Which fits you best?",
-    options: [
-      { value: "smb-owner", label: "SMB owner or founder" },
-      { value: "enterprise-vp", label: "Enterprise VP or department leader" },
-    ],
-  },
-  {
     id: "q2Goal",
     prompt: "What would make the next 30 days a win?",
     options: [
@@ -57,6 +49,14 @@ export const questions: LeadQuestion[] = [
       { value: "deals-stall", label: "Deals stall after meetings" },
       { value: "quotes-slow", label: "Quotes and proposals take too long" },
       { value: "no-next-step", label: "No clear next step, so work slips" },
+    ],
+  },
+  {
+    id: "q1Role",
+    prompt: "Which fits you best?",
+    options: [
+      { value: "smb-owner", label: "SMB owner or founder" },
+      { value: "enterprise-vp", label: "Enterprise VP or department leader" },
     ],
   },
 ];

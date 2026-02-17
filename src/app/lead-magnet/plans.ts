@@ -67,9 +67,39 @@ export const plans: Record<PlanKey, Plan> = {
         "The tracker goes stale, then becomes useless",
       ],
       promptTemplates: [
-        "Extract lead details and intent from this message into the tracker fields.",
-        "Draft the first reply using our follow-up templates and tone.",
-        "Summarize stalled leads and list the next action for each.",
+        `Prompt 1: Extract lead details from a message
+You are helping me log a new lead.
+Read the message below and extract the details into this exact format.
+Output format
+Name:
+Company:
+Email:
+Phone:
+What they want:
+Urgency:
+Best next step:
+Suggested follow-up date:
+Any missing info to ask for:
+Message
+[Paste the lead email or form submission here]`,
+        `Prompt 2: Draft the first reply in my tone
+Write a friendly, professional reply to the lead message below.
+Goal: get a clear next step, either a call or the info I need to send a quote.
+Keep it short, 6 to 10 sentences.
+Ask no more than 2 questions.
+End with one clear next step.
+Use this tone
+[Paste 2 to 3 examples of your best past replies here]
+Lead message
+[Paste lead message here]`,
+        `Prompt 3: Create a follow-up plan for no response
+Create a simple follow-up plan for this lead.
+Give me 3 follow-up messages I can send.
+Space them out over 7 days.
+Each message should be shorter than the previous one.
+Do not sound pushy.
+Lead context
+[Paste the lead record summary here]`,
       ],
     },
     build: {
@@ -132,9 +162,35 @@ export const plans: Record<PlanKey, Plan> = {
         "The queue becomes messy, then ignored",
       ],
       promptTemplates: [
-        "Label this request by category and urgency using the approved list.",
-        "Draft a reply using only approved answers, with a friendly tone.",
-        "Summarize daily backlog status with key risks.",
+        `Prompt 1: Label a support request
+Label this customer message using the format below.
+Output format
+Category:
+Urgency: low, medium, high
+Sentiment: calm, frustrated, angry
+What they need in one sentence:
+Best next action:
+Should this be escalated: yes or no
+If yes, who should handle it:
+Message
+[Paste customer message here]`,
+        `Prompt 2: Draft a reply using approved answers only
+Draft a reply to the message below.
+Use only the information in the Approved Answers section.
+If the approved answers do not cover the question, write:
+"I need to confirm this and will follow up shortly."
+Then list what I need to look up.
+Approved Answers
+[Paste your FAQ or policy snippets here]
+Customer message
+[Paste message here]`,
+        `Prompt 3: Create today's queue priorities
+Look at this list of open requests and tell me:
+The top 5 to handle first, in order
+Which ones should be escalated
+Any repeated issue patterns I should notice
+Open requests
+[Paste list with short summaries and age of each request]`,
       ],
     },
     build: {
@@ -194,9 +250,35 @@ export const plans: Record<PlanKey, Plan> = {
         "Follow-ups do not go out consistently",
       ],
       promptTemplates: [
-        "Extract decisions and action items from these meeting notes.",
-        "Draft a follow-up email in our tone with next steps and owners.",
-        "Summarize overdue actions and highlight blockers.",
+        `Prompt 1: Turn notes into actions
+Convert these meeting notes into action items.
+Output format
+Decisions:
+Action items:
+Task:
+Owner:
+Due date:
+Next step:
+Risks or blockers:
+Questions to clarify:
+Notes
+[Paste meeting notes here]`,
+        `Prompt 2: Draft the follow-up email
+Write a follow-up email using the action items below.
+Keep it short.
+Start with a 1-sentence summary.
+Then list action items with owner and due date.
+End with one clear next step for the group.
+Action items
+[Paste action items here]`,
+        `Prompt 3: Identify stuck actions and draft nudges
+From this list of action items, find:
+Anything missing an owner
+Anything missing a due date
+Anything overdue
+Then draft a short nudge message for each owner.
+Action list
+[Paste action items list here]`,
       ],
     },
     build: {
@@ -259,9 +341,32 @@ export const plans: Record<PlanKey, Plan> = {
         "The brief becomes noise, then stops getting read",
       ],
       promptTemplates: [
-        "Summarize these updates into the weekly brief format.",
-        "Flag blockers, risks, and slipping dates from this list.",
-        "Draft the weekly trends summary with top risks.",
+        `Prompt 1: Summarize updates into a weekly brief
+Turn the updates below into a weekly brief in this exact format.
+Format
+Wins:
+Priorities:
+Blockers:
+Key numbers:
+Help needed:
+Updates
+[Paste raw updates from tasks, messages, or docs]`,
+        `Prompt 2: Flag blockers and risks
+Review the weekly brief below.
+Flag anything that sounds like a blocker or a risk.
+For each one, write:
+What is blocked
+Why it is blocked
+What decision or help is needed
+Weekly brief
+[Paste brief here]`,
+        `Prompt 3: Draft the message to leadership
+Write the final weekly update message to leadership.
+Keep it under 200 words.
+Make it easy to skim.
+End with "Decisions needed" as a bullet list if any exist.
+Weekly brief
+[Paste brief here]`,
       ],
     },
     build: {
@@ -324,9 +429,26 @@ export const plans: Record<PlanKey, Plan> = {
         "Escalations become noisy, people ignore them",
       ],
       promptTemplates: [
-        "Generate a handoff note from these tracker fields.",
-        "Detect missing info and request what is needed to proceed.",
-        "Summarize weekly bottlenecks and likely root causes.",
+        `Prompt 1: Generate a handoff note
+Write a clear handoff note using the details below.
+Keep it short.
+Use bullets.
+Include: context, what's done, what's next, owner, due date, and links.
+Details
+[Paste tracker fields here]`,
+        `Prompt 2: Check for missing info
+Check this handoff note for missing info.
+List what is missing or unclear.
+Then ask the 3 most important questions to complete the handoff.
+Handoff note
+[Paste note here]`,
+        `Prompt 3: Find bottlenecks from tracker data
+Review this list of items and tell me:
+Which stage is slowing work down the most
+The top 3 reasons work is getting stuck
+What rule or checklist would prevent it next week
+Tracker list
+[Paste rows with stage, owner, age, due date]`,
       ],
     },
     build: {
