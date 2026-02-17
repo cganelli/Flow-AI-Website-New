@@ -101,6 +101,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: withSlash('/lead-magnet'),
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+      alternates: {
+        languages: {
+          'en-US': withSlash('/lead-magnet'),
+        },
+      },
+    },
+    {
+      url: withSlash('/accessibility'),
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.5,
+      alternates: {
+        languages: {
+          'en-US': withSlash('/accessibility'),
+        },
+      },
+    },
+    {
       url: withSlash('/privacy-terms'),
       lastModified: currentDate,
       changeFrequency: 'yearly', // Legal pages change less frequently

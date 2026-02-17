@@ -78,7 +78,7 @@ export default function AccessibilityPage() {
 
             <div className="space-y-1">
               <h2 className="heading-lg">Updates</h2>
-              <p>This statement was last updated in January 2026 following a review against WCAG 2.2 standards.</p>
+              <p>This statement was last updated on February 12, 2026 following a review against WCAG 2.2 standards.</p>
             </div>
           </section>
         </div>

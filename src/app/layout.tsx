@@ -4,6 +4,7 @@ import "./globals.css";
 import { Suspense } from "react";
 import { SkipLinks } from "@/components/ui/skip-links";
 import CookieConsentBanner from "@/components/legal/cookie-consent-banner";
+import { LeadMagnetPopup } from "@/components/LeadMagnetPopup";
 import Script from "next/script";
 
 // Load Roboto font
@@ -223,6 +224,7 @@ export default function RootLayout({
           {children}
         </Suspense>
         <CookieConsentBanner />
+        <LeadMagnetPopup />
       </body>
     </html>
   );

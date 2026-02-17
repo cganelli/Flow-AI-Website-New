@@ -12,6 +12,14 @@ npm install
 npm run dev
 ```
 
+## 🌐 Environment Variables (Netlify)
+
+Add these in Netlify: Site settings → Build & deploy → Environment.
+
+- `NEXT_PUBLIC_CALENDLY_URL` (required): Calendly booking link used by `/lead-magnet`.
+
+Lead and contact submissions use Netlify Forms, so no additional backend env vars are required.
+
 ## 🧪 Testing
 
 ```bash

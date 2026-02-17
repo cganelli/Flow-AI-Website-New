@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { CALENDLY_UTM_AI_AUDIT } from '@/lib/leadMagnet/calendly';
 
 const Footer = () => {
   const [showFallback, setShowFallback] = useState(false);
@@ -14,12 +15,12 @@ const Footer = () => {
     }
   }, []);
 
-  const calendlyIframeUrl = `https://calendly.com/carissa-thisisflowai/30min?embed_domain=${embedDomain}&embed_type=Inline&hide_event_type_details=1&primary_color=f97316`;
+  const calendlyIframeUrl = `https://calendly.com/carissa-thisisflowai/30min?embed_domain=${embedDomain}&embed_type=Inline&hide_event_type_details=1&primary_color=f97316&${CALENDLY_UTM_AI_AUDIT}`;
 
   // Calendly popup fallback for when iframe fails
   const openCalendlyPopup = () => {
     if (typeof window !== 'undefined' && window.Calendly) {
-      window.Calendly.showPopupWidget('https://calendly.com/carissa-thisisflowai/30min?primary_color=f97316');
+      window.Calendly.showPopupWidget(`https://calendly.com/carissa-thisisflowai/30min?primary_color=f97316&${CALENDLY_UTM_AI_AUDIT}`);
     } else {
       // If Calendly widget isn't loaded, show inline widget
       setShowFallback(true);
@@ -58,10 +59,10 @@ const Footer = () => {
           {/* CTA Above Calendly Widget */}
           <div className="text-center mb-8">
             <h3 className="text-brand-lg mb-4">
-              Book your FREE AI audit
+              Book your FREE Information Session
             </h3>
             <p className="text-lg text-white/90 max-w-2xl mx-auto">
-              In this 20 to 30 minute session we look at your workflows and tools, then highlight your best starting points for AI.
+              In this 20 to 30 minute session we look at your workflows and tools, then highlight your best starting points for AI. No obligation. No sales pitch. Just clarity.
             </p>
           </div>
 
@@ -69,101 +70,50 @@ const Footer = () => {
           <div className="w-full max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* Left Side - Content */}
-              <div className="space-y-8">
-                {/* Workflow and tools review */}
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-4 flex items-start">
-                    <div className="w-6 h-6 rounded-full bg-primary mr-3 flex-shrink-0 mt-1 flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
+              <div className="space-y-4">
+                <ul className="space-y-4 list-none">
+                  <li className="text-white/90 text-xl flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    Workflow and tools review
-                  </h4>
-                  <ul className="space-y-2 ml-9">
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Walk through 2 to 3 core workflows such as lead follow up, reporting, support, or content</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Note where people spend the most time and where work stalls or gets re done</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>List the tools you already use so AI support fits into your current stack</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* AI opportunity list */}
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-4 flex items-start">
-                    <div className="w-6 h-6 rounded-full bg-primary mr-3 flex-shrink-0 mt-1 flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
+                    <span>Demystify the Tech: Ask your specific questions about AI tools and workflows.</span>
+                  </li>
+                  <li className="text-white/90 text-xl flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    AI opportunity list
-                  </h4>
-                  <ul className="space-y-2 ml-9">
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Highlight the steps in those workflows that suit AI agents or automation</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Rank opportunities by effort and impact so you know what to tackle first</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Flag quick wins your team tests in the next few weeks and bigger projects to park for later</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* 30 day action outline */}
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-4 flex items-start">
-                    <div className="w-6 h-6 rounded-full bg-primary mr-3 flex-shrink-0 mt-1 flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true"
-                      >
+                    <span>Identify Low-Hanging Fruit: Find 2-3 manual tasks you can automate immediately.</span>
+                  </li>
+                  <li className="text-white/90 text-xl flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    30 day action outline
-                  </h4>
-                  <ul className="space-y-2 ml-9">
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Pick one or two opportunities for the next 30 days that match your capacity</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Suggest training or starter resources for your staff based on where they are today</span>
-                    </li>
-                    <li className="text-white/90 flex items-start">
-                      <span className="text-white mr-2 flex-shrink-0">–</span>
-                      <span>Recommend simple metrics to track AI results</span>
-                    </li>
-                  </ul>
+                    <span>Reality Check: Determine what is—and isn&apos;t—worth automating in your business.</span>
+                  </li>
+                  <li className="text-white/90 text-xl flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span>Zero Pressure: Leave the call with a clear map of your next steps, with or without us.</span>
+                  </li>
+                </ul>
+                <div className="pt-4 text-center">
+                  <button
+                    onClick={openCalendlyPopup}
+                    className="inline-block bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                    aria-label="Claim My Free Info Session"
+                    type="button"
+                  >
+                    Claim My Free Info Session
+                  </button>
                 </div>
               </div>
 
@@ -177,27 +127,15 @@ const Footer = () => {
                     width="100%"
                     height="700"
                     frameBorder="0"
-                    title="Schedule your FREE AI audit meeting with Flow AI"
+                    title="Schedule your FREE Information Session with Flow AI"
                     className="rounded-lg"
                     style={{
                       minWidth: '320px',
                       height: '700px'
                     }}
                     onError={() => setShowFallback(true)}
-                        aria-label="Calendly booking widget to schedule your FREE AI audit"
+                        aria-label="Calendly booking widget to schedule your FREE Information Session"
                   />
-                </div>
-
-                {/* Alternative booking option */}
-                <div className="text-center mt-6">
-                  <button
-                    onClick={openCalendlyPopup}
-                    className="inline-block bg-primary text-white px-8 py-4 rounded-lg hover:bg-primary/90 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
-                    aria-label="Book your FREE AI audit"
-                    type="button"
-                  >
-                    Book your FREE AI audit
-                  </button>
                 </div>
               </>
             ) : (
@@ -205,7 +143,7 @@ const Footer = () => {
                 {/* Calendly Inline Widget Fallback */}
                 <section
                   className="calendly-inline-widget bg-white rounded-lg"
-                  data-url="https://calendly.com/carissa-thisisflowai/30min?primary_color=f97316"
+                  data-url={`https://calendly.com/carissa-thisisflowai/30min?primary_color=f97316&${CALENDLY_UTM_AI_AUDIT}`}
                   style={{ minWidth: '320px', height: '700px' }}
                   aria-label="Alternative Calendly booking widget"
                 />

@@ -1,5 +1,5 @@
 # Security Audit Report
-## FlowAI Website - Comprehensive Security Assessment
+## FlowAI Website - Basic Application Security Assessment
 
 **Date:** January 2025  
 **Last Updated:** February 2026 (Main branch review)  
@@ -45,78 +45,23 @@
 ## 🔴 CRITICAL ISSUES
 **Note:** The sections below include historical findings from prior audits. See the February 2026 addendum and “Resolved Since Last Audit” for current status.
 
-### 1. XSS Vulnerability in Contact Form Email Generation
-**Severity:** HIGH  
-**Location:** `src/app/api/contact-submit/route.ts` (lines 30-85)  
-**Issue:** User input is directly interpolated into HTML email template without sanitization, allowing potential XSS if email is viewed in HTML-capable clients.
+### 🔴 High
+No high severity findings at this time.
 
-**Vulnerable Code:**
-```typescript
-html: `
-  <td style="padding: 10px;">${formData.name}</td>
-  <td style="padding: 10px;"><a href="mailto:${formData.email}">${formData.email}</a></td>
-  ${formData.company ? `<td>${formData.company}</td>` : ''}
-  ${formData.message || 'No message provided'}
-`
-```
+### 🟠 Medium
+No medium severity findings at this time.
 
-**Risk:** Malicious user could inject JavaScript in name, email, company, or message fields that executes when email is opened.
-
-**Recommendation:**
-- Sanitize all user inputs before inserting into HTML
-- Use a library like `DOMPurify` or `sanitize-html` for HTML sanitization
-- Escape HTML entities: `&`, `<`, `>`, `"`, `'`
-- Consider using a templating library that auto-escapes
-
-**Fix Example:**
-```typescript
-import { sanitize } from 'sanitize-html';
-
-const sanitizeInput = (input: string): string => {
-  return sanitize(input, { allowedTags: [], allowedAttributes: {} });
-};
-
-// Then use:
-html: `
-  <td>${sanitizeInput(formData.name)}</td>
-  <td><a href="mailto:${sanitizeInput(formData.email)}">${sanitizeInput(formData.email)}</a></td>
-`
-```
+### 🟡 Low
+1) Netlify Forms endpoints can still receive spam submissions  
+   - **Location:** Netlify Forms  
+   - **Risk:** Public forms can be targeted by bots.  
+   - **Impact:** Increased spam leads; mitigated by honeypots and Netlify spam controls.
 
 ---
 
-### 2. XSS Vulnerability in EmailJsFormBridge
-**Severity:** HIGH  
-**Location:** `src/components/EmailJsFormBridge.tsx` (line 94)  
-**Issue:** Uses `innerHTML` to inject HTML without sanitization.
-
-**Vulnerable Code:**
-```typescript
-thankYouDiv.innerHTML = `
-  <div class="mb-6">
-    <h3 class="text-2xl font-bold text-gray-900 mb-2">Thanks — we got it!</h3>
-  </div>
-`;
-```
-
-**Risk:** While this specific code uses static strings, the pattern is dangerous if extended with dynamic content.
-
-**Recommendation:**
-- Replace `innerHTML` with `textContent` or React's safe rendering
-- If HTML is needed, use `DOMPurify` to sanitize
-- Prefer React components over DOM manipulation
-
-**Fix Example:**
-```typescript
-// Use React instead of innerHTML
-const ThankYouMessage = () => (
-  <div className="bg-white rounded-lg shadow-lg p-8 max-w-md mx-auto text-center">
-    <div className="mb-6">
-      <h3 className="text-2xl font-bold text-gray-900 mb-2">Thanks — we got it!</h3>
-    </div>
-  </div>
-);
-```
+## Recommended Fixes (Remaining)
+1) Enable Netlify Forms spam filtering or reCAPTCHA if spam increases.  
+2) Add `npm audit --omit=dev` to CI on a schedule.
 
 ---
 
@@ -693,4 +638,3 @@ The Use Cases page follows security best practices:
 ---
 
 **Next Audit Recommended:** After implementing critical fixes (within 1 month)
-
