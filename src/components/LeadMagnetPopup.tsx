@@ -14,128 +14,94 @@ const IDLE_MS = 5000;
 const EXIT_INTENT_THRESHOLD = 50;
 const SESSION_KEYS = { idle: "flowai_leadmagnet_popup_idle", exit: "flowai_leadmagnet_popup_exit" };
 
-function getPathnameFromWindow(): string {
+function getPath(): string {
   if (typeof window === "undefined") return "";
-  const p = window.location.pathname ?? "";
-  return p.endsWith("/") && p.length > 1 ? p.slice(0, -1) : p || "/";
+  const p = (window.location.pathname ?? "").replace(/\/$/, "") || "/";
+  return p;
 }
 
-function useShouldShowPopup() {
-  const pathname = usePathname();
-  const path = pathname ?? getPathnameFromWindow();
+function pathAllowsPopup(path: string): boolean {
   if (path === "/lead-magnet" || path === "/lead-magnet/results") return false;
   if (path.startsWith("/plans/")) return false;
   return true;
 }
 
+function isHomePath(path: string): boolean {
+  return path === "/" || path === "";
+}
+
 export function LeadMagnetPopup() {
   const pathname = usePathname();
-  const path = pathname ?? (typeof window !== "undefined" ? getPathnameFromWindow() : "");
-  const shouldShow = useShouldShowPopup();
   const [open, setOpen] = useState(false);
-  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const idleStartedRef = useRef(false);
+  const idleTimerRef = useRef<number | null>(null);
   const exitTriggeredRef = useRef(false);
-
-  const isHome = path === "/" || path === "";
 
   const close = useCallback(() => setOpen(false), []);
 
-  // Close when navigating to lead-magnet or results
+  // Close when navigating to lead-magnet or results (router-based)
   useEffect(() => {
     if (pathname === "/lead-magnet" || pathname === "/lead-magnet/results") {
       setOpen(false);
     }
   }, [pathname]);
 
-  // Home: 5s idle timer (reset on activity). Delay start so pathname/router is ready after static hydrate.
+  // Single mount effect: idle (home only) + exit intent. Use window.location only so we don't depend on router.
   useEffect(() => {
-    if (!shouldShow || !isHome) return;
+    const path = getPath();
+    if (!pathAllowsPopup(path)) return;
 
     const markIdleShown = () => {
       try {
-        if (typeof window !== "undefined" && window.sessionStorage) {
-          window.sessionStorage.setItem(SESSION_KEYS.idle, "1");
-        }
+        window.sessionStorage.setItem(SESSION_KEYS.idle, "1");
       } catch {}
     };
-
-    const alreadyShown = () => {
+    const markExitShown = () => {
       try {
-        return typeof window !== "undefined" && window.sessionStorage?.getItem(SESSION_KEYS.idle) === "1";
+        window.sessionStorage.setItem(SESSION_KEYS.exit, "1");
+      } catch {}
+    };
+    const alreadyShownIdle = () => {
+      try {
+        return window.sessionStorage?.getItem(SESSION_KEYS.idle) === "1";
+      } catch {
+        return false;
+      }
+    };
+    const alreadyShownExit = () => {
+      try {
+        return window.sessionStorage?.getItem(SESSION_KEYS.exit) === "1";
       } catch {
         return false;
       }
     };
 
     const startIdleTimer = () => {
-      if (alreadyShown()) return;
-      idleTimerRef.current = setTimeout(() => {
+      if (!isHomePath(getPath()) || alreadyShownIdle()) return;
+      idleTimerRef.current = window.setTimeout(() => {
         idleTimerRef.current = null;
-        if (!alreadyShown()) {
-          markIdleShown();
-          setOpen(true);
-        }
+        if (!isHomePath(getPath()) || alreadyShownIdle()) return;
+        markIdleShown();
+        setOpen(true);
       }, IDLE_MS);
     };
 
     const clearIdleTimer = () => {
       if (idleTimerRef.current) {
-        clearTimeout(idleTimerRef.current);
+        window.clearTimeout(idleTimerRef.current);
         idleTimerRef.current = null;
       }
     };
 
-    const resetAndStart = () => {
+    const resetAndStartIdle = () => {
+      if (!isHomePath(getPath())) return;
       clearIdleTimer();
       startIdleTimer();
     };
 
     const events = ["mousemove", "keydown", "scroll", "touchstart"] as const;
 
-    if (!idleStartedRef.current) {
-      idleStartedRef.current = true;
-      const start = () => {
-        startIdleTimer();
-        for (const ev of events) document.addEventListener(ev, resetAndStart);
-      };
-      const t = setTimeout(start, 150);
-      return () => {
-        clearTimeout(t);
-        clearIdleTimer();
-        for (const ev of events) document.removeEventListener(ev, resetAndStart);
-      };
-    }
-
-    for (const ev of events) document.addEventListener(ev, resetAndStart);
-    return () => {
-      clearIdleTimer();
-      for (const ev of events) document.removeEventListener(ev, resetAndStart);
-    };
-  }, [shouldShow, isHome]);
-
-  // Exit intent: every page (once per session) – mouse leaves viewport toward top (address bar / back)
-  useEffect(() => {
-    if (!shouldShow) return;
-
-    const markExitShown = () => {
-      try {
-        if (typeof window !== "undefined" && window.sessionStorage) {
-          window.sessionStorage.setItem(SESSION_KEYS.exit, "1");
-        }
-      } catch {}
-    };
-
-    const alreadyShown = () => {
-      try {
-        return typeof window !== "undefined" && window.sessionStorage?.getItem(SESSION_KEYS.exit) === "1";
-      } catch {
-        return false;
-      }
-    };
-
     const tryShowExit = (e: MouseEvent) => {
-      if (exitTriggeredRef.current || alreadyShown()) return;
+      if (exitTriggeredRef.current || alreadyShownExit()) return;
       if (e.clientY > EXIT_INTENT_THRESHOLD) return;
       exitTriggeredRef.current = true;
       markExitShown();
@@ -146,18 +112,26 @@ export function LeadMagnetPopup() {
       if (e.relatedTarget !== null) return;
       tryShowExit(e);
     };
+    const handleMouseLeave = (e: MouseEvent) => tryShowExit(e);
 
-    const handleMouseLeave = (e: MouseEvent) => {
-      tryShowExit(e);
-    };
+    // Delay so we're definitely past hydration and path is correct
+    const setupTimer = window.setTimeout(() => {
+      if (isHomePath(getPath())) {
+        startIdleTimer();
+        for (const ev of events) document.addEventListener(ev, resetAndStartIdle);
+      }
+      document.documentElement.addEventListener("mouseout", handleMouseOut);
+      document.documentElement.addEventListener("mouseleave", handleMouseLeave);
+    }, 400);
 
-    document.documentElement.addEventListener("mouseout", handleMouseOut);
-    document.documentElement.addEventListener("mouseleave", handleMouseLeave);
     return () => {
+      window.clearTimeout(setupTimer);
+      clearIdleTimer();
+      for (const ev of events) document.removeEventListener(ev, resetAndStartIdle);
       document.documentElement.removeEventListener("mouseout", handleMouseOut);
       document.documentElement.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [shouldShow]);
+  }, []); // Run once on mount; path read from window inside
 
   return (
     <LeadMagnetModal open={open} onClose={close}>
