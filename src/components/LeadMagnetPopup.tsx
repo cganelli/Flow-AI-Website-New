@@ -30,6 +30,18 @@ function isHomePath(path: string): boolean {
   return path === "/" || path === "";
 }
 
+/** True if a Calendly booking window is open (popup or visible iframe) or user is in another tab (e.g. Calendly in new tab). */
+function isCalendlyOpen(): boolean {
+  if (typeof document === "undefined") return false;
+  if (document.hidden) return true;
+  const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe[src*="calendly.com"]');
+  for (const el of iframes) {
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 50 && rect.height > 50) return true;
+  }
+  return false;
+}
+
 export function LeadMagnetPopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -76,10 +88,11 @@ export function LeadMagnetPopup() {
     };
 
     const startIdleTimer = () => {
-      if (!isHomePath(getPath()) || alreadyShownIdle()) return;
+      if (!isHomePath(getPath()) || alreadyShownIdle() || isCalendlyOpen()) return;
       idleTimerRef.current = window.setTimeout(() => {
         idleTimerRef.current = null;
         if (!isHomePath(getPath()) || alreadyShownIdle()) return;
+        if (isCalendlyOpen()) return; // don't show on idle when Calendly is open; exit intent still allowed
         markIdleShown();
         setOpen(true);
       }, IDLE_MS);
@@ -93,7 +106,7 @@ export function LeadMagnetPopup() {
     };
 
     const resetAndStartIdle = () => {
-      if (!isHomePath(getPath())) return;
+      if (!isHomePath(getPath()) || isCalendlyOpen()) return;
       clearIdleTimer();
       startIdleTimer();
     };

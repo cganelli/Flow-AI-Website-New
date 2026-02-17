@@ -41,6 +41,10 @@ The lead magnet form is already wired in the app:
 
 No extra env vars or Netlify config are required for the form to work; deploying is enough for Netlify to start accepting submissions.
 
+### Calendly: booking source on the invite (free plan)
+
+With one meeting type, the site sends **a4** so you can tell from the invite whether they booked from **AI Info Session** (footer/homepage) or **Let Us Build It For You** (lead-magnet results, book-call page). Calendly maps **a1** = 1st custom question, **a2** = 2nd, **a3** = 3rd, **a4** = 4th. If you already have 3 invitee questions (e.g. Website URL, Phone, Share anything), add a **4th** invitee question (e.g. “Booking source” or “Reason for call”). The site pre-fills **a4** with “AI Info Session” or “Let Us Build It For You”; that value will appear on the meeting invite.
+
 ## 🧪 Testing
 
 ```bash

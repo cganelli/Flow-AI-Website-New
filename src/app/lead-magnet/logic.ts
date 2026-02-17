@@ -2,6 +2,7 @@ import type { LeadQuestionId } from "./questions";
 import { questions } from "./questions";
 import type { PlanV2, PlanV2Key } from "./types";
 import { plansV2 } from "./plans-v2";
+import { CALENDLY_BOOKING_SOURCE } from "@/lib/leadMagnet/calendly";
 
 export type LeadAnswers = Record<LeadQuestionId, string>;
 
@@ -36,7 +37,7 @@ export function buildCalendlyUrl(
     ["a1", answerLabels[0] ?? ""],
     ["a2", answerLabels[1] ?? ""],
     ["a3", answerLabels[2] ?? ""],
-    ["a4", answerLabels[3] ?? ""],
+    ["a4", CALENDLY_BOOKING_SOURCE.LET_US_BUILD_IT], // 4th Calendly question = booking source (We build it)
     ["a5", answerLabels[4] ?? ""],
     ["a6", plan?.name ?? ""],
   ]
