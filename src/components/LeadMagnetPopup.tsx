@@ -102,6 +102,7 @@ export function LeadMagnetPopup() {
 
     const tryShowExit = (e: MouseEvent) => {
       if (exitTriggeredRef.current || alreadyShownExit()) return;
+      if (!pathAllowsPopup(getPath())) return; // e.g. results page: user already completed quiz
       if (e.clientY > EXIT_INTENT_THRESHOLD) return;
       exitTriggeredRef.current = true;
       markExitShown();

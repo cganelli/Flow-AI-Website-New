@@ -456,6 +456,7 @@ export function LeadMagnetWizard({ inModal, onBeforeResultsNavigate }: LeadMagne
         />
         {emailError && <p id="email-error" className="text-sm text-error">{emailError}</p>}
       </label>
+      <div className="border-t border-base-300 my-2" role="presentation" />
       <label className="form-control w-full gap-1">
         <span className="sr-only">Website URL (required)</span>
         <input
