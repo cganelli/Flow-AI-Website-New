@@ -765,7 +765,7 @@ export function LeadMagnetWizard({ inModal, onBeforeResultsNavigate }: LeadMagne
         <div className="card bg-base-200 shadow-sm">
           <div className="card-body gap-6">
             <div className="text-center space-y-1 pb-2 border-b border-base-300" data-lead-magnet-version="v4">
-              <p className="text-sm uppercase tracking-wide font-medium" style={{ color: "#C6513A" }}>
+              <p className="text-2xl uppercase tracking-wide font-medium" style={{ color: "#C6513A" }}>
                 Increase revenue without increasing costs
               </p>
               <p className="text-3xl font-bold text-base-content">
