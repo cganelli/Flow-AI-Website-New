@@ -213,6 +213,31 @@ export default function RootLayout({
         )}
       </head>
       <body>
+        {/* Hidden form so Netlify discovers "lead-magnet" at build time (wizard is client-only and not in static HTML) */}
+        <form name="lead-magnet" data-netlify="true" data-netlify-honeypot="bot-field" hidden aria-hidden="true">
+          <input type="hidden" name="form-name" value="lead-magnet" />
+          <input type="hidden" name="subject" value="7-Day Plan" />
+          <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" />
+          <input type="text" name="event_type" />
+          <input type="text" name="first_name" />
+          <input type="text" name="last_name" />
+          <input type="url" name="website_url" />
+          <input type="email" name="email" />
+          <input type="text" name="q1" />
+          <input type="text" name="q2" />
+          <input type="text" name="q3" />
+          <input type="text" name="q4" />
+          <input type="text" name="q5" />
+          <input type="text" name="plan_key" />
+          <input type="text" name="plan_name" />
+          <input type="text" name="pagePath" />
+          <input type="text" name="utm_source" />
+          <input type="text" name="utm_medium" />
+          <input type="text" name="utm_campaign" />
+          <input type="text" name="utm_content" />
+          <input type="text" name="utm_term" />
+          <input type="text" name="createdAt" />
+        </form>
         <SkipLinks />
         {children}
         <CookieConsentBanner />

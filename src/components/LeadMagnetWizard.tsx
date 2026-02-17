@@ -740,11 +740,14 @@ export function LeadMagnetWizard({ inModal, onBeforeResultsNavigate }: LeadMagne
 
   return (
     <div className={`bg-base-100 px-4 py-10 ${inModal ? "min-h-0" : "min-h-screen"}`}>
-      <form name="lead-magnet" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <form name="lead-magnet" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
         <input type="hidden" name="form-name" value="lead-magnet" />
         <input type="hidden" name="subject" value="7-Day Plan" />
-        <input type="text" name="bot-field" />
+        <input type="text" name="bot-field" tabIndex={-1} autoComplete="off" />
         <input type="text" name="event_type" />
+        <input type="text" name="first_name" />
+        <input type="text" name="last_name" />
+        <input type="url" name="website_url" />
         <input type="email" name="email" />
         <input type="text" name="q1" />
         <input type="text" name="q2" />

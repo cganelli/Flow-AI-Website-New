@@ -20,6 +20,27 @@ Add these in Netlify: Site settings → Build & deploy → Environment.
 
 Lead and contact submissions use Netlify Forms, so no additional backend env vars are required.
 
+### Netlify form for lead magnet
+
+The lead magnet form is already wired in the app:
+
+- **Form name:** `lead-magnet`
+- **Where it lives:** A hidden form in `LeadMagnetWizard.tsx` with `data-netlify="true"` so Netlify can discover it at build time.
+- **How it submits:** When a user completes the email gate (name, email, website URL), the app POSTs to `/` with `form-name: lead-magnet` and the same fields (quiz answers, plan, UTM, etc.).
+
+**What you need to do:**
+
+1. **Deploy to Netlify**  
+   After the site is built and deployed, Netlify’s build step crawls the HTML and registers any form with `data-netlify="true"`. The `lead-magnet` form will then appear under **Site → Forms** in the Netlify dashboard.
+
+2. **View submissions**  
+   In Netlify: **Site → Forms → lead-magnet → Form submissions**. Each submission includes `email`, `first_name`, `last_name`, `website_url`, quiz answers (`q1`–`q5`), `plan_key`, `plan_name`, UTM params, and `createdAt`.
+
+3. **Optional: email notifications**  
+   In **Forms → lead-magnet → Form notifications**, add an email notification so you get an email for each new submission.
+
+No extra env vars or Netlify config are required for the form to work; deploying is enough for Netlify to start accepting submissions.
+
 ## 🧪 Testing
 
 ```bash
