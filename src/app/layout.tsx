@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
 import { SkipLinks } from "@/components/ui/skip-links";
 import CookieConsentBanner from "@/components/legal/cookie-consent-banner";
 import { LeadMagnetPopup } from "@/components/LeadMagnetPopup";
@@ -215,14 +214,7 @@ export default function RootLayout({
       </head>
       <body>
         <SkipLinks />
-        <Suspense fallback={
-          <div className="flex items-center justify-center min-h-screen">
-            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-            <span className="sr-only">Loading...</span>
-          </div>
-        }>
-          {children}
-        </Suspense>
+        {children}
         <CookieConsentBanner />
         <LeadMagnetPopup />
       </body>
