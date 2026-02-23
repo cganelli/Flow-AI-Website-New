@@ -197,6 +197,16 @@ export const resources: Resource[] = [
     logoSrc: '/images/Make Me Into Art logo.png',
   },
   {
+    id: 'linkedin-post-pro',
+    title: 'LinkedIn Post Pro',
+    description: 'Purpose: create Algorithm-friendly LinkedIn posts with hooks, white space, and engagement triggers.',
+    typeLabel: 'Agent',
+    category: 'agents-gpts',
+    format: 'Link',
+    url: 'https://chatgpt.com/g/g-6997eaf969508191b82544405ef6c2d4-link-in-post-pro',
+    logoSrc: '/images/LinkedIN_Post_Pro_logo.png',
+  },
+  {
     id: 'doodle-infographic-maker',
     title: 'Doodle Infographic Maker',
     description: 'Creates hand-drawn infographics in whiteboard, notebook, or chalkboard style.',
@@ -205,7 +215,7 @@ export const resources: Resource[] = [
     format: 'Link',
     url: 'https://chatgpt.com/g/g-698d01beb83081919ff886e403a7f15e-doodle-infographic-maker',
     isFun: true,
-    logoSrc: '/images/Doodle Infographic Maker.png',
+    logoSrc: '/images/Doodle Infographic Maker.png?v=2', // cache-bust after image refresh
   },
   {
     id: 'flow-ai-master-prompt-cheat-sheet',

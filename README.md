@@ -17,8 +17,9 @@ npm run dev
 Add these in Netlify: Site settings → Build & deploy → Environment.
 
 - `NEXT_PUBLIC_CALENDLY_URL` (required): Calendly booking link used by `/lead-magnet`.
+- `SITE_URL` (optional): Canonical base URL for sitemap; defaults to `https://thisisflowai.com` if unset.
 
-Lead and contact submissions use Netlify Forms, so no additional backend env vars are required.
+Lead and contact submissions use Netlify Forms, so no additional backend env vars are required. See `docs/REDIRECTS_AND_INDEXING.md` for redirect setup and Google indexing.
 
 ### Netlify form for lead magnet
 

@@ -1,0 +1,7 @@
+# Netlify configuration for Flow AI website
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+# Domain redirects are in public/_redirects (must be ordered before catch-all).
+
+[build]
+  command = "npm run build"
+  publish = "out"

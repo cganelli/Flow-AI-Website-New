@@ -1,4 +1,7 @@
+# Canonical redirects: http and www → https://thisisflowai.com (single-hop 301)
+# Must appear before the catch-all so domain rules are evaluated first.
 https://www.thisisflowai.com/*  https://thisisflowai.com/:splat  301!
 http://thisisflowai.com/*        https://thisisflowai.com/:splat  301!
 http://www.thisisflowai.com/*    https://thisisflowai.com/:splat  301!
+# SPA fallback for client-side routes without a static file
 /*                               /index.html                       200
