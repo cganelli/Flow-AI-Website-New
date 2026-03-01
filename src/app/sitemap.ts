@@ -112,6 +112,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: withSlash('/bio'),
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+      alternates: {
+        languages: {
+          'en-US': withSlash('/bio'),
+        },
+      },
+    },
+    {
       url: withSlash('/accessibility'),
       lastModified: currentDate,
       changeFrequency: 'yearly',

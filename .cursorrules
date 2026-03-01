@@ -1,0 +1,47 @@
+# Flow AI Website – Project Instructions
+
+## 1. Deployment: Netlify Only
+
+- **Use Netlify only.** Do not use or reference Vercel for deployment.
+- Build output: static export to `out/` directory (`next.config.js`: `output: "export"`).
+- Netlify config: `netlify.toml` specifies `command = "npm run build"` and `publish = "out"`.
+- No Vercel-specific config, adapters, or documentation.
+
+---
+
+## 2. Google Search Indexing
+
+All new pages **must** be set up for indexing. Follow these rules so pages do not fail indexing:
+
+### Canonical & URLs
+
+- **Canonical domain:** `https://thisisflowai.com` (no www).
+- All page metadata and canonicals must use this base URL.
+- Redirects (in `public/_redirects`): http and www → 301 to `https://thisisflowai.com`. Domain redirects must appear **before** the catch-all `/*` rule.
+
+### New Pages Checklist
+
+For **every new page**:
+
+1. **Sitemap** – Add the page to `src/app/sitemap.ts` with the correct path. Use `withSlash()` for paths (e.g. `/new-page/`). Base URL comes from `SITE_URL` env (defaults to `https://thisisflowai.com`).
+2. **Metadata** – Set `metadataBase`, `alternates.canonical`, and appropriate `title`/`description` on the page or layout.
+3. **Canonical URL** – Use `https://thisisflowai.com/path/` (with trailing slash to match `trailingSlash: true`).
+4. **No redirect-only URLs in sitemap** – Sitemap must list only canonical URLs (no http, no www).
+
+### Avoid Indexing Issues
+
+- Redirect chains: use single-hop 301s from http/www to canonical.
+- Ensure `SITE_URL=https://thisisflowai.com` in Netlify env for sitemap generation.
+- Reference: `docs/REDIRECTS_AND_INDEXING.md`.
+
+---
+
+## 3. Accessibility: WCAG 2.2 Level AA
+
+All changes **must** conform to WCAG 2.2 Level AA:
+
+- **Automated tests:** New pages/components should be covered by a11y tests. Use jest-axe with tags: `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa`.
+- **Design tokens:** Use WCAG-aware colors from `src/styles/tokens.css`.
+- **Required:** Proper landmarks (`<main>`, `<nav>`, etc.), heading hierarchy, focus indicators, `aria-*` where needed, no duplicate IDs, skip links where appropriate.
+- Run `npm run test:a11y` and `npm run a11y:local` before deployment.
+- Reference: `WCAG_AUDIT.md`, `docs/DESIGN-TOKENS.md`.

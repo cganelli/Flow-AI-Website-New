@@ -2,7 +2,7 @@
 
 **Audit date:** February 2026  
 **Standard:** WCAG 2.2 Level AA (automated checks align to WCAG 2.1/2.2 AA where supported)  
-**Scope:** Lead magnet–related pages and AI Information Session block in the footer
+**Scope:** Lead magnet–related pages, Bio (links) page, and AI Information Session block in the footer
 
 ---
 
@@ -10,6 +10,7 @@
 
 | Area | Description |
 |------|-------------|
+| **Bio page** | Linktree-style page at `/bio`: tagline, primary CTAs, "Tools I use" section, external/social links; uses main Layout (header + footer). |
 | **Lead magnet quiz** | Quiz flow at `/lead-magnet` and the lead magnet modal (popup) |
 | **Lead magnet results** | Results page at `/lead-magnet/results` |
 | **Book-call page** | Page at `/book-call` (We Build It call + Calendly) |
@@ -24,6 +25,7 @@
 
 ### Tests run
 
+- `src/__tests__/bio.a11y.spec.tsx` — Bio page (`/bio`): main landmark, h1 tagline, "Tools I use" heading, axe (WCAG 2/2.1/2.2 AA).
 - `src/__tests__/book-call.a11y.spec.tsx` — Book-call page: main landmark, axe (WCAG 2/2.1/2.2 AA).
 - `src/__tests__/lead-magnet-quiz.a11y.spec.tsx` — Lead magnet wizard (first question step), axe.
 - `src/__tests__/lead-magnet-modal.a11y.spec.tsx` — Lead magnet modal (dialog + wizard), axe.
@@ -42,6 +44,7 @@ Existing tests that also cover this scope:
 
 | Test file | Result | Notes |
 |-----------|--------|--------|
+| bio.a11y.spec.tsx | Pass | Main landmark, h1 tagline, "Tools I use" h2 present; axe may be skipped in jsdom (frame limitation). |
 | book-call.a11y.spec.tsx | Pass | Main landmark present; no axe violations reported. |
 | lead-magnet-quiz.a11y.spec.tsx | Pass | Question 1 of 5 present; no axe violations reported. |
 | lead-magnet-modal.a11y.spec.tsx | Pass | Dialog with accessible name “7-Day plan quiz”; no axe violations reported. |
@@ -51,20 +54,20 @@ Existing tests that also cover this scope:
 | modal.a11y.spec.tsx | Pass | — |
 | skip-link.a11y.spec.tsx | Pass | — |
 
-**Overall:** All 8 a11y test files passed.
+**Overall:** All 9 a11y test files passed.
 
 ### Pa11y-ci (full URL audit)
 
 - **Config:** `.pa11yci.json` includes:
   - `http://localhost:4321/`
-  - `http://localhost:4321/lead-magnet/`
-  - `http://localhost:4321/lead-magnet/results/`
+  - `http://localhost:4321/faq`, `contact`, `privacy-terms`, `accessibility`
+  - `http://localhost:4321/bio/`
+  - `http://localhost:4321/lead-magnet/`, `http://localhost:4321/lead-magnet/results/`
   - `http://localhost:4321/book-call/`
-  - Plus existing FAQ, contact, privacy-terms, accessibility.
 - **Run:** For a full pa11y run against the static export, use:  
   `npm run a11y:local`  
   (builds, serves `out` on port 4321, then runs pa11y-ci).
-- **Latest run:** 8/8 URLs passed (after resolving skip-link and duplicate-id issues).
+- **Latest run:** 9/9 URLs passed (after resolving skip-link and duplicate-id issues; `/bio/` added to config).
 
 ---
 
@@ -84,6 +87,7 @@ The following issues were found by `npm run a11y:local` and have been fixed:
 
 No WCAG 2.2 Level AA violations were reported by the automated tests for:
 
+- Bio page (`/bio`)
 - Lead magnet quiz (page and modal)
 - Book-call page
 - Footer AI Information Session block
@@ -100,8 +104,21 @@ No WCAG 2.2 Level AA violations were reported by the automated tests for:
 
 ---
 
+## Bio page (/bio) — audit record for future runs
+
+| Item | Detail |
+|------|--------|
+| **Page** | `/bio` (linktree-style: tagline, primary CTAs, "Tools I use", social links) |
+| **First audited** | February 2026 |
+| **Automated** | Vitest + jest-axe: `src/__tests__/bio.a11y.spec.tsx` (main landmark, h1, h2, axe WCAG 2/2.1/2.2 AA). In jsdom, axe may skip with "Respondable target must be a frame"; structure checks still run. |
+| **Pa11y-ci** | URL `http://localhost:4321/bio/` added to `.pa11yci.json`; run via `npm run a11y:local`. |
+| **Result** | Pass (structure and, when axe runs, no violations). |
+| **Future audits** | Re-run `npm run test:a11y` and, when possible, `npm run a11y:local`; update this table with date and any new issues or fixes. |
+
+---
+
 ## Recommendations
 
-1. **Keep running:** `npm run test:a11y` in CI to guard regressions on the audited areas.
-2. **Full pa11y run:** Periodically run `npm run a11y:local` (or equivalent) to audit all configured URLs, including `/lead-magnet/results/`.
-3. **Manual pass:** For go-live or major releases, do a manual pass (keyboard, one screen reader, and zoom) on the quiz, results, book-call, and footer Information Session block.
+1. **Keep running:** `npm run test:a11y` in CI to guard regressions on the audited areas (including `/bio`).
+2. **Full pa11y run:** Periodically run `npm run a11y:local` (or equivalent) to audit all configured URLs, including `/bio/` and `/lead-magnet/results/`.
+3. **Manual pass:** For go-live or major releases, do a manual pass (keyboard, one screen reader, and zoom) on the bio page, quiz, results, book-call, and footer Information Session block.
