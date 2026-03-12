@@ -20,6 +20,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/resources/",
   },
+  openGraph: {
+    title: "Resources | Flow AI - Lessons, Agents & GPTs, Prompt Packs & Templates",
+    description: "Access Flow AI course lessons, AI agents and GPTs, prompt packs, templates, and worksheets to accelerate your AI journey.",
+    url: "https://thisisflowai.com/resources/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - Resources" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources | Flow AI - Lessons, Agents & GPTs, Prompt Packs & Templates",
+    description: "Access Flow AI course lessons, AI agents and GPTs, prompt packs, templates, and worksheets to accelerate your AI journey.",
+  },
   robots: {
     index: true,
     follow: true,

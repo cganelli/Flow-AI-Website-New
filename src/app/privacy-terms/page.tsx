@@ -13,6 +13,23 @@ export const metadata: Metadata = {
     "Flow AI terms",
     "AI automation privacy"
   ],
+  alternates: {
+    canonical: "https://thisisflowai.com/privacy-terms/",
+  },
+  openGraph: {
+    title: "Privacy Policy & Terms - Flow AI | Data Protection & Service Terms",
+    description: "Read Flow AI's privacy policy and terms of service. Learn how we protect your data and the terms governing our AI automation services.",
+    url: "https://thisisflowai.com/privacy-terms/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - Privacy & Terms" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy & Terms - Flow AI | Data Protection & Service Terms",
+    description: "Read Flow AI's privacy policy and terms of service. Learn how we protect your data and the terms governing our AI automation services.",
+  },
 };
 
 export default function PrivacyTermsPage() {

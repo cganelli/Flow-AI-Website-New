@@ -18,6 +18,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/solutions/",
   },
+  openGraph: {
+    title: "AI Solutions for Real Business Problems | Flow AI",
+    description: "See how AI removes manual work and helps your staff move faster with solutions for lead follow-up, invoicing, client onboarding, and support automation.",
+    url: "https://thisisflowai.com/solutions/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - Solutions" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Solutions for Real Business Problems | Flow AI",
+    description: "See how AI removes manual work and helps your staff move faster with solutions for lead follow-up, invoicing, client onboarding, and support automation.",
+  },
   robots: {
     index: true,
     follow: true,

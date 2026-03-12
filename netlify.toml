@@ -1,7 +1,25 @@
 # Netlify configuration for Flow AI website
 # https://docs.netlify.com/configure-builds/file-based-configuration/
-# Domain redirects are in public/_redirects (must be ordered before catch-all).
+# Domain redirects (http/www → https canonical) here and in public/_redirects.
+# Trailing-slash rules are in public/_redirects only.
 
 [build]
   command = "npm run build"
   publish = "out"
+
+# Force protocol and host to canonical (301) so GSC "Page with redirect" clears
+[[redirects]]
+  force = true
+  from = "http://thisisflowai.com/*"
+  to = "https://thisisflowai.com/:splat"
+  status = 301
+[[redirects]]
+  force = true
+  from = "http://www.thisisflowai.com/*"
+  to = "https://thisisflowai.com/:splat"
+  status = 301
+[[redirects]]
+  force = true
+  from = "https://www.thisisflowai.com/*"
+  to = "https://thisisflowai.com/:splat"
+  status = 301

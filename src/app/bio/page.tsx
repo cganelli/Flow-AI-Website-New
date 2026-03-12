@@ -7,6 +7,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/bio/",
   },
+  openGraph: {
+    title: "Flow AI | Your links",
+    description: "AI consulting, free starter kit, lessons, resources, and more from Flow AI.",
+    url: "https://thisisflowai.com/bio/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - Your links" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Flow AI | Your links",
+    description: "AI consulting, free starter kit, lessons, resources, and more from Flow AI.",
+  },
   robots: {
     index: true,
     follow: true,

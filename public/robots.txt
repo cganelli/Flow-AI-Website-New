@@ -15,6 +15,3 @@ Allow: /
 Allow: /contact/
 Allow: /faq/
 Allow: /privacy-terms/
-
-# Crawl delay (optional)
-Crawl-delay: 1

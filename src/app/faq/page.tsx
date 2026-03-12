@@ -16,6 +16,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/faq/",
   },
+  openGraph: {
+    title: "AI Automation FAQs | Flow AI",
+    description: "Get answers to common questions about AI automation and how Flow AI can benefit your business.",
+    url: "https://thisisflowai.com/faq/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - AI Automation FAQs" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Automation FAQs | Flow AI",
+    description: "Get answers to common questions about AI automation and how Flow AI can benefit your business.",
+  },
   robots: {
     index: true,
     follow: true,

@@ -19,6 +19,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/contact/",
   },
+  openGraph: {
+    title: "Contact Flow AI | Schedule Your Free AI Audit",
+    description: "Reach out to Flow AI to discover how our automation solutions can transform your business operations and boost productivity.",
+    url: "https://thisisflowai.com/contact/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - Contact" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Flow AI | Schedule Your Free AI Audit",
+    description: "Reach out to Flow AI to discover how our automation solutions can transform your business operations and boost productivity.",
+  },
   robots: {
     index: true,
     follow: true,

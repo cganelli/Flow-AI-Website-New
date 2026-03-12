@@ -6,6 +6,23 @@ import Footer from "@/components/layout/footer";
 export const metadata: Metadata = {
   title: 'Accessibility | Flow AI',
   description: 'Flow AI is committed to WCAG 2.2 AA accessibility with regular audits, inclusive design, and clear feedback channels.',
+  alternates: {
+    canonical: 'https://thisisflowai.com/accessibility/',
+  },
+  openGraph: {
+    title: 'Accessibility | Flow AI',
+    description: 'Flow AI is committed to WCAG 2.2 AA accessibility with regular audits, inclusive design, and clear feedback channels.',
+    url: 'https://thisisflowai.com/accessibility/',
+    siteName: 'Flow AI',
+    images: [{ url: '/images/og-image.jpg', width: 1200, height: 630, alt: 'Flow AI - Accessibility' }],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accessibility | Flow AI',
+    description: 'Flow AI is committed to WCAG 2.2 AA accessibility with regular audits, inclusive design, and clear feedback channels.',
+  },
 };
 
 export default function AccessibilityPage() {

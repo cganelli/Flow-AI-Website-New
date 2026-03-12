@@ -1,7 +1,23 @@
 # Canonical redirects: http and www → https://thisisflowai.com (single-hop 301)
-# Must appear before the catch-all so domain rules are evaluated first.
+# Must appear first so protocol/host normalization always wins.
 https://www.thisisflowai.com/*  https://thisisflowai.com/:splat  301!
 http://thisisflowai.com/*        https://thisisflowai.com/:splat  301!
 http://www.thisisflowai.com/*    https://thisisflowai.com/:splat  301!
+
+# Trailing slash normalization: match sitemap and canonicals (one canonical URL per page)
+# Query strings are preserved. 301! so GSC stops seeing "page with redirect" on re-crawl.
+/contact          /contact/          301!
+/faq              /faq/              301!
+/resources        /resources/        301!
+/use-cases        /use-cases/        301!
+/training         /training/         301!
+/solutions        /solutions/        301!
+/book-call         /book-call/        301!
+/lead-magnet       /lead-magnet/      301!
+/lead-magnet/results  /lead-magnet/results/  301!
+/bio              /bio/              301!
+/accessibility    /accessibility/    301!
+/privacy-terms    /privacy-terms/     301!
+
 # SPA fallback for client-side routes without a static file
-/*                               /index.html                       200
+/*                /index.html        200

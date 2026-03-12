@@ -35,6 +35,20 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://thisisflowai.com/training/",
   },
+  openGraph: {
+    title: "AI Training For Real-World Work | Flow AI",
+    description: "Flow AI runs live, hands-on training for teams of 5 to 100 people. Sessions focus on real tasks such as emails, meetings, reports, and core processes.",
+    url: "https://thisisflowai.com/training/",
+    siteName: "Flow AI",
+    images: [{ url: "/images/og-image.jpg", width: 1200, height: 630, alt: "Flow AI - AI Training" }],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Training For Real-World Work | Flow AI",
+    description: "Flow AI runs live, hands-on training for teams of 5 to 100 people. Sessions focus on real tasks such as emails, meetings, reports, and core processes.",
+  },
   robots: {
     index: true,
     follow: true,
